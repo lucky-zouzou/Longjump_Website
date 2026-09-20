@@ -89,4 +89,4 @@ jobs:
           { cp /tmp/deploy.log deploy.log 2>/dev/null || echo "deploy.log not found" > deploy.log; }
           git add deploy.log
           git commit -m "CI deploy log $(date -u +%FT%TZ)" || true
-          git push origin ci-diag
+          git push origin ci-diag --force
