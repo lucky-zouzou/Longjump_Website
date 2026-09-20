@@ -1,0 +1,63 @@
+{
+  "retrievedAt": "2026-09-09",
+  "shop": {
+    "name": "LOONG JUMP Official Shop",
+    "handle": "loongjump.id",
+    "url": "https://shopee.co.id/loongjump.id",
+    "shopId": "1622439769",
+    "verification": "Storefront product links carry shop ID 1622439769; individual product pages link back to LOONG JUMP Official Shop. Shop ID 1527848623 belongs to LOONG JUMP Brand Hub / loongjumptokotas and was excluded."
+  },
+  "notes": [
+    "Four original JPEG images downloaded from image links on the corresponding official Shopee product pages and visually inspected. All are 1024 x 1024 pixels.",
+    "Display names are concise descriptions for a website, not official model names.",
+    "No exact product dimensions, weights, material composition, MOQ, lead time or wholesale price could be verified; do not invent these specifications.",
+    "Variant counts were visible on crawled product pages and can change; image color legends sometimes conflict with the current variant count.",
+    "Official storefront top listings also include a large-capacity foldable travel tote and Mini Tote, both showing 10K+ sales in cached page text; their individual product pages were inaccessible."
+  ],
+  "products": [
+    {
+      "displayName": "Woven-Texture Shoulder Bag",
+      "displayNameZh": "编织纹单肩包",
+      "officialTitle": "LOONG JUMP Tas selempang, tas bahu wanita, tas tangan",
+      "itemId": "45506383086",
+      "sourceUrl": "https://shopee.co.id/LOONG-JUMP-Tas-selempang-tas-lembut-wanita-tas-bahu-wanita-tas-hobo-gaya-Korea-tas-tangan-wanita-i.1622439769.45506383086",
+      "imageUrl": "https://down-id.img.susercontent.com/file/id-11134207-81ztk-mrchdniom1ac23",
+      "localPath": "/private/tmp/loongjump-product-assets/soft-shoulder-bag.jpg",
+      "verifiedFeatures": ["Women's shoulder/crossbody handbag category", "Brown product pictured with woven-effect surface and flap closure", "11 variants visible in crawled product page"],
+      "imageSize": "1024x1024"
+    },
+    {
+      "displayName": "Printed Flap Crossbody",
+      "displayNameZh": "经典印花翻盖斜挎包",
+      "officialTitle": "LOONG JUMP Tas bahu wanita, tas selempang,Hobo motif cetak",
+      "itemId": "45356375704",
+      "sourceUrl": "https://shopee.co.id/LOONG-JUMP-Tas-bahu-wanita-tas-selempang-Hobo-motif-cetak-i.1622439769.45356375704",
+      "imageUrl": "https://down-id.img.susercontent.com/file/id-11134207-81ztn-mrfmiku3v5dy42",
+      "localPath": "/private/tmp/loongjump-product-assets/printed-hobo-bag.jpg",
+      "verifiedFeatures": ["Printed shoulder/crossbody bag per listing title", "Dark printed body and brown trim shown in product image", "7 variants visible in crawled product page"],
+      "imageSize": "1024x1024"
+    },
+    {
+      "displayName": "Everyday Shoulder Bag",
+      "displayNameZh": "日常单肩包",
+      "officialTitle": "LOONG JUMP Fashion Shoulder Bog Tas Bahu Nyaman Tas Selempang Bag",
+      "itemId": "57100231274",
+      "sourceUrl": "https://shopee.co.id/LOONG-JUMP-Fashion-Shoulder-Bog-Tas-Bahu-Nyaman-Tas-Selempang-Bag-i.1622439769.57100231274",
+      "imageUrl": "https://down-id.img.susercontent.com/file/id-11134207-81ztg-mrce8nwkixvmc2",
+      "localPath": "/private/tmp/loongjump-product-assets/fashion-shoulder-bag.jpg",
+      "verifiedFeatures": ["Women's shoulder/crossbody bag per listing title", "Black body and brown flap pictured", "4 variants visible in crawled product page and four color swatches on image"],
+      "imageSize": "1024x1024"
+    },
+    {
+      "displayName": "Classic Zip Tote",
+      "displayNameZh": "经典拉链托特包",
+      "officialTitle": "LOONG JUMP Totebag Wanita Tas Selempang Wanita Korea Tote Bag",
+      "itemId": "28692951139",
+      "sourceUrl": "https://shopee.co.id/LOONG-JUMP-Totebag-Wanita-Tas-Selempang-Wanita-Korea-Tote-Bag-i.1622439769.28692951139",
+      "imageUrl": "https://down-id.img.susercontent.com/file/id-11134207-81ztg-mrcft7rr01s266",
+      "localPath": "/private/tmp/loongjump-product-assets/korea-tote-bag.jpg",
+      "verifiedFeatures": ["Women's Korean-style tote per listing title", "Black tote with two long handles and top zip pictured", "3 variants visible in crawled product page and green, brown, black color swatches on image"],
+      "imageSize": "1024x1024"
+    }
+  ]
+}

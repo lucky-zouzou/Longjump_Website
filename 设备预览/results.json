@@ -1,0 +1,135 @@
+{
+  "results": [
+    {
+      "name": "small-phone",
+      "width": 320,
+      "height": 568,
+      "columns": 1,
+      "navigation": "menu",
+      "status": "passed"
+    },
+    {
+      "name": "phone",
+      "width": 360,
+      "height": 800,
+      "columns": 1,
+      "navigation": "menu",
+      "status": "passed"
+    },
+    {
+      "name": "phone-portrait",
+      "width": 390,
+      "height": 844,
+      "columns": 2,
+      "navigation": "menu",
+      "status": "passed"
+    },
+    {
+      "name": "large-phone",
+      "width": 430,
+      "height": 932,
+      "columns": 2,
+      "navigation": "menu",
+      "status": "passed"
+    },
+    {
+      "name": "phone-landscape-small",
+      "width": 667,
+      "height": 375,
+      "columns": 2,
+      "navigation": "menu",
+      "status": "passed"
+    },
+    {
+      "name": "phone-landscape",
+      "width": 844,
+      "height": 390,
+      "columns": 2,
+      "navigation": "menu",
+      "status": "passed"
+    },
+    {
+      "name": "tablet-portrait",
+      "width": 768,
+      "height": 1024,
+      "columns": 2,
+      "navigation": "menu",
+      "status": "passed"
+    },
+    {
+      "name": "tablet-large",
+      "width": 820,
+      "height": 1180,
+      "columns": 2,
+      "navigation": "menu",
+      "status": "passed"
+    },
+    {
+      "name": "tablet-landscape",
+      "width": 1024,
+      "height": 768,
+      "columns": 3,
+      "navigation": "desktop",
+      "status": "passed"
+    },
+    {
+      "name": "small-window",
+      "width": 640,
+      "height": 400,
+      "columns": 2,
+      "navigation": "menu",
+      "status": "passed"
+    },
+    {
+      "name": "laptop",
+      "width": 1280,
+      "height": 800,
+      "columns": 5,
+      "navigation": "desktop",
+      "status": "passed"
+    },
+    {
+      "name": "laptop-short",
+      "width": 1366,
+      "height": 768,
+      "columns": 5,
+      "navigation": "desktop",
+      "status": "passed"
+    },
+    {
+      "name": "desktop",
+      "width": 1440,
+      "height": 900,
+      "columns": 5,
+      "navigation": "desktop",
+      "status": "passed"
+    },
+    {
+      "name": "desktop-fullhd",
+      "width": 1920,
+      "height": 1080,
+      "columns": 5,
+      "navigation": "desktop",
+      "status": "passed"
+    },
+    {
+      "name": "desktop-wide",
+      "width": 2560,
+      "height": 1440,
+      "columns": 5,
+      "navigation": "desktop",
+      "status": "passed"
+    }
+  ],
+  "checks": [
+    "process number/copy separation",
+    "product details",
+    "quantity editing",
+    "inquiry preview",
+    "OEM fields",
+    "gallery navigation",
+    "menu resize",
+    "video rotation and pause"
+  ],
+  "browserErrors": []
+}

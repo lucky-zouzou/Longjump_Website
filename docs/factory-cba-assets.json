@@ -1,0 +1,96 @@
+{
+  "sourceArchive": "/Users/tommy/Desktop/印尼项目/PT_Cipta_Bakti_Abadi_10张投产效果图.zip",
+  "provenance": "Owner-supplied AI production concepts, as described in the archive README and manifest. This website task only converted images to WebP without cropping, resizing, or changing their content.",
+  "images": [
+    {
+      "file": "01-gate-brand.png",
+      "original": "/Users/tommy/Documents/ChatGPT/LOONGJUPM独立站/output/factory-supplied/01-gate-brand.png",
+      "image": "/images/factory-cba/01-gate-brand.webp",
+      "width": 1672,
+      "height": 941,
+      "bytes": 512258,
+      "sha256": "f21b507118762cd359d42cea46f02636e59dc0843476d8db6864d2a7cdd94d15"
+    },
+    {
+      "file": "02-courtyard-office.png",
+      "original": "/Users/tommy/Documents/ChatGPT/LOONGJUPM独立站/output/factory-supplied/02-courtyard-office.png",
+      "image": "/images/factory-cba/02-courtyard-office.webp",
+      "width": 1672,
+      "height": 941,
+      "bytes": 399994,
+      "sha256": "2c1412f159cc53d4ac11745c34f0896dfa8e15d4f6cd3a438bc2fd7f96ca8fc4"
+    },
+    {
+      "file": "03-dispatch-logistics.png",
+      "original": "/Users/tommy/Documents/ChatGPT/LOONGJUPM独立站/output/factory-supplied/03-dispatch-logistics.png",
+      "image": "/images/factory-cba/03-dispatch-logistics.webp",
+      "width": 1672,
+      "height": 941,
+      "bytes": 362690,
+      "sha256": "f2e3588a57d188f4fd68ddeb289f402d7bbde05174c2c87c66ae0473b5e12756"
+    },
+    {
+      "file": "04-production-overview.png",
+      "original": "/Users/tommy/Documents/ChatGPT/LOONGJUPM独立站/output/factory-supplied/04-production-overview.png",
+      "image": "/images/factory-cba/04-production-overview.webp",
+      "width": 1672,
+      "height": 941,
+      "bytes": 412108,
+      "sha256": "0d72cb3cd54f35607734339c1ebed857721e7104fe8fbc8b561b181114b43ea2"
+    },
+    {
+      "file": "05-cutting-preparation.png",
+      "original": "/Users/tommy/Documents/ChatGPT/LOONGJUPM独立站/output/factory-supplied/05-cutting-preparation.png",
+      "image": "/images/factory-cba/05-cutting-preparation.webp",
+      "width": 1672,
+      "height": 941,
+      "bytes": 331972,
+      "sha256": "73b8ff4ee36f588f2b6e81c405b1be749211729873725f2fa64edb6671f4ecd3"
+    },
+    {
+      "file": "06-sewing-line.png",
+      "original": "/Users/tommy/Documents/ChatGPT/LOONGJUPM独立站/output/factory-supplied/06-sewing-line.png",
+      "image": "/images/factory-cba/06-sewing-line.webp",
+      "width": 1672,
+      "height": 941,
+      "bytes": 325130,
+      "sha256": "506be67016ec599495f261950f2ef70fc3d5e112488dc347c4917b0c23984370"
+    },
+    {
+      "file": "07-assembly-workflow.png",
+      "original": "/Users/tommy/Documents/ChatGPT/LOONGJUPM独立站/output/factory-supplied/07-assembly-workflow.png",
+      "image": "/images/factory-cba/07-assembly-workflow.webp",
+      "width": 1672,
+      "height": 941,
+      "bytes": 375396,
+      "sha256": "a0825d9dfa54064ed035017f4e212def18e200617e68a9272ae6739e4310cee2"
+    },
+    {
+      "file": "08-quality-control.png",
+      "original": "/Users/tommy/Documents/ChatGPT/LOONGJUPM独立站/output/factory-supplied/08-quality-control.png",
+      "image": "/images/factory-cba/08-quality-control.webp",
+      "width": 1672,
+      "height": 941,
+      "bytes": 317094,
+      "sha256": "bb3c0c0bd9e1dc897c35751db265cc44070d9340aa0067482cca75e5c684f7fb"
+    },
+    {
+      "file": "09-warehouse-inventory.png",
+      "original": "/Users/tommy/Documents/ChatGPT/LOONGJUPM独立站/output/factory-supplied/09-warehouse-inventory.png",
+      "image": "/images/factory-cba/09-warehouse-inventory.webp",
+      "width": 1672,
+      "height": 941,
+      "bytes": 384116,
+      "sha256": "20ee1b107f5c2f80a44d8c3e414760278d96dccd4fa263a108738747d22b75a1"
+    },
+    {
+      "file": "10-team-management.png",
+      "original": "/Users/tommy/Documents/ChatGPT/LOONGJUPM独立站/output/factory-supplied/10-team-management.png",
+      "image": "/images/factory-cba/10-team-management.webp",
+      "width": 1672,
+      "height": 941,
+      "bytes": 341294,
+      "sha256": "c9443ebb80eb6337944f67e09370e020b6db1d7b02825b463acafe095f77a8d9"
+    }
+  ]
+}

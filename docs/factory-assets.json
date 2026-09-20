@@ -1,0 +1,50 @@
+[
+  {
+    "id": "exterior",
+    "original": "/Users/tommy/Documents/ChatGPT/LOONGJUPM独立站/output/imagegen/factory/exterior-concept.png",
+    "websiteAsset": "/Users/tommy/Documents/ChatGPT/LOONGJUPM独立站/public/images/factory/exterior-concept.webp",
+    "width": 1536,
+    "height": 1024,
+    "bytes": 307084
+  },
+  {
+    "id": "materials",
+    "original": "/Users/tommy/Documents/ChatGPT/LOONGJUPM独立站/output/imagegen/factory/materials-concept.png",
+    "websiteAsset": "/Users/tommy/Documents/ChatGPT/LOONGJUPM独立站/public/images/factory/materials-concept.webp",
+    "width": 1536,
+    "height": 1024,
+    "bytes": 288260
+  },
+  {
+    "id": "sewing",
+    "original": "/Users/tommy/Documents/ChatGPT/LOONGJUPM独立站/output/imagegen/factory/sewing-concept.png",
+    "websiteAsset": "/Users/tommy/Documents/ChatGPT/LOONGJUPM独立站/public/images/factory/sewing-concept.webp",
+    "width": 1536,
+    "height": 1024,
+    "bytes": 277674
+  },
+  {
+    "id": "quality",
+    "original": "/Users/tommy/Documents/ChatGPT/LOONGJUPM独立站/output/imagegen/factory/quality-concept.png",
+    "websiteAsset": "/Users/tommy/Documents/ChatGPT/LOONGJUPM独立站/public/images/factory/quality-concept.webp",
+    "width": 1536,
+    "height": 1024,
+    "bytes": 212796
+  },
+  {
+    "id": "packing",
+    "original": "/Users/tommy/Documents/ChatGPT/LOONGJUPM独立站/output/imagegen/factory/packing-concept.png",
+    "websiteAsset": "/Users/tommy/Documents/ChatGPT/LOONGJUPM独立站/public/images/factory/packing-concept.webp",
+    "width": 1536,
+    "height": 1024,
+    "bytes": 218218
+  },
+  {
+    "id": "sample",
+    "original": "/Users/tommy/Documents/ChatGPT/LOONGJUPM独立站/output/imagegen/factory/sample-concept.png",
+    "websiteAsset": "/Users/tommy/Documents/ChatGPT/LOONGJUPM独立站/public/images/factory/sample-concept.webp",
+    "width": 1536,
+    "height": 1024,
+    "bytes": 241522
+  }
+]

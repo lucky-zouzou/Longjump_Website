@@ -1,0 +1,109 @@
+/* Product discovery and saved procurement requests share the existing palette. */
+.hero h1 { font-size: clamp(36px, 4.4vw, 72px); line-height: 1.04; letter-spacing: -.045em; }
+.buyer-paths { display: grid; grid-template-columns: .8fr 1fr 1fr; gap: 32px; padding-top: 54px; padding-bottom: 54px; border-bottom: 1px solid var(--line); }
+.buyer-path-intro h2 { font-family: Georgia, serif; font-size: clamp(27px, 2.5vw, 38px); font-weight: 400; line-height: 1.2; margin-top: 12px; }
+.buyer-path { display: flex; align-items: flex-start; gap: 18px; text-align: left; padding: 25px; background: var(--surface); border: 1px solid var(--border); transition: background .2s; }
+.buyer-path:hover { background: var(--secondary); }
+.buyer-path > svg { flex-shrink: 0; color: var(--accent-ink); }
+.buyer-path h3 { font-size: 19px; margin-bottom: 10px; }
+.buyer-path p { font-size: 14px; line-height: 1.65; color: var(--muted-foreground); }
+.buyer-path span { display: flex; align-items: center; gap: 9px; margin-top: 20px; font-size: 12px; font-weight: 600; }
+.catalog-search { display: grid; gap: 8px; max-width: 460px; font-size: 12px; margin: 24px 0; }
+.catalog-search input, .inquiry-fields select, .lead-followup select, .lead-followup textarea, .sales-toolbar select { width: 100%; min-width: 0; border: 1px solid var(--input-border); border-radius: 4px; background: var(--card); padding: 11px 12px; font: inherit; color: inherit; min-height: 42px; }
+.catalog-search input { font-size: 16px; }
+.catalog-empty { padding: 44px 24px; text-align: center; background: var(--surface); }
+.catalog-empty p { margin: 14px 0; color: var(--muted-foreground); }
+.catalog-empty button { margin: 12px; }
+.product-meta { gap: 8px; flex-wrap: wrap; }
+.product-meta span:last-child { font-size: 9px; letter-spacing: .07em; }
+.inquiry-details { min-width: 0; border: 0; margin: 0; padding: 0; }
+.quote-summary { background: var(--secondary); padding: 20px; margin-bottom: 20px; }
+.quote-summary h3 { font-size: 20px; margin: 8px 0; }
+.quote-summary p:last-child { font-size: 12px; line-height: 1.6; color: var(--muted-foreground); }
+.inquiry-consent { display: flex; align-items: flex-start; gap: 10px; font-size: 12px; line-height: 1.65; margin: 18px 0; color: var(--muted-foreground); }
+.inquiry-consent input { width: 18px; height: 18px; flex-shrink: 0; margin-top: 2px; accent-color: var(--brand); }
+.inquiry-consent a { text-decoration: underline; }
+.inquiry-trap { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(100%); }
+.inquiry-error { color: var(--error); background: var(--error-surface); padding: 12px; line-height: 1.6; font-size: 13px; }
+.inquiry-direct-chat { font-size: 12px; display: flex; gap: 7px; align-items: center; margin-top: 20px; text-decoration: underline; }
+.inquiry-success { padding-top: 12px; display: grid; gap: 18px; }
+.inquiry-success > svg { color: var(--success); }
+.inquiry-success p { font-size: 14px; line-height: 1.7; }
+.inquiry-success .eyebrow { margin-top: 8px; }
+.receipt-number { display: block; font-family: monospace; font-size: 17px; overflow-wrap: anywhere; padding: 18px; background: var(--secondary); letter-spacing: .03em; }
+.inquiry-success .button { width: fit-content; max-width: 100%; white-space: normal; }
+.inquiry-submit { white-space: normal; text-align: center; line-height: 1.5; }
+.button:disabled { opacity: .55; cursor: wait; }
+.sales-page { max-width: 1240px; margin: auto; padding: 36px clamp(20px, 4vw, 64px) 64px; }
+.sales-header { display: flex; justify-content: space-between; align-items: center; gap: 24px; padding-bottom: 30px; border-bottom: 1px solid var(--border); }
+.sales-title { display: flex; align-items: center; justify-content: space-between; gap: 24px; margin: 48px 0 28px; }
+.sales-title h1, .sales-access h1, .privacy-page h1 { font-family: Georgia, serif; font-size: clamp(32px, 4vw, 48px); line-height: 1.2; margin: 10px 0 18px; }
+.sales-title p:last-child, .sales-access p { font-size: 14px; line-height: 1.7; color: var(--muted-foreground); }
+.sales-stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
+.sales-stats button { display: grid; text-align: left; gap: 16px; padding: 20px; border: 1px solid var(--border); background: var(--surface); }
+.sales-stats button[aria-pressed=true] { border-color: var(--brand); background: var(--accent-soft); }
+.sales-stats span { font-size: 12px; }
+.sales-stats strong { font-family: Georgia, serif; font-size: 34px; font-weight: 400; }
+.sales-toolbar { display: flex; justify-content: space-between; gap: 20px; align-items: center; padding: 24px 0; font-size: 13px; }
+.sales-toolbar label { display: flex; align-items: center; gap: 14px; }
+.sales-toolbar select { width: auto; }
+.lead-list { display: grid; gap: 18px; }
+.lead-card { border: 1px solid var(--border); padding: 24px; background: var(--card); min-width: 0; }
+.lead-top { display: flex; align-items: center; justify-content: space-between; gap: 16px; font-size: 12px; color: var(--muted-foreground); }
+.lead-badge { display: inline-block; background: var(--secondary); color: var(--muted-foreground); padding: 6px 10px; }
+.lead-new { background: #ece2d2; color: #805324; }
+.lead-contacted { background: #e8edf2; color: #40647a; }
+.lead-quoted { background: #eee7f2; color: #79558a; }
+.lead-closed { background: #e9eee4; color: #596d44; }
+.lead-card h2 { font-size: 23px; margin: 18px 0 8px; overflow-wrap: anywhere; }
+.lead-card h2 span { font-weight: 400; color: var(--muted-foreground); font-size: 15px; margin-left: 8px; }
+.lead-reference { font-family: monospace; font-size: 11px; color: var(--muted-foreground); overflow-wrap: anywhere; }
+.lead-contact { display: flex; gap: 20px; flex-wrap: wrap; font-size: 14px; margin: 16px 0; }
+.lead-contact a { display: inline-flex; align-items: center; gap: 8px; text-decoration: underline; overflow-wrap: anywhere; max-width: 100%; }
+.lead-details summary { cursor: pointer; font-size: 13px; padding: 12px 0 0; border-top: 1px solid var(--border); }
+.lead-products { list-style: none; padding: 0; margin: 22px 0; }
+.lead-products li { display: flex; justify-content: space-between; align-items: flex-start; gap: 20px; padding: 12px 0; border-bottom: 1px solid var(--border); font-size: 14px; }
+.lead-products small { display: block; font-size: 10px; color: var(--muted-foreground); margin-top: 5px; }
+.lead-products strong { white-space: nowrap; }
+.lead-brief { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; margin-top: 20px; }
+.lead-brief dt { color: var(--muted-foreground); font-size: 12px; margin-bottom: 6px; }
+.lead-brief dd { font-size: 14px; overflow-wrap: anywhere; }
+.lead-note { white-space: pre-wrap; overflow-wrap: anywhere; font-size: 14px; line-height: 1.7; margin: 18px 0; padding: 18px; background: var(--surface); }
+.lead-followup { display: grid; gap: 16px; }
+.lead-followup label { display: grid; gap: 8px; font-size: 13px; }
+.lead-followup .button { justify-self: start; }
+.sales-empty { text-align: center; padding: 56px 20px; border: 1px dashed var(--border); }
+.sales-empty h2 { font-size: 22px; font-weight: 400; margin-bottom: 16px; }
+.sales-empty p { font-size: 14px; line-height: 1.7; }
+.sales-pagination { display: flex; justify-content: space-between; gap: 20px; margin: 24px 0; }
+.sales-access { max-width: 620px; margin: 72px auto; }
+.sales-access .button { margin-top: 24px; }
+.privacy-page { max-width: 800px; margin: auto; padding: 40px 24px 80px; }
+.privacy-page > .eyebrow { margin-top: 70px; }
+.privacy-page h2 { font-size: 22px; margin: 32px 0 12px; }
+.privacy-page p { font-size: 15px; line-height: 1.85; color: var(--muted-foreground); }
+.privacy-page p a { text-decoration: underline; overflow-wrap: anywhere; }
+.privacy-page .button { margin-top: 36px; }
+@media (max-width: 1100px) {
+  .buyer-paths { grid-template-columns: 1fr 1fr; gap: 20px; }
+  .buyer-path-intro { grid-column: 1 / -1; }
+  .buyer-path-intro h2 br { display: none; }
+}
+@media (max-width: 600px) {
+  .hero h1 { font-size: clamp(31px, 7.7vw, 44px); }
+  .buyer-paths { grid-template-columns: 1fr; padding-top: 32px; padding-bottom: 32px; }
+  .buyer-path { padding: 22px 18px; }
+  .sales-header { align-items: flex-start; }
+  .sales-header .wordmark { font-size: 22px; }
+  .sales-header > a:last-child { font-size: 10px; }
+  .sales-title { align-items: flex-start; flex-direction: column; margin-top: 30px; }
+  .sales-stats { grid-template-columns: 1fr 1fr; }
+  .sales-stats button { padding: 16px; }
+  .sales-toolbar { align-items: flex-start; flex-direction: column; }
+  .lead-card { padding: 20px 16px; }
+  .lead-top { align-items: flex-start; flex-direction: column; gap: 10px; }
+  .lead-card h2 span { display: block; margin: 6px 0; }
+  .lead-contact { flex-direction: column; gap: 10px; }
+  .lead-brief { grid-template-columns: 1fr; }
+  .sales-pagination .button { padding: 12px; font-size: 12px; }
+}
