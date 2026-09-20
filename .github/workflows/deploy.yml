@@ -26,10 +26,12 @@ jobs:
           deploy() {
           echo "MARK0: function entered"
           mkdir -p ~/.ssh && chmod 700 ~/.ssh
-          printf '%s\n' "$SSH_KEY" > ~/.ssh/deploy_key && chmod 600 ~/.ssh/deploy_key
           [ -n "$SSH_KEY" ] || { echo "DIAG: SSH_DEPLOY_KEY 为空（secret 名或值有问题）"; exit 1; }
-          echo "DIAG: key 字符数 $(printf '%s' "$SSH_KEY" | wc -c | tr -d ' ')"
-          ssh-keygen -y -f ~/.ssh/deploy_key >/dev/null 2>&1 && echo "DIAG: key 格式 OK" || { echo "DIAG: key 格式无效（检查是否含反引号/缩进、BEGIN/END 是否完整）"; exit 1; }
+          echo "DIAG: 原始字符数 $(printf '%s' "$SSH_KEY" | wc -c | tr -d ' ')"
+          # 清洗粘贴常见杂质：围栏、行首尾空白、空行、CRLF
+          printf '%s\n' "$SSH_KEY" | sed -e 's/\r$//' -e 's/^[[:space:]]*//' -e 's/[[:space:]]*$//' -e '/^$/d' -e '/^```/d' > ~/.ssh/deploy_key && chmod 600 ~/.ssh/deploy_key
+          echo "DIAG: 清洗后字符数 $(wc -c < ~/.ssh/deploy_key | tr -d ' ')，第一行: $(head -1 ~/.ssh/deploy_key)"
+          ssh-keygen -y -f ~/.ssh/deploy_key >/dev/null 2>&1 && echo "DIAG: key 格式 OK" || { echo "DIAG: key 格式无效（BEGIN/END 是否完整、是否为私钥而非公钥）"; exit 1; }
           [ -n "$SERVER" ] && [ "$SERVER" != "@" ] || { echo "DIAG: SERVER_HOST/SERVER_USER 未配置"; exit 1; }
           echo "DIAG: SERVER 已配置"
           printf '%s\n' \
