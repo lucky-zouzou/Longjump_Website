@@ -1,0 +1,1466 @@
+MARK0: function entered
+DIAG: 原始字符数 445
+DIAG: 清洗后字符数 432，第一行: -----BEGIN OPENSSH PRIVATE KEY-----
+DIAG: key 格式 OK
+DIAG: SERVER 已配置（硬编码）
+ Image loongjump-website-web Building 
+#1 [internal] load local bake definitions
+#1 reading from stdin 512B done
+#1 DONE 0.0s
+
+#2 [internal] load build definition from Dockerfile
+#2 transferring dockerfile: 602B done
+#2 DONE 0.0s
+
+#3 [internal] load metadata for docker.io/library/node:24-bookworm-slim
+#3 DONE 0.0s
+
+#4 [internal] load .dockerignore
+#4 transferring context: 114B done
+#4 DONE 0.0s
+
+#5 [build 1/7] FROM docker.io/library/node:24-bookworm-slim@sha256:2fe369e969550cde8e867afc3fe370b260140cab4a23d467074295b42163d553
+#5 resolve docker.io/library/node:24-bookworm-slim@sha256:2fe369e969550cde8e867afc3fe370b260140cab4a23d467074295b42163d553 0.0s done
+#5 DONE 0.0s
+
+#6 [internal] load build context
+#6 transferring context: 11.77MB 0.1s done
+#6 DONE 0.1s
+
+#7 [build 4/7] COPY package.json pnpm-lock.yaml pnpm-workspace.yaml ./
+#7 CACHED
+
+#8 [build 2/7] WORKDIR /app
+#8 CACHED
+
+#9 [build 3/7] RUN npm install -g pnpm@10.33.2
+#9 CACHED
+
+#10 [build 5/7] RUN pnpm install --frozen-lockfile --fetch-timeout=600000 --fetch-retries=5
+#10 CACHED
+
+#11 [build 6/7] COPY . .
+#11 DONE 0.1s
+
+#12 [build 7/7] RUN pnpm build:server
+#12 0.378 
+#12 0.378 > sites-project@0.1.0 build:server /app
+#12 0.378 > node server/build.mjs
+#12 0.378 
+#12 1.497 
+#12 1.497   vinext build  (Vite 8.0.13)
+#12 1.497 
+#12 1.947 [1/5] analyze client references...
+#12 2.057 [2Ktransforming...✓ 234 modules transformed.
+#12 2.640 [lightningcss minify] Unknown at rule: @theme
+#12 2.640 2  |  
+#12 2.640 3  |  @layer theme {
+#12 2.640 4  |    @theme default {
+#12 2.640    |          ^
+#12 2.640 5  |      --font-sans:
+#12 2.640 6  |        ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji",
+#12 2.641 [lightningcss minify] Unknown at rule: @theme
+#12 2.641 522 |  
+#12 2.641 523 |    /* Deprecated */
+#12 2.641 524 |    @theme default inline reference {
+#12 2.641     |          ^
+#12 2.641 525 |      --blur: 8px;
+#12 2.641 526 |      --shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+#12 2.642 [lightningcss minify] Unknown at rule: @tailwind
+#12 2.642 941 |  
+#12 2.642 942 |  @layer utilities {
+#12 2.642 943 |    @tailwind utilities;
+#12 2.642     |             ^
+#12 2.642 944 |  }
+#12 2.642 945 |  @property --tw-animation-delay{syntax:"*";inherits:false;initial-value:0s}@property --tw-animation-direction{syntax:"...
+#12 2.643 [lightningcss minify] Unknown at rule: @theme
+#12 2.643 943 |    @tailwind utilities;
+#12 2.643 944 |  }
+#12 2.643 945 |  ...translate-y{syntax:"*";inherits:false;initial-value:0}@theme inline{--animation-delay-0: 0s; --animation-delay-75:...
+#12 2.643     |                                                                 ^
+#12 2.643 946 |  @theme inline {
+#12 2.643 947 |    @keyframes accordion-down {
+#12 2.644 [lightningcss minify] Unknown at rule: @utility
+#12 2.644 943 |    @tailwind utilities;
+#12 2.644 944 |  }
+#12 2.644 945 |  ...0%,70%,100% { opacity: 1; }20%,50% { opacity: 0; }}}@utility animation-duration-*{--tw-animation-duration: calc(--...
+#12 2.644     |                                                                 ^
+#12 2.644 946 |  @theme inline {
+#12 2.644 947 |    @keyframes accordion-down {
+#12 2.645 [lightningcss minify] Unknown at rule: @utility
+#12 2.645 943 |    @tailwind utilities;
+#12 2.645 944 |  }
+#12 2.645 945 |  ...e(--animation-duration-*,[duration],"initial",[*]);}@utility delay-*{animation-delay: calc(--value(number)*1ms); a...
+#12 2.645     |                                                                 ^
+#12 2.645 946 |  @theme inline {
+#12 2.645 947 |    @keyframes accordion-down {
+#12 2.646 [lightningcss minify] Unknown at rule: @utility
+#12 2.646 943 |    @tailwind utilities;
+#12 2.646 944 |  }
+#12 2.646 945 |  ...alue(--animation-delay-*,[duration],"initial",[*]);}@utility repeat-*{animation-iteration-count: --value(--animati...
+#12 2.646     |                                                                 ^
+#12 2.646 946 |  @theme inline {
+#12 2.646 947 |    @keyframes accordion-down {
+#12 2.647 [lightningcss minify] Unknown at rule: @utility
+#12 2.647 943 |    @tailwind utilities;
+#12 2.647 944 |  }
+#12 2.647 945 |  ...--value(--animation-repeat-*,number,"initial",[*]);}@utility direction-*{animation-direction: --value(--animation-...
+#12 2.647     |                                                                 ^
+#12 2.647 946 |  @theme inline {
+#12 2.647 947 |    @keyframes accordion-down {
+#12 2.648 [lightningcss minify] Unknown at rule: @utility
+#12 2.648 943 |    @tailwind utilities;
+#12 2.648 944 |  }
+#12 2.648 945 |  ...on: --value(--animation-direction-*,"initial",[*]);}@utility fill-mode-*{animation-fill-mode: --value(--animation-...
+#12 2.648     |                                                                 ^
+#12 2.648 946 |  @theme inline {
+#12 2.648 947 |    @keyframes accordion-down {
+#12 2.648 [lightningcss minify] Unknown at rule: @utility
+#12 2.648 943 |    @tailwind utilities;
+#12 2.648 944 |  }
+#12 2.648 945 |  ...de: --value(--animation-fill-mode-*,"initial",[*]);}@utility running{animation-play-state: running;}@utility pause...
+#12 2.648     |                                                                 ^
+#12 2.648 946 |  @theme inline {
+#12 2.648 947 |    @keyframes accordion-down {
+#12 2.649 [lightningcss minify] Unknown at rule: @utility
+#12 2.649 943 |    @tailwind utilities;
+#12 2.649 944 |  }
+#12 2.649 945 |  ...]);}@utility running{animation-play-state: running;}@utility paused{animation-play-state: paused;}@utility play-st...
+#12 2.649     |                                                                 ^
+#12 2.649 946 |  @theme inline {
+#12 2.649 947 |    @keyframes accordion-down {
+#12 2.650 [lightningcss minify] Unknown at rule: @utility
+#12 2.650 943 |    @tailwind utilities;
+#12 2.650 944 |  }
+#12 2.650 945 |  ...ning;}@utility paused{animation-play-state: paused;}@utility play-state-*{animation-play-state: --value("initial",...
+#12 2.650     |                                                                 ^
+#12 2.650 946 |  @theme inline {
+#12 2.650 947 |    @keyframes accordion-down {
+#12 2.651 [lightningcss minify] Unknown at rule: @utility
+#12 2.651 943 |    @tailwind utilities;
+#12 2.651 944 |  }
+#12 2.651 945 |  ...ate-*{animation-play-state: --value("initial",[*]);}@utility blur-in{--tw-enter-blur: 20px;}@utility blur-in-*{--t...
+#12 2.651     |                                                                 ^
+#12 2.651 946 |  @theme inline {
+#12 2.651 947 |    @keyframes accordion-down {
+#12 2.652 [lightningcss minify] Unknown at rule: @utility
+#12 2.652 943 |    @tailwind utilities;
+#12 2.652 944 |  }
+#12 2.652 945 |  ...tial",[*]);}@utility blur-in{--tw-enter-blur: 20px;}@utility blur-in-*{--tw-enter-blur: calc(--value(number)*1px);...
+#12 2.652     |                                                                 ^
+#12 2.652 946 |  @theme inline {
+#12 2.652 947 |    @keyframes accordion-down {
+#12 2.653 [lightningcss minify] Unknown at rule: @utility
+#12 2.653 943 |    @tailwind utilities;
+#12 2.653 944 |  }
+#12 2.653 945 |  ...mber)*1px); --tw-enter-blur: --value(--blur-*,[*]);}@utility blur-out{--tw-exit-blur: 20px;}@utility blur-out-*{--...
+#12 2.653     |                                                                 ^
+#12 2.653 946 |  @theme inline {
+#12 2.653 947 |    @keyframes accordion-down {
+#12 2.654 [lightningcss minify] Unknown at rule: @utility
+#12 2.654 943 |    @tailwind utilities;
+#12 2.654 944 |  }
+#12 2.654 945 |  ...lur-*,[*]);}@utility blur-out{--tw-exit-blur: 20px;}@utility blur-out-*{--tw-exit-blur: calc(--value(number)*1px);...
+#12 2.654     |                                                                 ^
+#12 2.654 946 |  @theme inline {
+#12 2.654 947 |    @keyframes accordion-down {
+#12 2.655 [lightningcss minify] Unknown at rule: @utility
+#12 2.655 943 |    @tailwind utilities;
+#12 2.655 944 |  }
+#12 2.655 945 |  ...umber)*1px); --tw-exit-blur: --value(--blur-*,[*]);}@utility fade-in{--tw-enter-opacity: 0;}@utility fade-in-*{--t...
+#12 2.655     |                                                                 ^
+#12 2.655 946 |  @theme inline {
+#12 2.655 947 |    @keyframes accordion-down {
+#12 2.656 [lightningcss minify] Unknown at rule: @utility
+#12 2.656 943 |    @tailwind utilities;
+#12 2.656 944 |  }
+#12 2.656 945 |  ...lur-*,[*]);}@utility fade-in{--tw-enter-opacity: 0;}@utility fade-in-*{--tw-enter-opacity: calc(--value(number)/10...
+#12 2.656     |                                                                 ^
+#12 2.656 946 |  @theme inline {
+#12 2.656 947 |    @keyframes accordion-down {
+#12 2.657 [lightningcss minify] Unknown at rule: @utility
+#12 2.657 943 |    @tailwind utilities;
+#12 2.657 944 |  }
+#12 2.657 945 |  ...); --tw-enter-opacity: --value(--percentage-*,[*]);}@utility fade-out{--tw-exit-opacity: 0;}@utility fade-out-*{--...
+#12 2.657     |                                                                 ^
+#12 2.657 946 |  @theme inline {
+#12 2.657 947 |    @keyframes accordion-down {
+#12 2.658 [lightningcss minify] Unknown at rule: @utility
+#12 2.658 943 |    @tailwind utilities;
+#12 2.658 944 |  }
+#12 2.658 945 |  ...age-*,[*]);}@utility fade-out{--tw-exit-opacity: 0;}@utility fade-out-*{--tw-exit-opacity: calc(--value(number)/10...
+#12 2.658     |                                                                 ^
+#12 2.658 946 |  @theme inline {
+#12 2.658 947 |    @keyframes accordion-down {
+#12 2.659 [lightningcss minify] Unknown at rule: @utility
+#12 2.659 943 |    @tailwind utilities;
+#12 2.659 944 |  }
+#12 2.659 945 |  ...0); --tw-exit-opacity: --value(--percentage-*,[*]);}@utility zoom-in{--tw-enter-scale: 0;}@utility zoom-in-*{--tw-...
+#12 2.659     |                                                                 ^
+#12 2.659 946 |  @theme inline {
+#12 2.659 947 |    @keyframes accordion-down {
+#12 2.660 [lightningcss minify] Unknown at rule: @utility
+#12 2.660 943 |    @tailwind utilities;
+#12 2.660 944 |  }
+#12 2.660 945 |  ...ntage-*,[*]);}@utility zoom-in{--tw-enter-scale: 0;}@utility zoom-in-*{--tw-enter-scale: calc(--value(number)*1%);...
+#12 2.660     |                                                                 ^
+#12 2.660 946 |  @theme inline {
+#12 2.660 947 |    @keyframes accordion-down {
+#12 2.660 [lightningcss minify] Unknown at rule: @utility
+#12 2.660 943 |    @tailwind utilities;
+#12 2.660 944 |  }
+#12 2.660 945 |  ...o)); --tw-enter-scale: --value(--percentage-*,[*]);}@utility -zoom-in-*{--tw-enter-scale: calc(--value(number)*-1%...
+#12 2.660     |                                                                 ^
+#12 2.660 946 |  @theme inline {
+#12 2.660 947 |    @keyframes accordion-down {
+#12 2.661 [lightningcss minify] Unknown at rule: @utility
+#12 2.661 943 |    @tailwind utilities;
+#12 2.661 944 |  }
+#12 2.661 945 |  ...-1); --tw-enter-scale: --value(--percentage-*,[*]);}@utility zoom-out{--tw-exit-scale: 0;}@utility zoom-out-*{--tw...
+#12 2.661     |                                                                 ^
+#12 2.661 946 |  @theme inline {
+#12 2.661 947 |    @keyframes accordion-down {
+#12 2.662 [lightningcss minify] Unknown at rule: @utility
+#12 2.662 943 |    @tailwind utilities;
+#12 2.662 944 |  }
+#12 2.662 945 |  ...ntage-*,[*]);}@utility zoom-out{--tw-exit-scale: 0;}@utility zoom-out-*{--tw-exit-scale: calc(--value(number)*1%);...
+#12 2.662     |                                                                 ^
+#12 2.662 946 |  @theme inline {
+#12 2.662 947 |    @keyframes accordion-down {
+#12 2.663 [lightningcss minify] Unknown at rule: @utility
+#12 2.663 943 |    @tailwind utilities;
+#12 2.663 944 |  }
+#12 2.663 945 |  ...io)); --tw-exit-scale: --value(--percentage-*,[*]);}@utility -zoom-out-*{--tw-exit-scale: calc(--value(number)*-1%...
+#12 2.663     |                                                                 ^
+#12 2.663 946 |  @theme inline {
+#12 2.663 947 |    @keyframes accordion-down {
+#12 2.664 [lightningcss minify] Unknown at rule: @utility
+#12 2.664 943 |    @tailwind utilities;
+#12 2.664 944 |  }
+#12 2.664 945 |  ...*-1); --tw-exit-scale: --value(--percentage-*,[*]);}@utility spin-in{--tw-enter-rotate: 30deg;}@utility spin-in-*{...
+#12 2.664     |                                                                 ^
+#12 2.664 946 |  @theme inline {
+#12 2.664 947 |    @keyframes accordion-down {
+#12 2.664 [lightningcss minify] Unknown at rule: @utility
+#12 2.664 943 |    @tailwind utilities;
+#12 2.664 944 |  }
+#12 2.664 945 |  ...-*,[*]);}@utility spin-in{--tw-enter-rotate: 30deg;}@utility spin-in-*{--tw-enter-rotate: calc(--value(number)*1de...
+#12 2.664     |                                                                 ^
+#12 2.664 946 |  @theme inline {
+#12 2.664 947 |    @keyframes accordion-down {
+#12 2.665 [lightningcss minify] Unknown at rule: @utility
+#12 2.665 943 |    @tailwind utilities;
+#12 2.665 944 |  }
+#12 2.665 945 |  ...60deg); --tw-enter-rotate: --value(--rotate-*,[*]);}@utility -spin-in{--tw-enter-rotate: -30deg;}@utility -spin-in...
+#12 2.665     |                                                                 ^
+#12 2.665 946 |  @theme inline {
+#12 2.665 947 |    @keyframes accordion-down {
+#12 2.666 [lightningcss minify] Unknown at rule: @utility
+#12 2.666 943 |    @tailwind utilities;
+#12 2.666 944 |  }
+#12 2.666 945 |  ...,[*]);}@utility -spin-in{--tw-enter-rotate: -30deg;}@utility -spin-in-*{--tw-enter-rotate: calc(--value(number)*-1...
+#12 2.666     |                                                                 ^
+#12 2.666 946 |  @theme inline {
+#12 2.666 947 |    @keyframes accordion-down {
+#12 2.667 [lightningcss minify] Unknown at rule: @utility
+#12 2.667 943 |    @tailwind utilities;
+#12 2.667 944 |  }
+#12 2.667 945 |  ...60deg); --tw-enter-rotate: --value(--rotate-*,[*]);}@utility spin-out{--tw-exit-rotate: 30deg;}@utility spin-out-*...
+#12 2.667     |                                                                 ^
+#12 2.667 946 |  @theme inline {
+#12 2.667 947 |    @keyframes accordion-down {
+#12 2.667 [lightningcss minify] Unknown at rule: @utility
+#12 2.667 943 |    @tailwind utilities;
+#12 2.667 944 |  }
+#12 2.667 945 |  ...-*,[*]);}@utility spin-out{--tw-exit-rotate: 30deg;}@utility spin-out-*{--tw-exit-rotate: calc(--value(number)*1de...
+#12 2.667     |                                                                 ^
+#12 2.667 946 |  @theme inline {
+#12 2.667 947 |    @keyframes accordion-down {
+#12 2.668 [lightningcss minify] Unknown at rule: @utility
+#12 2.668 943 |    @tailwind utilities;
+#12 2.668 944 |  }
+#12 2.668 945 |  ...360deg); --tw-exit-rotate: --value(--rotate-*,[*]);}@utility -spin-out{--tw-exit-rotate: -30deg;}@utility -spin-ou...
+#12 2.668     |                                                                 ^
+#12 2.668 946 |  @theme inline {
+#12 2.668 947 |    @keyframes accordion-down {
+#12 2.669 [lightningcss minify] Unknown at rule: @utility
+#12 2.669 943 |    @tailwind utilities;
+#12 2.669 944 |  }
+#12 2.669 945 |  ...,[*]);}@utility -spin-out{--tw-exit-rotate: -30deg;}@utility -spin-out-*{--tw-exit-rotate: calc(--value(number)*-1...
+#12 2.669     |                                                                 ^
+#12 2.669 946 |  @theme inline {
+#12 2.669 947 |    @keyframes accordion-down {
+#12 2.670 [lightningcss minify] Unknown at rule: @utility
+#12 2.670 943 |    @tailwind utilities;
+#12 2.670 944 |  }
+#12 2.670 945 |  ...360deg); --tw-exit-rotate: --value(--rotate-*,[*]);}@utility slide-in-from-top{--tw-enter-translate-y: -100%;}@uti...
+#12 2.670     |                                                                 ^
+#12 2.670 946 |  @theme inline {
+#12 2.670 947 |    @keyframes accordion-down {
+#12 2.671 [lightningcss minify] Unknown at rule: @utility
+#12 2.671 943 |    @tailwind utilities;
+#12 2.671 944 |  }
+#12 2.671 945 |  ...ty slide-in-from-top{--tw-enter-translate-y: -100%;}@utility slide-in-from-top-*{--tw-enter-translate-y: calc(--va...
+#12 2.671     |                                                                 ^
+#12 2.671 946 |  @theme inline {
+#12 2.671 947 |    @keyframes accordion-down {
+#12 2.672 [lightningcss minify] Unknown at rule: @utility
+#12 2.672 943 |    @tailwind utilities;
+#12 2.672 944 |  }
+#12 2.672 945 |  ...c(--value(--translate-*,[percentage],[length])*-1);}@utility slide-in-from-bottom{--tw-enter-translate-y: 100%;}@u...
+#12 2.672     |                                                                 ^
+#12 2.672 946 |  @theme inline {
+#12 2.672 947 |    @keyframes accordion-down {
+#12 2.673 [lightningcss minify] Unknown at rule: @utility
+#12 2.673 943 |    @tailwind utilities;
+#12 2.673 944 |  }
+#12 2.673 945 |  ... slide-in-from-bottom{--tw-enter-translate-y: 100%;}@utility slide-in-from-bottom-*{--tw-enter-translate-y: calc(-...
+#12 2.673     |                                                                 ^
+#12 2.673 946 |  @theme inline {
+#12 2.673 947 |    @keyframes accordion-down {
+#12 2.673 [lightningcss minify] Unknown at rule: @utility
+#12 2.673 943 |    @tailwind utilities;
+#12 2.673 944 |  }
+#12 2.673 945 |  ...te-y: --value(--translate-*,[percentage],[length]);}@utility slide-in-from-left{--tw-enter-translate-x: -100%;}@ut...
+#12 2.673     |                                                                 ^
+#12 2.673 946 |  @theme inline {
+#12 2.673 947 |    @keyframes accordion-down {
+#12 2.674 [lightningcss minify] Unknown at rule: @utility
+#12 2.674 943 |    @tailwind utilities;
+#12 2.674 944 |  }
+#12 2.674 945 |  ...y slide-in-from-left{--tw-enter-translate-x: -100%;}@utility slide-in-from-left-*{--tw-enter-translate-x: calc(--v...
+#12 2.674     |                                                                 ^
+#12 2.674 946 |  @theme inline {
+#12 2.674 947 |    @keyframes accordion-down {
+#12 2.675 [lightningcss minify] Unknown at rule: @utility
+#12 2.675 943 |    @tailwind utilities;
+#12 2.675 944 |  }
+#12 2.675 945 |  ...c(--value(--translate-*,[percentage],[length])*-1);}@utility slide-in-from-right{--tw-enter-translate-x: 100%;}@ut...
+#12 2.675     |                                                                 ^
+#12 2.675 946 |  @theme inline {
+#12 2.675 947 |    @keyframes accordion-down {
+#12 2.676 [lightningcss minify] Unknown at rule: @utility
+#12 2.676 943 |    @tailwind utilities;
+#12 2.676 944 |  }
+#12 2.676 945 |  ...y slide-in-from-right{--tw-enter-translate-x: 100%;}@utility slide-in-from-right-*{--tw-enter-translate-x: calc(--...
+#12 2.676     |                                                                 ^
+#12 2.676 946 |  @theme inline {
+#12 2.676 947 |    @keyframes accordion-down {
+#12 2.677 [lightningcss minify] Unknown at rule: @utility
+#12 2.677 943 |    @tailwind utilities;
+#12 2.677 944 |  }
+#12 2.677 945 |  ...te-x: --value(--translate-*,[percentage],[length]);}@utility slide-in-from-start{&:dir(ltr){ --tw-enter-translate-...
+#12 2.677     |                                                                 ^
+#12 2.677 946 |  @theme inline {
+#12 2.677 947 |    @keyframes accordion-down {
+#12 2.678 [lightningcss minify] Unknown at rule: @utility
+#12 2.678 943 |    @tailwind utilities;
+#12 2.678 944 |  }
+#12 2.678 945 |  ...-100%; }&:dir(rtl){ --tw-enter-translate-x: 100%; }}@utility slide-in-from-start-*{&:where(:dir(ltr),[dir="ltr"],[...
+#12 2.678     |                                                                 ^
+#12 2.678 946 |  @theme inline {
+#12 2.678 947 |    @keyframes accordion-down {
+#12 2.678 [lightningcss minify] Unknown at rule: @utility
+#12 2.678 943 |    @tailwind utilities;
+#12 2.678 944 |  }
+#12 2.678 945 |  ...-x: --value(--translate-*,[percentage],[length]); }}@utility slide-in-from-end{&:dir(ltr){ --tw-enter-translate-x:...
+#12 2.678     |                                                                 ^
+#12 2.678 946 |  @theme inline {
+#12 2.678 947 |    @keyframes accordion-down {
+#12 2.679 [lightningcss minify] Unknown at rule: @utility
+#12 2.679 943 |    @tailwind utilities;
+#12 2.679 944 |  }
+#12 2.679 945 |  ...100%; }&:dir(rtl){ --tw-enter-translate-x: -100%; }}@utility slide-in-from-end-*{&:where(:dir(ltr),[dir="ltr"],[di...
+#12 2.679     |                                                                 ^
+#12 2.679 946 |  @theme inline {
+#12 2.679 947 |    @keyframes accordion-down {
+#12 2.680 [lightningcss minify] Unknown at rule: @utility
+#12 2.680 943 |    @tailwind utilities;
+#12 2.680 944 |  }
+#12 2.680 945 |  ...--value(--translate-*,[percentage],[length])*-1); }}@utility slide-out-to-top{--tw-exit-translate-y: -100%;}@utili...
+#12 2.680     |                                                                 ^
+#12 2.680 946 |  @theme inline {
+#12 2.680 947 |    @keyframes accordion-down {
+#12 2.681 [lightningcss minify] Unknown at rule: @utility
+#12 2.681 943 |    @tailwind utilities;
+#12 2.681 944 |  }
+#12 2.681 945 |  ...lity slide-out-to-top{--tw-exit-translate-y: -100%;}@utility slide-out-to-top-*{--tw-exit-translate-y: calc(--valu...
+#12 2.681     |                                                                 ^
+#12 2.681 946 |  @theme inline {
+#12 2.681 947 |    @keyframes accordion-down {
+#12 2.681 [lightningcss minify] Unknown at rule: @utility
+#12 2.681 943 |    @tailwind utilities;
+#12 2.681 944 |  }
+#12 2.681 945 |  ...c(--value(--translate-*,[percentage],[length])*-1);}@utility slide-out-to-bottom{--tw-exit-translate-y: 100%;}@uti...
+#12 2.681     |                                                                 ^
+#12 2.681 946 |  @theme inline {
+#12 2.681 947 |    @keyframes accordion-down {
+#12 2.682 [lightningcss minify] Unknown at rule: @utility
+#12 2.682 943 |    @tailwind utilities;
+#12 2.682 944 |  }
+#12 2.682 945 |  ...ty slide-out-to-bottom{--tw-exit-translate-y: 100%;}@utility slide-out-to-bottom-*{--tw-exit-translate-y: calc(--v...
+#12 2.682     |                                                                 ^
+#12 2.682 946 |  @theme inline {
+#12 2.682 947 |    @keyframes accordion-down {
+#12 2.683 [lightningcss minify] Unknown at rule: @utility
+#12 2.683 943 |    @tailwind utilities;
+#12 2.683 944 |  }
+#12 2.683 945 |  ...te-y: --value(--translate-*,[percentage],[length]);}@utility slide-out-to-left{--tw-exit-translate-x: -100%;}@util...
+#12 2.683     |                                                                 ^
+#12 2.683 946 |  @theme inline {
+#12 2.683 947 |    @keyframes accordion-down {
+#12 2.684 [lightningcss minify] Unknown at rule: @utility
+#12 2.684 943 |    @tailwind utilities;
+#12 2.684 944 |  }
+#12 2.684 945 |  ...ity slide-out-to-left{--tw-exit-translate-x: -100%;}@utility slide-out-to-left-*{--tw-exit-translate-x: calc(--val...
+#12 2.684     |                                                                 ^
+#12 2.684 946 |  @theme inline {
+#12 2.684 947 |    @keyframes accordion-down {
+#12 2.685 [lightningcss minify] Unknown at rule: @utility
+#12 2.685 943 |    @tailwind utilities;
+#12 2.685 944 |  }
+#12 2.685 945 |  ...c(--value(--translate-*,[percentage],[length])*-1);}@utility slide-out-to-right{--tw-exit-translate-x: 100%;}@util...
+#12 2.685     |                                                                 ^
+#12 2.685 946 |  @theme inline {
+#12 2.685 947 |    @keyframes accordion-down {
+#12 2.686 [lightningcss minify] Unknown at rule: @utility
+#12 2.686 943 |    @tailwind utilities;
+#12 2.686 944 |  }
+#12 2.686 945 |  ...ity slide-out-to-right{--tw-exit-translate-x: 100%;}@utility slide-out-to-right-*{--tw-exit-translate-x: calc(--va...
+#12 2.686     |                                                                 ^
+#12 2.686 946 |  @theme inline {
+#12 2.686 947 |    @keyframes accordion-down {
+#12 2.687 [lightningcss minify] Unknown at rule: @utility
+#12 2.687 943 |    @tailwind utilities;
+#12 2.687 944 |  }
+#12 2.687 945 |  ...te-x: --value(--translate-*,[percentage],[length]);}@utility slide-out-to-start{&:dir(ltr){ --tw-exit-translate-x:...
+#12 2.687     |                                                                 ^
+#12 2.687 946 |  @theme inline {
+#12 2.687 947 |    @keyframes accordion-down {
+#12 2.687 [lightningcss minify] Unknown at rule: @utility
+#12 2.687 943 |    @tailwind utilities;
+#12 2.687 944 |  }
+#12 2.687 945 |  ... -100%; }&:dir(rtl){ --tw-exit-translate-x: 100%; }}@utility slide-out-to-start-*{&:where(:dir(ltr),[dir="ltr"],[d...
+#12 2.687     |                                                                 ^
+#12 2.687 946 |  @theme inline {
+#12 2.687 947 |    @keyframes accordion-down {
+#12 2.688 [lightningcss minify] Unknown at rule: @utility
+#12 2.688 943 |    @tailwind utilities;
+#12 2.688 944 |  }
+#12 2.688 945 |  ...-x: --value(--translate-*,[percentage],[length]); }}@utility slide-out-to-end{&:dir(ltr){ --tw-exit-translate-x: 1...
+#12 2.688     |                                                                 ^
+#12 2.688 946 |  @theme inline {
+#12 2.688 947 |    @keyframes accordion-down {
+#12 2.689 [lightningcss minify] Unknown at rule: @utility
+#12 2.689 943 |    @tailwind utilities;
+#12 2.689 944 |  }
+#12 2.689 945 |  ... 100%; }&:dir(rtl){ --tw-exit-translate-x: -100%; }}@utility slide-out-to-end-*{&:where(:dir(ltr),[dir="ltr"],[dir...
+#12 2.689     |                                                                 ^
+#12 2.689 946 |  @theme inline {
+#12 2.689 947 |    @keyframes accordion-down {
+#12 2.690 [lightningcss minify] Unknown at rule: @theme
+#12 2.690 944 |  }
+#12 2.690 945 |  @property --tw-animation-delay{syntax:"*";inherits:false;initial-value:0s}@property --tw-animation-direction{syntax:"...
+#12 2.690 946 |  @theme inline {
+#12 2.690     |        ^
+#12 2.690 947 |    @keyframes accordion-down {
+#12 2.690 948 |      from {
+#12 2.691 [lightningcss minify] Unknown at rule: @custom-variant
+#12 2.691 971 |  
+#12 2.691 972 |  /* Custom variants */
+#12 2.691 973 |  @custom-variant data-open {
+#12 2.691     |                 ^
+#12 2.691 974 |    &:where([data-state="open"]),
+#12 2.691 975 |    &:where([data-open]:not([data-open="false"])) {
+#12 2.692 [lightningcss minify] Unknown at rule: @custom-variant
+#12 2.692 978 |  }
+#12 2.692 979 |  
+#12 2.692 980 |  @custom-variant data-closed {
+#12 2.692     |                 ^
+#12 2.692 981 |    &:where([data-state="closed"]),
+#12 2.692 982 |    &:where([data-closed]:not([data-closed="false"])) {
+#12 2.693 [lightningcss minify] Unknown at rule: @custom-variant
+#12 2.693 985 |  }
+#12 2.693 986 |  
+#12 2.693 987 |  @custom-variant data-checked {
+#12 2.693     |                 ^
+#12 2.693 988 |    &:where([data-state="checked"]),
+#12 2.693 989 |    &:where([data-checked]:not([data-checked="false"])) {
+#12 2.694 [lightningcss minify] Unknown at rule: @custom-variant
+#12 2.694 992 |  }
+#12 2.694 993 |  
+#12 2.694 994 |  @custom-variant data-unchecked {
+#12 2.694     |                 ^
+#12 2.694 995 |    &:where([data-state="unchecked"]),
+#12 2.694 996 |    &:where([data-unchecked]:not([data-unchecked="false"])) {
+#12 2.695 [lightningcss minify] Unknown at rule: @custom-variant
+#12 2.695 999  |  }
+#12 2.695 1000 |  
+#12 2.695 1001 |  @custom-variant data-selected {
+#12 2.695      |                 ^
+#12 2.695 1002 |    &:where([data-selected="true"]) {
+#12 2.695 1003 |      @slot;
+#12 2.695 [lightningcss minify] Unknown at rule: @custom-variant
+#12 2.695 1005 |  }
+#12 2.695 1006 |  
+#12 2.695 1007 |  @custom-variant data-disabled {
+#12 2.695      |                 ^
+#12 2.695 1008 |    &:where([data-disabled="true"]),
+#12 2.695 1009 |    &:where([data-disabled]:not([data-disabled="false"])) {
+#12 2.696 [lightningcss minify] Unknown at rule: @custom-variant
+#12 2.696 1012 |  }
+#12 2.696 1013 |  
+#12 2.696 1014 |  @custom-variant data-active {
+#12 2.696      |                 ^
+#12 2.696 1015 |    &:where([data-state="active"]),
+#12 2.696 1016 |    &:where([data-active]:not([data-active="false"])) {
+#12 2.697 [lightningcss minify] Unknown at rule: @custom-variant
+#12 2.697 1019 |  }
+#12 2.697 1020 |  
+#12 2.697 1021 |  @custom-variant data-horizontal {
+#12 2.697      |                 ^
+#12 2.697 1022 |    &:where([data-orientation="horizontal"]) {
+#12 2.697 1023 |      @slot;
+#12 2.698 [lightningcss minify] Unknown at rule: @custom-variant
+#12 2.698 1025 |  }
+#12 2.698 1026 |  
+#12 2.698 1027 |  @custom-variant data-vertical {
+#12 2.698      |                 ^
+#12 2.698 1028 |    &:where([data-orientation="vertical"]) {
+#12 2.698 1029 |      @slot;
+#12 2.699 [lightningcss minify] Unknown at rule: @utility
+#12 2.699 1031 |  }
+#12 2.699 1032 |  
+#12 2.699 1033 |  @utility no-scrollbar {
+#12 2.699      |          ^
+#12 2.699 1034 |    -ms-overflow-style: none;
+#12 2.699 1035 |    scrollbar-width: none;
+#12 2.700 [lightningcss minify] Unknown at rule: @theme
+#12 2.700 1066 |  }
+#12 2.700 1067 |  
+#12 2.700 1068 |  @theme inline {
+#12 2.700      |        ^
+#12 2.700 1069 |    @keyframes scroll-fade-reveal-t {
+#12 2.700 1070 |      from {
+#12 2.701 [lightningcss minify] Unknown at rule: @utility
+#12 2.701 1101 |  }
+#12 2.701 1102 |  
+#12 2.701 1103 |  @utility scroll-fade {
+#12 2.701      |          ^
+#12 2.701 1104 |    --_scroll-fade-size-t: var(
+#12 2.701 1105 |      --scroll-fade-t-size,
+#12 2.702 [lightningcss minify] Unknown at rule: @utility
+#12 2.702 1141 |  }
+#12 2.702 1142 |  
+#12 2.702 1143 |  @utility scroll-fade-y {
+#12 2.702      |          ^
+#12 2.702 1144 |    --_scroll-fade-size-t: var(
+#12 2.702 1145 |      --scroll-fade-t-size,
+#12 2.703 [lightningcss minify] Unknown at rule: @utility
+#12 2.703 1181 |  }
+#12 2.703 1182 |  
+#12 2.703 1183 |  @utility scroll-fade-x {
+#12 2.703      |          ^
+#12 2.703 1184 |    --_scroll-fade-size-s: var(
+#12 2.703 1185 |      --scroll-fade-s-size,
+#12 2.703 [lightningcss minify] Unknown at rule: @utility
+#12 2.703 1230 |  }
+#12 2.703 1231 |  
+#12 2.703 1232 |  @utility scroll-fade-t {
+#12 2.703      |          ^
+#12 2.703 1233 |    --_scroll-fade-size-t: var(
+#12 2.703 1234 |      --scroll-fade-t-size,
+#12 2.704 [lightningcss minify] Unknown at rule: @utility
+#12 2.704 1260 |  }
+#12 2.704 1261 |  
+#12 2.704 1262 |  @utility scroll-fade-b {
+#12 2.704      |          ^
+#12 2.704 1263 |    --_scroll-fade-size-b: var(
+#12 2.704 1264 |      --scroll-fade-b-size,
+#12 2.705 [lightningcss minify] Unknown at rule: @utility
+#12 2.705 1293 |  }
+#12 2.705 1294 |  
+#12 2.705 1295 |  @utility scroll-fade-l {
+#12 2.705      |          ^
+#12 2.705 1296 |    --_scroll-fade-size-s: var(
+#12 2.705 1297 |      --scroll-fade-s-size,
+#12 2.706 [lightningcss minify] Unknown at rule: @utility
+#12 2.706 1323 |  }
+#12 2.706 1324 |  
+#12 2.706 1325 |  @utility scroll-fade-r {
+#12 2.706      |          ^
+#12 2.706 1326 |    --_scroll-fade-size-e: var(
+#12 2.706 1327 |      --scroll-fade-e-size,
+#12 2.707 [lightningcss minify] Unknown at rule: @utility
+#12 2.707 1356 |  }
+#12 2.707 1357 |  
+#12 2.707 1358 |  @utility scroll-fade-s {
+#12 2.707      |          ^
+#12 2.707 1359 |    --_scroll-fade-size-s: var(
+#12 2.707 1360 |      --scroll-fade-s-size,
+#12 2.708 [lightningcss minify] Unknown at rule: @utility
+#12 2.708 1394 |  }
+#12 2.708 1395 |  
+#12 2.708 1396 |  @utility scroll-fade-e {
+#12 2.708      |          ^
+#12 2.708 1397 |    --_scroll-fade-size-e: var(
+#12 2.708 1398 |      --scroll-fade-e-size,
+#12 2.709 [lightningcss minify] Unknown at rule: @utility
+#12 2.709 1435 |  }
+#12 2.709 1436 |  
+#12 2.709 1437 |  @utility scroll-fade-* {
+#12 2.709      |          ^
+#12 2.709 1438 |    --scroll-fade-size: calc(var(--spacing) * --value(integer));
+#12 2.709 1439 |    --scroll-fade-size: --value([length], [percentage]);
+#12 2.711 [lightningcss minify] Unknown at rule: @utility
+#12 2.711 1440 |  }
+#12 2.711 1441 |  
+#12 2.711 1442 |  @utility scroll-fade-t-* {
+#12 2.711      |          ^
+#12 2.711 1443 |    --scroll-fade-t-size: calc(var(--spacing) * --value(integer));
+#12 2.711 1444 |    --scroll-fade-t-size: --value([length], [percentage]);
+#12 2.711 [lightningcss minify] Unknown at rule: @utility
+#12 2.711 1445 |  }
+#12 2.711 1446 |  
+#12 2.711 1447 |  @utility scroll-fade-b-* {
+#12 2.711      |          ^
+#12 2.711 1448 |    --scroll-fade-b-size: calc(var(--spacing) * --value(integer));
+#12 2.711 1449 |    --scroll-fade-b-size: --value([length], [percentage]);
+#12 2.712 [lightningcss minify] Unknown at rule: @utility
+#12 2.712 1450 |  }
+#12 2.712 1451 |  
+#12 2.712 1452 |  @utility scroll-fade-s-* {
+#12 2.712      |          ^
+#12 2.712 1453 |    --scroll-fade-s-size: calc(var(--spacing) * --value(integer));
+#12 2.712 1454 |    --scroll-fade-s-size: --value([length], [percentage]);
+#12 2.713 [lightningcss minify] Unknown at rule: @utility
+#12 2.713 1455 |  }
+#12 2.713 1456 |  
+#12 2.713 1457 |  @utility scroll-fade-e-* {
+#12 2.713      |          ^
+#12 2.713 1458 |    --scroll-fade-e-size: calc(var(--spacing) * --value(integer));
+#12 2.713 1459 |    --scroll-fade-e-size: --value([length], [percentage]);
+#12 2.715 [lightningcss minify] Unknown at rule: @utility
+#12 2.715 1460 |  }
+#12 2.715 1461 |  
+#12 2.715 1462 |  @utility scroll-fade-none {
+#12 2.715      |          ^
+#12 2.715 1463 |    --scroll-fade-mask: none;
+#12 2.715 1464 |  }
+#12 2.716 [lightningcss minify] Unknown at rule: @theme
+#12 2.716 1479 |  }
+#12 2.716 1480 |  
+#12 2.716 1481 |  @theme inline {
+#12 2.716      |        ^
+#12 2.716 1482 |    @keyframes tw-shimmer {
+#12 2.716 1483 |      from {
+#12 2.717 [lightningcss minify] Unknown at rule: @utility
+#12 2.717 1490 |  }
+#12 2.717 1491 |  
+#12 2.717 1492 |  @utility shimmer {
+#12 2.717      |          ^
+#12 2.717 1493 |    --_spread: var(--shimmer-spread, calc(3ch + 40px));
+#12 2.717 1494 |    --_base: currentColor;
+#12 2.718 [lightningcss minify] Unknown at rule: @utility
+#12 2.718 1531 |  }
+#12 2.718 1532 |  
+#12 2.718 1533 |  @utility shimmer-once {
+#12 2.718      |          ^
+#12 2.718 1534 |    animation-iteration-count: 1;
+#12 2.718 1535 |  }
+#12 2.719 [lightningcss minify] Unknown at rule: @utility
+#12 2.719 1535 |  }
+#12 2.719 1536 |  
+#12 2.719 1537 |  @utility shimmer-reverse {
+#12 2.719      |          ^
+#12 2.719 1538 |    animation-direction: reverse;
+#12 2.719 1539 |  }
+#12 2.720 [lightningcss minify] Unknown at rule: @utility
+#12 2.720 1539 |  }
+#12 2.720 1540 |  
+#12 2.720 1541 |  @utility shimmer-none {
+#12 2.720      |          ^
+#12 2.720 1542 |    --shimmer-image: none;
+#12 2.720 1543 |    --shimmer-text-fill: currentColor;
+#12 2.720 [lightningcss minify] Unknown at rule: @utility
+#12 2.720 1544 |  }
+#12 2.720 1545 |  
+#12 2.720 1546 |  @utility shimmer-color-* {
+#12 2.720      |          ^
+#12 2.720 1547 |    --shimmer-color: --value(--color, [color]);
+#12 2.720 1548 |    --shimmer-color: color-mix(
+#12 2.721 [lightningcss minify] Unknown at rule: @utility
+#12 2.721 1553 |  }
+#12 2.721 1554 |  
+#12 2.721 1555 |  @utility shimmer-duration-* {
+#12 2.721      |          ^
+#12 2.721 1556 |    --shimmer-duration: calc(--value(integer) * 1ms);
+#12 2.721 1557 |  }
+#12 2.722 [lightningcss minify] Unknown at rule: @utility
+#12 2.722 1557 |  }
+#12 2.722 1558 |  
+#12 2.722 1559 |  @utility shimmer-spread-* {
+#12 2.722      |          ^
+#12 2.722 1560 |    --shimmer-spread: calc(var(--spacing) * --value(integer));
+#12 2.722 1561 |    --shimmer-spread: --value([length], [percentage]);
+#12 2.723 [lightningcss minify] Unknown at rule: @utility
+#12 2.723 1562 |  }
+#12 2.723 1563 |  
+#12 2.723 1564 |  @utility shimmer-angle-* {
+#12 2.723      |          ^
+#12 2.723 1565 |    --shimmer-angle: calc(--value(integer) * 1deg);
+#12 2.723 1566 |  }
+#12 2.724 [lightningcss minify] Unknown at rule: @custom-variant
+#12 2.724 1573 |    }
+#12 2.724 1574 |  }
+#12 2.724 1575 |  @custom-variant dark (&:is(.dark *));
+#12 2.724      |                 ^
+#12 2.724 1576 |  @theme inline {
+#12 2.724 1577 |    --color-background: var(--background); --color-foreground: var(--foreground);
+#12 2.724 [lightningcss minify] Unknown at rule: @theme
+#12 2.724 1574 |  }
+#12 2.724 1575 |  @custom-variant dark (&:is(.dark *));
+#12 2.724 1576 |  @theme inline {
+#12 2.724      |        ^
+#12 2.724 1577 |    --color-background: var(--background); --color-foreground: var(--foreground);
+#12 2.724 1578 |    --font-sans: Arial, Helvetica, sans-serif; --font-heading: var(--font-sans);
+#12 2.738 rendering chunks...
+#12 2.744 ✓ built in 794ms
+#12 2.745 [2/5] analyze server references...
+#12 2.766 [2Ktransforming...✓ 370 modules transformed.
+#12 3.304 rendering chunks...
+#12 3.305 ✓ built in 560ms
+#12 3.306 [3/5] build rsc environment...
+#12 3.326 [2Ktransforming...✓ 231 modules transformed.
+#12 3.889 [lightningcss minify] Unknown at rule: @theme
+#12 3.889 2  |  
+#12 3.889 3  |  @layer theme {
+#12 3.889 4  |    @theme default {
+#12 3.889    |          ^
+#12 3.889 5  |      --font-sans:
+#12 3.889 6  |        ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji",
+#12 3.890 [lightningcss minify] Unknown at rule: @theme
+#12 3.890 522 |  
+#12 3.890 523 |    /* Deprecated */
+#12 3.890 524 |    @theme default inline reference {
+#12 3.890     |          ^
+#12 3.890 525 |      --blur: 8px;
+#12 3.890 526 |      --shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+#12 3.891 [lightningcss minify] Unknown at rule: @tailwind
+#12 3.891 941 |  
+#12 3.891 942 |  @layer utilities {
+#12 3.891 943 |    @tailwind utilities;
+#12 3.891     |             ^
+#12 3.891 944 |  }
+#12 3.891 945 |  @property --tw-animation-delay{syntax:"*";inherits:false;initial-value:0s}@property --tw-animation-direction{syntax:"...
+#12 3.891 [lightningcss minify] Unknown at rule: @theme
+#12 3.891 943 |    @tailwind utilities;
+#12 3.891 944 |  }
+#12 3.891 945 |  ...translate-y{syntax:"*";inherits:false;initial-value:0}@theme inline{--animation-delay-0: 0s; --animation-delay-75:...
+#12 3.891     |                                                                 ^
+#12 3.891 946 |  @theme inline {
+#12 3.891 947 |    @keyframes accordion-down {
+#12 3.892 [lightningcss minify] Unknown at rule: @utility
+#12 3.892 943 |    @tailwind utilities;
+#12 3.892 944 |  }
+#12 3.892 945 |  ...0%,70%,100% { opacity: 1; }20%,50% { opacity: 0; }}}@utility animation-duration-*{--tw-animation-duration: calc(--...
+#12 3.892     |                                                                 ^
+#12 3.892 946 |  @theme inline {
+#12 3.892 947 |    @keyframes accordion-down {
+#12 3.893 [lightningcss minify] Unknown at rule: @utility
+#12 3.893 943 |    @tailwind utilities;
+#12 3.893 944 |  }
+#12 3.893 945 |  ...e(--animation-duration-*,[duration],"initial",[*]);}@utility delay-*{animation-delay: calc(--value(number)*1ms); a...
+#12 3.893     |                                                                 ^
+#12 3.893 946 |  @theme inline {
+#12 3.893 947 |    @keyframes accordion-down {
+#12 3.893 [lightningcss minify] Unknown at rule: @utility
+#12 3.893 943 |    @tailwind utilities;
+#12 3.893 944 |  }
+#12 3.893 945 |  ...alue(--animation-delay-*,[duration],"initial",[*]);}@utility repeat-*{animation-iteration-count: --value(--animati...
+#12 3.893     |                                                                 ^
+#12 3.893 946 |  @theme inline {
+#12 3.893 947 |    @keyframes accordion-down {
+#12 3.894 [lightningcss minify] Unknown at rule: @utility
+#12 3.894 943 |    @tailwind utilities;
+#12 3.894 944 |  }
+#12 3.894 945 |  ...--value(--animation-repeat-*,number,"initial",[*]);}@utility direction-*{animation-direction: --value(--animation-...
+#12 3.894     |                                                                 ^
+#12 3.894 946 |  @theme inline {
+#12 3.894 947 |    @keyframes accordion-down {
+#12 3.894 [lightningcss minify] Unknown at rule: @utility
+#12 3.894 943 |    @tailwind utilities;
+#12 3.894 944 |  }
+#12 3.894 945 |  ...on: --value(--animation-direction-*,"initial",[*]);}@utility fill-mode-*{animation-fill-mode: --value(--animation-...
+#12 3.894     |                                                                 ^
+#12 3.894 946 |  @theme inline {
+#12 3.894 947 |    @keyframes accordion-down {
+#12 3.895 [lightningcss minify] Unknown at rule: @utility
+#12 3.895 943 |    @tailwind utilities;
+#12 3.895 944 |  }
+#12 3.895 945 |  ...de: --value(--animation-fill-mode-*,"initial",[*]);}@utility running{animation-play-state: running;}@utility pause...
+#12 3.895     |                                                                 ^
+#12 3.895 946 |  @theme inline {
+#12 3.895 947 |    @keyframes accordion-down {
+#12 3.896 [lightningcss minify] Unknown at rule: @utility
+#12 3.896 943 |    @tailwind utilities;
+#12 3.896 944 |  }
+#12 3.896 945 |  ...]);}@utility running{animation-play-state: running;}@utility paused{animation-play-state: paused;}@utility play-st...
+#12 3.896     |                                                                 ^
+#12 3.896 946 |  @theme inline {
+#12 3.896 947 |    @keyframes accordion-down {
+#12 3.896 [lightningcss minify] Unknown at rule: @utility
+#12 3.896 943 |    @tailwind utilities;
+#12 3.896 944 |  }
+#12 3.896 945 |  ...ning;}@utility paused{animation-play-state: paused;}@utility play-state-*{animation-play-state: --value("initial",...
+#12 3.896     |                                                                 ^
+#12 3.896 946 |  @theme inline {
+#12 3.896 947 |    @keyframes accordion-down {
+#12 3.897 [lightningcss minify] Unknown at rule: @utility
+#12 3.897 943 |    @tailwind utilities;
+#12 3.897 944 |  }
+#12 3.897 945 |  ...ate-*{animation-play-state: --value("initial",[*]);}@utility blur-in{--tw-enter-blur: 20px;}@utility blur-in-*{--t...
+#12 3.897     |                                                                 ^
+#12 3.897 946 |  @theme inline {
+#12 3.897 947 |    @keyframes accordion-down {
+#12 3.897 [lightningcss minify] Unknown at rule: @utility
+#12 3.897 943 |    @tailwind utilities;
+#12 3.897 944 |  }
+#12 3.897 945 |  ...tial",[*]);}@utility blur-in{--tw-enter-blur: 20px;}@utility blur-in-*{--tw-enter-blur: calc(--value(number)*1px);...
+#12 3.897     |                                                                 ^
+#12 3.897 946 |  @theme inline {
+#12 3.897 947 |    @keyframes accordion-down {
+#12 3.898 [lightningcss minify] Unknown at rule: @utility
+#12 3.898 943 |    @tailwind utilities;
+#12 3.898 944 |  }
+#12 3.898 945 |  ...mber)*1px); --tw-enter-blur: --value(--blur-*,[*]);}@utility blur-out{--tw-exit-blur: 20px;}@utility blur-out-*{--...
+#12 3.898     |                                                                 ^
+#12 3.898 946 |  @theme inline {
+#12 3.898 947 |    @keyframes accordion-down {
+#12 3.899 [lightningcss minify] Unknown at rule: @utility
+#12 3.899 943 |    @tailwind utilities;
+#12 3.899 944 |  }
+#12 3.899 945 |  ...lur-*,[*]);}@utility blur-out{--tw-exit-blur: 20px;}@utility blur-out-*{--tw-exit-blur: calc(--value(number)*1px);...
+#12 3.899     |                                                                 ^
+#12 3.899 946 |  @theme inline {
+#12 3.899 947 |    @keyframes accordion-down {
+#12 3.899 [lightningcss minify] Unknown at rule: @utility
+#12 3.899 943 |    @tailwind utilities;
+#12 3.899 944 |  }
+#12 3.899 945 |  ...umber)*1px); --tw-exit-blur: --value(--blur-*,[*]);}@utility fade-in{--tw-enter-opacity: 0;}@utility fade-in-*{--t...
+#12 3.899     |                                                                 ^
+#12 3.899 946 |  @theme inline {
+#12 3.899 947 |    @keyframes accordion-down {
+#12 3.900 [lightningcss minify] Unknown at rule: @utility
+#12 3.900 943 |    @tailwind utilities;
+#12 3.900 944 |  }
+#12 3.900 945 |  ...lur-*,[*]);}@utility fade-in{--tw-enter-opacity: 0;}@utility fade-in-*{--tw-enter-opacity: calc(--value(number)/10...
+#12 3.900     |                                                                 ^
+#12 3.900 946 |  @theme inline {
+#12 3.900 947 |    @keyframes accordion-down {
+#12 3.900 [lightningcss minify] Unknown at rule: @utility
+#12 3.900 943 |    @tailwind utilities;
+#12 3.900 944 |  }
+#12 3.900 945 |  ...); --tw-enter-opacity: --value(--percentage-*,[*]);}@utility fade-out{--tw-exit-opacity: 0;}@utility fade-out-*{--...
+#12 3.900     |                                                                 ^
+#12 3.900 946 |  @theme inline {
+#12 3.900 947 |    @keyframes accordion-down {
+#12 3.901 [lightningcss minify] Unknown at rule: @utility
+#12 3.901 943 |    @tailwind utilities;
+#12 3.901 944 |  }
+#12 3.901 945 |  ...age-*,[*]);}@utility fade-out{--tw-exit-opacity: 0;}@utility fade-out-*{--tw-exit-opacity: calc(--value(number)/10...
+#12 3.901     |                                                                 ^
+#12 3.901 946 |  @theme inline {
+#12 3.901 947 |    @keyframes accordion-down {
+#12 3.902 [lightningcss minify] Unknown at rule: @utility
+#12 3.902 943 |    @tailwind utilities;
+#12 3.902 944 |  }
+#12 3.902 945 |  ...0); --tw-exit-opacity: --value(--percentage-*,[*]);}@utility zoom-in{--tw-enter-scale: 0;}@utility zoom-in-*{--tw-...
+#12 3.902     |                                                                 ^
+#12 3.902 946 |  @theme inline {
+#12 3.902 947 |    @keyframes accordion-down {
+#12 3.902 [lightningcss minify] Unknown at rule: @utility
+#12 3.902 943 |    @tailwind utilities;
+#12 3.902 944 |  }
+#12 3.902 945 |  ...ntage-*,[*]);}@utility zoom-in{--tw-enter-scale: 0;}@utility zoom-in-*{--tw-enter-scale: calc(--value(number)*1%);...
+#12 3.902     |                                                                 ^
+#12 3.902 946 |  @theme inline {
+#12 3.902 947 |    @keyframes accordion-down {
+#12 3.903 [lightningcss minify] Unknown at rule: @utility
+#12 3.903 943 |    @tailwind utilities;
+#12 3.903 944 |  }
+#12 3.903 945 |  ...o)); --tw-enter-scale: --value(--percentage-*,[*]);}@utility -zoom-in-*{--tw-enter-scale: calc(--value(number)*-1%...
+#12 3.903     |                                                                 ^
+#12 3.903 946 |  @theme inline {
+#12 3.903 947 |    @keyframes accordion-down {
+#12 3.904 [lightningcss minify] Unknown at rule: @utility
+#12 3.904 943 |    @tailwind utilities;
+#12 3.904 944 |  }
+#12 3.904 945 |  ...-1); --tw-enter-scale: --value(--percentage-*,[*]);}@utility zoom-out{--tw-exit-scale: 0;}@utility zoom-out-*{--tw...
+#12 3.904     |                                                                 ^
+#12 3.904 946 |  @theme inline {
+#12 3.904 947 |    @keyframes accordion-down {
+#12 3.904 [lightningcss minify] Unknown at rule: @utility
+#12 3.904 943 |    @tailwind utilities;
+#12 3.904 944 |  }
+#12 3.904 945 |  ...ntage-*,[*]);}@utility zoom-out{--tw-exit-scale: 0;}@utility zoom-out-*{--tw-exit-scale: calc(--value(number)*1%);...
+#12 3.904     |                                                                 ^
+#12 3.904 946 |  @theme inline {
+#12 3.904 947 |    @keyframes accordion-down {
+#12 3.905 [lightningcss minify] Unknown at rule: @utility
+#12 3.905 943 |    @tailwind utilities;
+#12 3.905 944 |  }
+#12 3.905 945 |  ...io)); --tw-exit-scale: --value(--percentage-*,[*]);}@utility -zoom-out-*{--tw-exit-scale: calc(--value(number)*-1%...
+#12 3.905     |                                                                 ^
+#12 3.905 946 |  @theme inline {
+#12 3.905 947 |    @keyframes accordion-down {
+#12 3.905 [lightningcss minify] Unknown at rule: @utility
+#12 3.905 943 |    @tailwind utilities;
+#12 3.905 944 |  }
+#12 3.905 945 |  ...*-1); --tw-exit-scale: --value(--percentage-*,[*]);}@utility spin-in{--tw-enter-rotate: 30deg;}@utility spin-in-*{...
+#12 3.905     |                                                                 ^
+#12 3.905 946 |  @theme inline {
+#12 3.905 947 |    @keyframes accordion-down {
+#12 3.906 [lightningcss minify] Unknown at rule: @utility
+#12 3.906 943 |    @tailwind utilities;
+#12 3.906 944 |  }
+#12 3.906 945 |  ...-*,[*]);}@utility spin-in{--tw-enter-rotate: 30deg;}@utility spin-in-*{--tw-enter-rotate: calc(--value(number)*1de...
+#12 3.906     |                                                                 ^
+#12 3.906 946 |  @theme inline {
+#12 3.906 947 |    @keyframes accordion-down {
+#12 3.907 [lightningcss minify] Unknown at rule: @utility
+#12 3.907 943 |    @tailwind utilities;
+#12 3.907 944 |  }
+#12 3.907 945 |  ...60deg); --tw-enter-rotate: --value(--rotate-*,[*]);}@utility -spin-in{--tw-enter-rotate: -30deg;}@utility -spin-in...
+#12 3.907     |                                                                 ^
+#12 3.907 946 |  @theme inline {
+#12 3.907 947 |    @keyframes accordion-down {
+#12 3.907 [lightningcss minify] Unknown at rule: @utility
+#12 3.907 943 |    @tailwind utilities;
+#12 3.907 944 |  }
+#12 3.907 945 |  ...,[*]);}@utility -spin-in{--tw-enter-rotate: -30deg;}@utility -spin-in-*{--tw-enter-rotate: calc(--value(number)*-1...
+#12 3.907     |                                                                 ^
+#12 3.907 946 |  @theme inline {
+#12 3.907 947 |    @keyframes accordion-down {
+#12 3.908 [lightningcss minify] Unknown at rule: @utility
+#12 3.908 943 |    @tailwind utilities;
+#12 3.908 944 |  }
+#12 3.908 945 |  ...60deg); --tw-enter-rotate: --value(--rotate-*,[*]);}@utility spin-out{--tw-exit-rotate: 30deg;}@utility spin-out-*...
+#12 3.908     |                                                                 ^
+#12 3.908 946 |  @theme inline {
+#12 3.908 947 |    @keyframes accordion-down {
+#12 3.915 [lightningcss minify] Unknown at rule: @utility
+#12 3.915 943 |    @tailwind utilities;
+#12 3.915 944 |  }
+#12 3.915 945 |  ...-*,[*]);}@utility spin-out{--tw-exit-rotate: 30deg;}@utility spin-out-*{--tw-exit-rotate: calc(--value(number)*1de...
+#12 3.915     |                                                                 ^
+#12 3.915 946 |  @theme inline {
+#12 3.915 947 |    @keyframes accordion-down {
+#12 3.916 [lightningcss minify] Unknown at rule: @utility
+#12 3.916 943 |    @tailwind utilities;
+#12 3.916 944 |  }
+#12 3.916 945 |  ...360deg); --tw-exit-rotate: --value(--rotate-*,[*]);}@utility -spin-out{--tw-exit-rotate: -30deg;}@utility -spin-ou...
+#12 3.916     |                                                                 ^
+#12 3.916 946 |  @theme inline {
+#12 3.916 947 |    @keyframes accordion-down {
+#12 3.916 [lightningcss minify] Unknown at rule: @utility
+#12 3.916 943 |    @tailwind utilities;
+#12 3.916 944 |  }
+#12 3.916 945 |  ...,[*]);}@utility -spin-out{--tw-exit-rotate: -30deg;}@utility -spin-out-*{--tw-exit-rotate: calc(--value(number)*-1...
+#12 3.916     |                                                                 ^
+#12 3.916 946 |  @theme inline {
+#12 3.916 947 |    @keyframes accordion-down {
+#12 3.917 [lightningcss minify] Unknown at rule: @utility
+#12 3.917 943 |    @tailwind utilities;
+#12 3.917 944 |  }
+#12 3.917 945 |  ...360deg); --tw-exit-rotate: --value(--rotate-*,[*]);}@utility slide-in-from-top{--tw-enter-translate-y: -100%;}@uti...
+#12 3.917     |                                                                 ^
+#12 3.917 946 |  @theme inline {
+#12 3.917 947 |    @keyframes accordion-down {
+#12 3.918 [lightningcss minify] Unknown at rule: @utility
+#12 3.918 943 |    @tailwind utilities;
+#12 3.918 944 |  }
+#12 3.918 945 |  ...ty slide-in-from-top{--tw-enter-translate-y: -100%;}@utility slide-in-from-top-*{--tw-enter-translate-y: calc(--va...
+#12 3.918     |                                                                 ^
+#12 3.918 946 |  @theme inline {
+#12 3.918 947 |    @keyframes accordion-down {
+#12 3.919 [lightningcss minify] Unknown at rule: @utility
+#12 3.919 943 |    @tailwind utilities;
+#12 3.919 944 |  }
+#12 3.919 945 |  ...c(--value(--translate-*,[percentage],[length])*-1);}@utility slide-in-from-bottom{--tw-enter-translate-y: 100%;}@u...
+#12 3.919     |                                                                 ^
+#12 3.919 946 |  @theme inline {
+#12 3.919 947 |    @keyframes accordion-down {
+#12 3.919 [lightningcss minify] Unknown at rule: @utility
+#12 3.919 943 |    @tailwind utilities;
+#12 3.919 944 |  }
+#12 3.919 945 |  ... slide-in-from-bottom{--tw-enter-translate-y: 100%;}@utility slide-in-from-bottom-*{--tw-enter-translate-y: calc(-...
+#12 3.919     |                                                                 ^
+#12 3.919 946 |  @theme inline {
+#12 3.919 947 |    @keyframes accordion-down {
+#12 3.920 [lightningcss minify] Unknown at rule: @utility
+#12 3.920 943 |    @tailwind utilities;
+#12 3.920 944 |  }
+#12 3.920 945 |  ...te-y: --value(--translate-*,[percentage],[length]);}@utility slide-in-from-left{--tw-enter-translate-x: -100%;}@ut...
+#12 3.920     |                                                                 ^
+#12 3.920 946 |  @theme inline {
+#12 3.920 947 |    @keyframes accordion-down {
+#12 3.921 [lightningcss minify] Unknown at rule: @utility
+#12 3.921 943 |    @tailwind utilities;
+#12 3.921 944 |  }
+#12 3.921 945 |  ...y slide-in-from-left{--tw-enter-translate-x: -100%;}@utility slide-in-from-left-*{--tw-enter-translate-x: calc(--v...
+#12 3.921     |                                                                 ^
+#12 3.921 946 |  @theme inline {
+#12 3.921 947 |    @keyframes accordion-down {
+#12 3.921 [lightningcss minify] Unknown at rule: @utility
+#12 3.921 943 |    @tailwind utilities;
+#12 3.921 944 |  }
+#12 3.921 945 |  ...c(--value(--translate-*,[percentage],[length])*-1);}@utility slide-in-from-right{--tw-enter-translate-x: 100%;}@ut...
+#12 3.921     |                                                                 ^
+#12 3.921 946 |  @theme inline {
+#12 3.921 947 |    @keyframes accordion-down {
+#12 3.922 [lightningcss minify] Unknown at rule: @utility
+#12 3.922 943 |    @tailwind utilities;
+#12 3.922 944 |  }
+#12 3.922 945 |  ...y slide-in-from-right{--tw-enter-translate-x: 100%;}@utility slide-in-from-right-*{--tw-enter-translate-x: calc(--...
+#12 3.922     |                                                                 ^
+#12 3.922 946 |  @theme inline {
+#12 3.922 947 |    @keyframes accordion-down {
+#12 3.922 [lightningcss minify] Unknown at rule: @utility
+#12 3.922 943 |    @tailwind utilities;
+#12 3.922 944 |  }
+#12 3.922 945 |  ...te-x: --value(--translate-*,[percentage],[length]);}@utility slide-in-from-start{&:dir(ltr){ --tw-enter-translate-...
+#12 3.922     |                                                                 ^
+#12 3.922 946 |  @theme inline {
+#12 3.922 947 |    @keyframes accordion-down {
+#12 3.923 [lightningcss minify] Unknown at rule: @utility
+#12 3.923 943 |    @tailwind utilities;
+#12 3.923 944 |  }
+#12 3.923 945 |  ...-100%; }&:dir(rtl){ --tw-enter-translate-x: 100%; }}@utility slide-in-from-start-*{&:where(:dir(ltr),[dir="ltr"],[...
+#12 3.923     |                                                                 ^
+#12 3.923 946 |  @theme inline {
+#12 3.923 947 |    @keyframes accordion-down {
+#12 3.923 [lightningcss minify] Unknown at rule: @utility
+#12 3.923 943 |    @tailwind utilities;
+#12 3.923 944 |  }
+#12 3.923 945 |  ...-x: --value(--translate-*,[percentage],[length]); }}@utility slide-in-from-end{&:dir(ltr){ --tw-enter-translate-x:...
+#12 3.923     |                                                                 ^
+#12 3.923 946 |  @theme inline {
+#12 3.923 947 |    @keyframes accordion-down {
+#12 3.924 [lightningcss minify] Unknown at rule: @utility
+#12 3.924 943 |    @tailwind utilities;
+#12 3.924 944 |  }
+#12 3.924 945 |  ...100%; }&:dir(rtl){ --tw-enter-translate-x: -100%; }}@utility slide-in-from-end-*{&:where(:dir(ltr),[dir="ltr"],[di...
+#12 3.924     |                                                                 ^
+#12 3.924 946 |  @theme inline {
+#12 3.924 947 |    @keyframes accordion-down {
+#12 3.925 [lightningcss minify] Unknown at rule: @utility
+#12 3.925 943 |    @tailwind utilities;
+#12 3.925 944 |  }
+#12 3.925 945 |  ...--value(--translate-*,[percentage],[length])*-1); }}@utility slide-out-to-top{--tw-exit-translate-y: -100%;}@utili...
+#12 3.925     |                                                                 ^
+#12 3.925 946 |  @theme inline {
+#12 3.925 947 |    @keyframes accordion-down {
+#12 3.925 [lightningcss minify] Unknown at rule: @utility
+#12 3.925 943 |    @tailwind utilities;
+#12 3.925 944 |  }
+#12 3.925 945 |  ...lity slide-out-to-top{--tw-exit-translate-y: -100%;}@utility slide-out-to-top-*{--tw-exit-translate-y: calc(--valu...
+#12 3.925     |                                                                 ^
+#12 3.925 946 |  @theme inline {
+#12 3.925 947 |    @keyframes accordion-down {
+#12 3.926 [lightningcss minify] Unknown at rule: @utility
+#12 3.926 943 |    @tailwind utilities;
+#12 3.926 944 |  }
+#12 3.926 945 |  ...c(--value(--translate-*,[percentage],[length])*-1);}@utility slide-out-to-bottom{--tw-exit-translate-y: 100%;}@uti...
+#12 3.926     |                                                                 ^
+#12 3.926 946 |  @theme inline {
+#12 3.926 947 |    @keyframes accordion-down {
+#12 3.926 [lightningcss minify] Unknown at rule: @utility
+#12 3.926 943 |    @tailwind utilities;
+#12 3.926 944 |  }
+#12 3.926 945 |  ...ty slide-out-to-bottom{--tw-exit-translate-y: 100%;}@utility slide-out-to-bottom-*{--tw-exit-translate-y: calc(--v...
+#12 3.926     |                                                                 ^
+#12 3.926 946 |  @theme inline {
+#12 3.926 947 |    @keyframes accordion-down {
+#12 3.927 [lightningcss minify] Unknown at rule: @utility
+#12 3.927 943 |    @tailwind utilities;
+#12 3.927 944 |  }
+#12 3.927 945 |  ...te-y: --value(--translate-*,[percentage],[length]);}@utility slide-out-to-left{--tw-exit-translate-x: -100%;}@util...
+#12 3.927     |                                                                 ^
+#12 3.927 946 |  @theme inline {
+#12 3.927 947 |    @keyframes accordion-down {
+#12 3.928 [lightningcss minify] Unknown at rule: @utility
+#12 3.928 943 |    @tailwind utilities;
+#12 3.928 944 |  }
+#12 3.928 945 |  ...ity slide-out-to-left{--tw-exit-translate-x: -100%;}@utility slide-out-to-left-*{--tw-exit-translate-x: calc(--val...
+#12 3.928     |                                                                 ^
+#12 3.928 946 |  @theme inline {
+#12 3.928 947 |    @keyframes accordion-down {
+#12 3.929 [lightningcss minify] Unknown at rule: @utility
+#12 3.929 943 |    @tailwind utilities;
+#12 3.929 944 |  }
+#12 3.929 945 |  ...c(--value(--translate-*,[percentage],[length])*-1);}@utility slide-out-to-right{--tw-exit-translate-x: 100%;}@util...
+#12 3.929     |                                                                 ^
+#12 3.929 946 |  @theme inline {
+#12 3.929 947 |    @keyframes accordion-down {
+#12 3.929 [lightningcss minify] Unknown at rule: @utility
+#12 3.929 943 |    @tailwind utilities;
+#12 3.929 944 |  }
+#12 3.929 945 |  ...ity slide-out-to-right{--tw-exit-translate-x: 100%;}@utility slide-out-to-right-*{--tw-exit-translate-x: calc(--va...
+#12 3.929     |                                                                 ^
+#12 3.929 946 |  @theme inline {
+#12 3.929 947 |    @keyframes accordion-down {
+#12 3.931 [lightningcss minify] Unknown at rule: @utility
+#12 3.931 943 |    @tailwind utilities;
+#12 3.931 944 |  }
+#12 3.931 945 |  ...te-x: --value(--translate-*,[percentage],[length]);}@utility slide-out-to-start{&:dir(ltr){ --tw-exit-translate-x:...
+#12 3.931     |                                                                 ^
+#12 3.931 946 |  @theme inline {
+#12 3.931 947 |    @keyframes accordion-down {
+#12 3.931 [lightningcss minify] Unknown at rule: @utility
+#12 3.931 943 |    @tailwind utilities;
+#12 3.931 944 |  }
+#12 3.931 945 |  ... -100%; }&:dir(rtl){ --tw-exit-translate-x: 100%; }}@utility slide-out-to-start-*{&:where(:dir(ltr),[dir="ltr"],[d...
+#12 3.931     |                                                                 ^
+#12 3.931 946 |  @theme inline {
+#12 3.931 947 |    @keyframes accordion-down {
+#12 3.931 [lightningcss minify] Unknown at rule: @utility
+#12 3.931 943 |    @tailwind utilities;
+#12 3.931 944 |  }
+#12 3.931 945 |  ...-x: --value(--translate-*,[percentage],[length]); }}@utility slide-out-to-end{&:dir(ltr){ --tw-exit-translate-x: 1...
+#12 3.931     |                                                                 ^
+#12 3.931 946 |  @theme inline {
+#12 3.931 947 |    @keyframes accordion-down {
+#12 3.932 [lightningcss minify] Unknown at rule: @utility
+#12 3.932 943 |    @tailwind utilities;
+#12 3.932 944 |  }
+#12 3.932 945 |  ... 100%; }&:dir(rtl){ --tw-exit-translate-x: -100%; }}@utility slide-out-to-end-*{&:where(:dir(ltr),[dir="ltr"],[dir...
+#12 3.932     |                                                                 ^
+#12 3.932 946 |  @theme inline {
+#12 3.932 947 |    @keyframes accordion-down {
+#12 3.933 [lightningcss minify] Unknown at rule: @theme
+#12 3.933 944 |  }
+#12 3.933 945 |  @property --tw-animation-delay{syntax:"*";inherits:false;initial-value:0s}@property --tw-animation-direction{syntax:"...
+#12 3.933 946 |  @theme inline {
+#12 3.933     |        ^
+#12 3.933 947 |    @keyframes accordion-down {
+#12 3.933 948 |      from {
+#12 3.934 [lightningcss minify] Unknown at rule: @custom-variant
+#12 3.934 971 |  
+#12 3.934 972 |  /* Custom variants */
+#12 3.934 973 |  @custom-variant data-open {
+#12 3.934     |                 ^
+#12 3.934 974 |    &:where([data-state="open"]),
+#12 3.934 975 |    &:where([data-open]:not([data-open="false"])) {
+#12 3.934 [lightningcss minify] Unknown at rule: @custom-variant
+#12 3.934 978 |  }
+#12 3.934 979 |  
+#12 3.934 980 |  @custom-variant data-closed {
+#12 3.934     |                 ^
+#12 3.934 981 |    &:where([data-state="closed"]),
+#12 3.934 982 |    &:where([data-closed]:not([data-closed="false"])) {
+#12 3.935 [lightningcss minify] Unknown at rule: @custom-variant
+#12 3.935 985 |  }
+#12 3.935 986 |  
+#12 3.935 987 |  @custom-variant data-checked {
+#12 3.935     |                 ^
+#12 3.935 988 |    &:where([data-state="checked"]),
+#12 3.935 989 |    &:where([data-checked]:not([data-checked="false"])) {
+#12 3.936 [lightningcss minify] Unknown at rule: @custom-variant
+#12 3.936 992 |  }
+#12 3.936 993 |  
+#12 3.936 994 |  @custom-variant data-unchecked {
+#12 3.936     |                 ^
+#12 3.936 995 |    &:where([data-state="unchecked"]),
+#12 3.936 996 |    &:where([data-unchecked]:not([data-unchecked="false"])) {
+#12 3.937 [lightningcss minify] Unknown at rule: @custom-variant
+#12 3.937 999  |  }
+#12 3.937 1000 |  
+#12 3.937 1001 |  @custom-variant data-selected {
+#12 3.937      |                 ^
+#12 3.937 1002 |    &:where([data-selected="true"]) {
+#12 3.937 1003 |      @slot;
+#12 3.937 [lightningcss minify] Unknown at rule: @custom-variant
+#12 3.937 1005 |  }
+#12 3.937 1006 |  
+#12 3.937 1007 |  @custom-variant data-disabled {
+#12 3.937      |                 ^
+#12 3.937 1008 |    &:where([data-disabled="true"]),
+#12 3.937 1009 |    &:where([data-disabled]:not([data-disabled="false"])) {
+#12 3.938 [lightningcss minify] Unknown at rule: @custom-variant
+#12 3.938 1012 |  }
+#12 3.938 1013 |  
+#12 3.938 1014 |  @custom-variant data-active {
+#12 3.938      |                 ^
+#12 3.938 1015 |    &:where([data-state="active"]),
+#12 3.938 1016 |    &:where([data-active]:not([data-active="false"])) {
+#12 3.939 [lightningcss minify] Unknown at rule: @custom-variant
+#12 3.939 1019 |  }
+#12 3.939 1020 |  
+#12 3.939 1021 |  @custom-variant data-horizontal {
+#12 3.939      |                 ^
+#12 3.939 1022 |    &:where([data-orientation="horizontal"]) {
+#12 3.939 1023 |      @slot;
+#12 3.940 [lightningcss minify] Unknown at rule: @custom-variant
+#12 3.940 1025 |  }
+#12 3.940 1026 |  
+#12 3.940 1027 |  @custom-variant data-vertical {
+#12 3.940      |                 ^
+#12 3.940 1028 |    &:where([data-orientation="vertical"]) {
+#12 3.940 1029 |      @slot;
+#12 3.940 [lightningcss minify] Unknown at rule: @utility
+#12 3.940 1031 |  }
+#12 3.940 1032 |  
+#12 3.940 1033 |  @utility no-scrollbar {
+#12 3.940      |          ^
+#12 3.940 1034 |    -ms-overflow-style: none;
+#12 3.940 1035 |    scrollbar-width: none;
+#12 3.941 [lightningcss minify] Unknown at rule: @theme
+#12 3.941 1066 |  }
+#12 3.941 1067 |  
+#12 3.941 1068 |  @theme inline {
+#12 3.941      |        ^
+#12 3.941 1069 |    @keyframes scroll-fade-reveal-t {
+#12 3.941 1070 |      from {
+#12 3.942 [lightningcss minify] Unknown at rule: @utility
+#12 3.942 1101 |  }
+#12 3.942 1102 |  
+#12 3.942 1103 |  @utility scroll-fade {
+#12 3.942      |          ^
+#12 3.942 1104 |    --_scroll-fade-size-t: var(
+#12 3.942 1105 |      --scroll-fade-t-size,
+#12 3.942 [lightningcss minify] Unknown at rule: @utility
+#12 3.942 1141 |  }
+#12 3.942 1142 |  
+#12 3.942 1143 |  @utility scroll-fade-y {
+#12 3.942      |          ^
+#12 3.942 1144 |    --_scroll-fade-size-t: var(
+#12 3.942 1145 |      --scroll-fade-t-size,
+#12 3.943 [lightningcss minify] Unknown at rule: @utility
+#12 3.943 1181 |  }
+#12 3.943 1182 |  
+#12 3.943 1183 |  @utility scroll-fade-x {
+#12 3.943      |          ^
+#12 3.943 1184 |    --_scroll-fade-size-s: var(
+#12 3.943 1185 |      --scroll-fade-s-size,
+#12 3.943 [lightningcss minify] Unknown at rule: @utility
+#12 3.943 1230 |  }
+#12 3.943 1231 |  
+#12 3.943 1232 |  @utility scroll-fade-t {
+#12 3.943      |          ^
+#12 3.943 1233 |    --_scroll-fade-size-t: var(
+#12 3.943 1234 |      --scroll-fade-t-size,
+#12 3.944 [lightningcss minify] Unknown at rule: @utility
+#12 3.944 1260 |  }
+#12 3.944 1261 |  
+#12 3.944 1262 |  @utility scroll-fade-b {
+#12 3.944      |          ^
+#12 3.944 1263 |    --_scroll-fade-size-b: var(
+#12 3.944 1264 |      --scroll-fade-b-size,
+#12 3.944 [lightningcss minify] Unknown at rule: @utility
+#12 3.944 1293 |  }
+#12 3.944 1294 |  
+#12 3.944 1295 |  @utility scroll-fade-l {
+#12 3.944      |          ^
+#12 3.944 1296 |    --_scroll-fade-size-s: var(
+#12 3.944 1297 |      --scroll-fade-s-size,
+#12 3.945 [lightningcss minify] Unknown at rule: @utility
+#12 3.945 1323 |  }
+#12 3.945 1324 |  
+#12 3.945 1325 |  @utility scroll-fade-r {
+#12 3.945      |          ^
+#12 3.945 1326 |    --_scroll-fade-size-e: var(
+#12 3.945 1327 |      --scroll-fade-e-size,
+#12 3.946 [lightningcss minify] Unknown at rule: @utility
+#12 3.946 1356 |  }
+#12 3.946 1357 |  
+#12 3.946 1358 |  @utility scroll-fade-s {
+#12 3.946      |          ^
+#12 3.946 1359 |    --_scroll-fade-size-s: var(
+#12 3.946 1360 |      --scroll-fade-s-size,
+#12 3.946 [lightningcss minify] Unknown at rule: @utility
+#12 3.946 1394 |  }
+#12 3.946 1395 |  
+#12 3.946 1396 |  @utility scroll-fade-e {
+#12 3.946      |          ^
+#12 3.946 1397 |    --_scroll-fade-size-e: var(
+#12 3.946 1398 |      --scroll-fade-e-size,
+#12 3.947 [lightningcss minify] Unknown at rule: @utility
+#12 3.947 1435 |  }
+#12 3.947 1436 |  
+#12 3.947 1437 |  @utility scroll-fade-* {
+#12 3.947      |          ^
+#12 3.947 1438 |    --scroll-fade-size: calc(var(--spacing) * --value(integer));
+#12 3.947 1439 |    --scroll-fade-size: --value([length], [percentage]);
+#12 3.947 [lightningcss minify] Unknown at rule: @utility
+#12 3.947 1440 |  }
+#12 3.947 1441 |  
+#12 3.947 1442 |  @utility scroll-fade-t-* {
+#12 3.947      |          ^
+#12 3.947 1443 |    --scroll-fade-t-size: calc(var(--spacing) * --value(integer));
+#12 3.947 1444 |    --scroll-fade-t-size: --value([length], [percentage]);
+#12 3.948 [lightningcss minify] Unknown at rule: @utility
+#12 3.948 1445 |  }
+#12 3.948 1446 |  
+#12 3.948 1447 |  @utility scroll-fade-b-* {
+#12 3.948      |          ^
+#12 3.948 1448 |    --scroll-fade-b-size: calc(var(--spacing) * --value(integer));
+#12 3.948 1449 |    --scroll-fade-b-size: --value([length], [percentage]);
+#12 3.948 [lightningcss minify] Unknown at rule: @utility
+#12 3.948 1450 |  }
+#12 3.948 1451 |  
+#12 3.948 1452 |  @utility scroll-fade-s-* {
+#12 3.948      |          ^
+#12 3.948 1453 |    --scroll-fade-s-size: calc(var(--spacing) * --value(integer));
+#12 3.948 1454 |    --scroll-fade-s-size: --value([length], [percentage]);
+#12 3.949 [lightningcss minify] Unknown at rule: @utility
+#12 3.949 1455 |  }
+#12 3.949 1456 |  
+#12 3.949 1457 |  @utility scroll-fade-e-* {
+#12 3.949      |          ^
+#12 3.949 1458 |    --scroll-fade-e-size: calc(var(--spacing) * --value(integer));
+#12 3.949 1459 |    --scroll-fade-e-size: --value([length], [percentage]);
+#12 3.950 [lightningcss minify] Unknown at rule: @utility
+#12 3.950 1460 |  }
+#12 3.950 1461 |  
+#12 3.950 1462 |  @utility scroll-fade-none {
+#12 3.950      |          ^
+#12 3.950 1463 |    --scroll-fade-mask: none;
+#12 3.950 1464 |  }
+#12 3.950 [lightningcss minify] Unknown at rule: @theme
+#12 3.950 1479 |  }
+#12 3.950 1480 |  
+#12 3.950 1481 |  @theme inline {
+#12 3.950      |        ^
+#12 3.950 1482 |    @keyframes tw-shimmer {
+#12 3.950 1483 |      from {
+#12 3.951 [lightningcss minify] Unknown at rule: @utility
+#12 3.951 1490 |  }
+#12 3.951 1491 |  
+#12 3.951 1492 |  @utility shimmer {
+#12 3.951      |          ^
+#12 3.951 1493 |    --_spread: var(--shimmer-spread, calc(3ch + 40px));
+#12 3.951 1494 |    --_base: currentColor;
+#12 3.951 [lightningcss minify] Unknown at rule: @utility
+#12 3.951 1531 |  }
+#12 3.951 1532 |  
+#12 3.951 1533 |  @utility shimmer-once {
+#12 3.951      |          ^
+#12 3.951 1534 |    animation-iteration-count: 1;
+#12 3.951 1535 |  }
+#12 3.952 [lightningcss minify] Unknown at rule: @utility
+#12 3.952 1535 |  }
+#12 3.952 1536 |  
+#12 3.952 1537 |  @utility shimmer-reverse {
+#12 3.952      |          ^
+#12 3.952 1538 |    animation-direction: reverse;
+#12 3.952 1539 |  }
+#12 3.952 [lightningcss minify] Unknown at rule: @utility
+#12 3.952 1539 |  }
+#12 3.952 1540 |  
+#12 3.952 1541 |  @utility shimmer-none {
+#12 3.952      |          ^
+#12 3.952 1542 |    --shimmer-image: none;
+#12 3.952 1543 |    --shimmer-text-fill: currentColor;
+#12 3.953 [lightningcss minify] Unknown at rule: @utility
+#12 3.953 1544 |  }
+#12 3.953 1545 |  
+#12 3.953 1546 |  @utility shimmer-color-* {
+#12 3.953      |          ^
+#12 3.953 1547 |    --shimmer-color: --value(--color, [color]);
+#12 3.953 1548 |    --shimmer-color: color-mix(
+#12 3.954 [lightningcss minify] Unknown at rule: @utility
+#12 3.954 1553 |  }
+#12 3.954 1554 |  
+#12 3.954 1555 |  @utility shimmer-duration-* {
+#12 3.954      |          ^
+#12 3.954 1556 |    --shimmer-duration: calc(--value(integer) * 1ms);
+#12 3.954 1557 |  }
+#12 3.954 [lightningcss minify] Unknown at rule: @utility
+#12 3.954 1557 |  }
+#12 3.954 1558 |  
+#12 3.954 1559 |  @utility shimmer-spread-* {
+#12 3.954      |          ^
+#12 3.954 1560 |    --shimmer-spread: calc(var(--spacing) * --value(integer));
+#12 3.954 1561 |    --shimmer-spread: --value([length], [percentage]);
+#12 3.955 [lightningcss minify] Unknown at rule: @utility
+#12 3.955 1562 |  }
+#12 3.955 1563 |  
+#12 3.955 1564 |  @utility shimmer-angle-* {
+#12 3.955      |          ^
+#12 3.955 1565 |    --shimmer-angle: calc(--value(integer) * 1deg);
+#12 3.955 1566 |  }
+#12 3.955 [lightningcss minify] Unknown at rule: @custom-variant
+#12 3.955 1573 |    }
+#12 3.955 1574 |  }
+#12 3.955 1575 |  @custom-variant dark (&:is(.dark *));
+#12 3.955      |                 ^
+#12 3.955 1576 |  @theme inline {
+#12 3.955 1577 |    --color-background: var(--background); --color-foreground: var(--foreground);
+#12 3.956 [lightningcss minify] Unknown at rule: @theme
+#12 3.956 1574 |  }
+#12 3.956 1575 |  @custom-variant dark (&:is(.dark *));
+#12 3.956 1576 |  @theme inline {
+#12 3.956      |        ^
+#12 3.956 1577 |    --color-background: var(--background); --color-foreground: var(--foreground);
+#12 3.956 1578 |    --font-sans: Arial, Helvetica, sans-serif; --font-heading: var(--font-sans);
+#12 3.959 rendering chunks...
+#12 4.012 computing gzip size...
+#12 4.025 ✓ built in 717ms
+#12 4.025 [4/5] build client environment...
+#12 4.048 [2Ktransforming...✓ 2130 modules transformed.
+#12 5.705 rendering chunks...
+#12 5.802 computing gzip size...
+#12 5.813 ✓ built in 1.79s
+#12 5.816 [5/5] build ssr environment...
+#12 5.837 [2Ktransforming...✓ 369 modules transformed.
+#12 6.255 rendering chunks...
+#12 6.312 computing gzip size...
+#12 6.320 ✓ built in 503ms
+#12 6.321 [0m
+#12 6.328   Route (app)
+#12 6.328   ┌ ? /                   
+#12 6.328   ├ λ /api/inquiries      
+#12 6.328   ├ λ /api/sales/inquiries
+#12 6.328   ├ ? /privasi            
+#12 6.328   └ ƒ /sales              
+#12 6.328 
+#12 6.328   λ API  ƒ Dynamic  ? Unknown
+#12 6.328 
+#12 6.328   ? Some routes could not be classified. vinext currently uses static analysis
+#12 6.328     and cannot detect dynamic API usage (headers(), cookies(), etc.) at build time.
+#12 6.328     Automatic classification will be improved in a future release.
+#12 6.328 
+#12 6.328   Build complete. Run `vinext start` to start the production server.
+#12 6.328 
+#12 DONE 6.4s
+
+#8 [build 2/7] WORKDIR /app
+#8 CACHED
+
+#13 [stage-1 3/4] COPY --from=build --chown=node:node /app /app
+#13 DONE 12.9s
+
+#14 [stage-1 4/4] RUN mkdir /data /backups && chown node:node /data /backups
+#14 DONE 0.5s
+
+#15 exporting to image
+#15 exporting layers
+#15 exporting layers 26.7s done
+#15 exporting manifest sha256:7941cfb1c0ae33b73abe8cc0a206216b76b50976fbf77cf8d8efc7520e92a742 done
+#15 exporting config sha256:586c6de69fe3c087287e440b0ff751cd8b91c8c316dafeacedc9046482f8f6e5 done
+#15 exporting attestation manifest sha256:431eb560041da28fd5e4b0c50da3802122f7ae6b4c28612e830d543282ca619a 0.0s done
+#15 exporting manifest list sha256:50939e726c163eb09072a0b120ab392d70476ecd8d9b2e4ad2967d5c8be020b0 done
+#15 naming to docker.io/library/loongjump-website-web:latest done
+#15 unpacking to docker.io/library/loongjump-website-web:latest
+#15 unpacking to docker.io/library/loongjump-website-web:latest 6.4s done
+#15 DONE 33.2s
+
+#16 resolving provenance for metadata file
+#16 DONE 0.0s
+ Image loongjump-website-web Built 
+ Container loongjump-web Recreate 
+ Container loongjump-web Recreated 
+ Container loongjump-web Starting 
+ Container loongjump-web Started 
+Deploy OK
