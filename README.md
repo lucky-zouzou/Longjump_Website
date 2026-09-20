@@ -76,4 +76,4 @@ docker compose down                                          # 下线（数据�
 
 更新部署：重新上传源码到 `app/` 后 `docker compose up -d --build`。修改销售后台密码：`echo '新密码' | docker exec -i loongjump-web node server/cli.mjs account:add --id website-admin --email admin@loongjump.com --name 'Sales Admin'`。`www.loongjump.com` 需在阿里云解析加 A 记录后再在 Caddyfile 添加跳转块。
 
-**自动部署（GitHub Actions）**：push 到 `main` 分支自动触发 `.github/workflows/deploy.yml`——打包源码 → SSH 上传到服务器 → 重建镜像并重启容器 → 等待健康检查 → 公网验证。仓库需要配置三个 Secrets：`DEPLOY_SSH_KEY`（CI 专用私钥，公钥在服务器 `authorized_keys`）、`SERVER_HOST`（47.238.71.113）、`SERVER_USER`（root）。构建失败时旧容器继续运行、旧源码自动还原。
+**自动部署（GitHub Actions）**：push 到 `main` 分支自动触发 `.github/workflows/deploy.yml`——打包源码 → SSH 上传到服务器 → 重建镜像并重启容器 → 等待健康检查 → 公网验证。仓库需要配置三个 Secrets：`SSH_DEPLOY_KEY`（CI 专用私钥，公钥在服务器 `authorized_keys`）、`SERVER_HOST`（47.238.71.113）、`SERVER_USER`（root）。构建失败时旧容器继续运行、旧源码自动还原。

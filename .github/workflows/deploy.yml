@@ -17,7 +17,7 @@ jobs:
 
       - name: Deploy to server
         env:
-          SSH_KEY: ${{ secrets.DEPLOY_SSH_KEY }}
+          SSH_KEY: ${{ secrets.SSH_DEPLOY_KEY }}
           SERVER: ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_HOST }}
         run: |
           set -e
