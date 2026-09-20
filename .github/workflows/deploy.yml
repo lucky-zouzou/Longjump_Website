@@ -37,13 +37,14 @@ jobs:
             '47.238.71.113 ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIEjWaG0bPAUFRiDNga4FHhCCZ81mDLc0UwYiD69dmfOE' \
             '47.238.71.113 ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDQW8t1IhMoLZQulnFVJr/ISKNOG3YT/Lczrn/k0dT4t+Md3beF9Yqve1kaCjL134w037b86/vPdGeSS7ogW9oJ5rq9sl8zhXa7PuyMmWVE4L3Hm32vJt0nTT8CHOgh7BkEeu9Y1OEjHfxIJpeF14JPckJOmmf2X2Z/l6f8Qc43V/9d8vS2nsvhDBo6iaJgikcZxkYuEePu6DSNpLRVgVakoad8XxZARjZBFJ3yUCZHF0f5ZuMO5N5fcT5RkeWUa6x2M+aYMG4dzb2E+HYvQmC568MkzhER0VQm9vBvS5fufFxzW7g2jBJqvrTd/v0JWiHfSso5FTB7qDCnF0gAZeuezp6bdAOXKSpsHX5dmLT1WuiuyNwJxSBuVKkJMwAdV7CE8JnYFmF+3NFCeZI4+TsLZQkQIuls2gVIqfSbBKe/T+Ve7YFrOn7NX6vRtDYjgwOEI0zvkSch5QX6yJISefTG0mbDYwgwJSkQvoze51NhUhVoO0sdcEHLRtr4jPyDEgU=' >> ~/.ssh/known_hosts
 
-          # Package source (same exclusions as the manual deploy).
+          # Package source (same exclusions as the manual deploy); the archive
+          # must live outside the tree so tar never sees it as a changing file.
           tar --exclude=.git --exclude=node_modules --exclude=dist --exclude=dist-node \
               --exclude=.wrangler --exclude=output --exclude=设备预览 --exclude='.env*' \
-              -czf source.tar.gz .
+              -czf /tmp/source.tar.gz .
 
           ssh -i ~/.ssh/deploy_key -o BatchMode=yes $SERVER 'mkdir -p /opt/loongjump-website/upload'
-          scp -i ~/.ssh/deploy_key -o BatchMode=yes source.tar.gz $SERVER:/opt/loongjump-website/upload/
+          scp -i ~/.ssh/deploy_key -o BatchMode=yes /tmp/source.tar.gz $SERVER:/opt/loongjump-website/upload/
 
           # Swap in the new source, rebuild and restart. On failure the
           # previous source directory is restored and the old container
