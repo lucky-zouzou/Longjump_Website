@@ -1,0 +1,42 @@
+# 生产服务器 compose（/opt/loongjump-website/compose.yaml，由 GitHub Actions 随源码同步）
+# secrets/admin_password.txt 与 backups/ 仅存在于服务器，不进入仓库。
+services:
+  web:
+    build: ./app
+    container_name: loongjump-web
+    restart: unless-stopped
+    ports:
+      - "127.0.0.1:3001:3000"
+    environment:
+      LOONGJUMP_ORIGIN: https://loongjump.com
+      LOONGJUMP_ADMIN_ID: website-admin
+      LOONGJUMP_ADMIN_EMAIL: admin@loongjump.com
+      LOONGJUMP_ADMIN_NAME: Sales Admin
+      SALES_ADMIN_EMAILS: admin@loongjump.com
+      LOONGJUMP_ADMIN_PASSWORD_FILE: /run/secrets/admin_password
+      LOONGJUMP_BACKUP_RETENTION_DAYS: 30
+    secrets:
+      - admin_password
+    volumes:
+      - website_data:/data
+      - ./backups:/backups
+    healthcheck:
+      test: ["CMD", "node", "-e", "require('http').get({host:'127.0.0.1',port:3000,path:'/signin-with-chatgpt',headers:{Host:'loongjump.com'}},r=>{r.resume();process.exit(r.statusCode<400?0:1)}).on('error',()=>process.exit(1))"]
+      interval: 20s
+      timeout: 5s
+      retries: 10
+      start_period: 60s
+    security_opt:
+      - no-new-privileges:true
+
+secrets:
+  admin_password:
+    file: ./secrets/admin_password.txt
+
+volumes:
+  website_data:
+
+networks:
+  default:
+    name: loong-jump-v17_default
+    external: true

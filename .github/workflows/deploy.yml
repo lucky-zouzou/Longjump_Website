@@ -1,0 +1,66 @@
+name: Deploy to production
+
+on:
+  push:
+    branches: [main]
+
+concurrency:
+  group: production-deploy
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Deploy to server
+        env:
+          SSH_KEY: ${{ secrets.DEPLOY_SSH_KEY }}
+          SERVER: ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_HOST }}
+        run: |
+          set -e
+          mkdir -p ~/.ssh && chmod 700 ~/.ssh
+          printf '%s\n' "$SSH_KEY" > ~/.ssh/deploy_key && chmod 600 ~/.ssh/deploy_key
+          cat >> ~/.ssh/known_hosts <<'KNOWN_HOSTS'
+          47.238.71.113 ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIEjWaG0bPAUFRiDNga4FHhCCZ81mDLc0UwYiD69dmfOE
+          47.238.71.113 ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDQW8t1IhMoLZQulnFVJr/ISKNOG3YT/Lczrn/k0dT4t+Md3beF9Yqve1kaCjL134w037b86/vPdGeSS7ogW9oJ5rq9sl8zhXa7PuyMmWVE4L3Hm32vJt0nTT8CHOgh7BkEeu9Y1OEjHfxIJpeF14JPckJOmmf2X2Z/l6f8Qc43V/9d8vS2nsvhDBo6iaJgikcZxkYuEePu6DSNpLRVgVakoad8XxZARjZBFJ3yUCZHF0f5ZuMO5N5fcT5RkeWUa6x2M+aYMG4dzb2E+HYvQmC568MkzhER0VQm9vBvS5fufFxzW7g2jBJqvrTd/v0JWiHfSso5FTB7qDCnF0gAZeuezp6bdAOXKSpsHX5dmLT1WuiuyNwJxSBuVKkJMwAdV7CE8JnYFmF+3NFCeZI4+TsLZQkQIuls2gVIqfSbBKe/T+Ve7YFrOn7NX6vRtDYjgwOEI0zvkSch5QX6yJISefTG0mbDYwgwJSkQvoze51NhUhVoO0sdcEHLRtr4jPyDEgU=
+          KNOWN_HOSTS
+
+          # Package source (same exclusions as the manual deploy).
+          tar --exclude=.git --exclude=node_modules --exclude=dist --exclude=dist-node \
+              --exclude=.wrangler --exclude=output --exclude=设备预览 --exclude='.env*' \
+              -czf source.tar.gz .
+
+          scp -i ~/.ssh/deploy_key -o BatchMode=yes source.tar.gz $SERVER:/opt/loongjump-website/upload/
+
+          # Swap in the new source, rebuild and restart. On failure the
+          # previous source directory is restored and the old container
+          # keeps running (compose never recreates after a failed build).
+          ssh -i ~/.ssh/deploy_key -o BatchMode=yes $SERVER 'set -e
+            cd /opt/loongjump-website
+            rm -rf app.new && mkdir -p app.new
+            tar xzf upload/source.tar.gz -C app.new
+            mv app app.old 2>/dev/null || true
+            mv app.new app
+            cp app/compose.yaml compose.yaml
+            if docker compose up -d --build; then
+              rm -rf app.old
+            else
+              mv app app.failed && mv app.old app
+              exit 1
+            fi
+            docker image prune -f >/dev/null'
+
+          # Wait for the healthcheck, then verify the public site end to end.
+          for i in $(seq 1 60); do
+            status=$(ssh -i ~/.ssh/deploy_key -o BatchMode=yes $SERVER 'docker inspect --format "{{.State.Health.Status}}" loongjump-web' 2>/dev/null || echo starting)
+            [ "$status" = "healthy" ] && break
+            sleep 10
+          done
+          [ "$status" = "healthy" ] || { echo "container did not become healthy"; exit 1; }
+
+          curl -fsS --retry 5 -o /dev/null https://loongjump.com/
+          curl -fsS --retry 5 -o /dev/null https://loongjump.com/signin-with-chatgpt
+          echo "Deploy OK"
