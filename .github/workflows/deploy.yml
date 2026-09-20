@@ -20,7 +20,8 @@ jobs:
           SSH_KEY: ${{ secrets.SSH_DEPLOY_KEY }}
           SERVER: ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_HOST }}
         run: |
-          set -e
+          {
+          set -eo pipefail
           mkdir -p ~/.ssh && chmod 700 ~/.ssh
           printf '%s\n' "$SSH_KEY" > ~/.ssh/deploy_key && chmod 600 ~/.ssh/deploy_key
           [ -n "$SSH_KEY" ] || { echo "DIAG: SSH_DEPLOY_KEY 为空（secret 名或值有问题）"; exit 1; }
@@ -70,3 +71,15 @@ jobs:
           curl -fsS --retry 5 -o /dev/null https://loongjump.com/
           curl -fsS --retry 5 -o /dev/null https://loongjump.com/signin-with-chatgpt
           echo "Deploy OK"
+          } 2>&1 | tee /tmp/deploy.log
+
+      - name: Report failure log to ci-diag branch
+        if: failure()
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git checkout -B ci-diag
+          cp /tmp/deploy.log deploy.log
+          git add deploy.log
+          git commit -m "CI failure log $(date -u +%FT%TZ)"
+          git push origin ci-diag
