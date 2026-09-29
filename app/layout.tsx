@@ -4,6 +4,7 @@ import './responsive.css';
 import './sales.css';
 import './factory-atmosphere.css';
 import './operations.css';
+import './navigation.css';
 import { AnalyticsConsent } from '@/components/operations-public';
 import { siteConfig } from '@/lib/site-content';
 export const viewport: Viewport = {
