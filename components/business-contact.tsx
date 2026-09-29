@@ -13,12 +13,13 @@ export function BusinessContact({ onInquiry }: { onInquiry: () => void }) {
     <div className="contact-channels">
       {siteConfig.whatsappNumber && <a href={getWhatsAppUrl()!} target="_blank" rel="noreferrer"><MessageCircle/><div><span>WHATSAPP · LOONG JUMP</span><strong>{siteConfig.phoneDisplay}</strong></div><ArrowUpRight size={19}/></a>}
       {siteConfig.phoneNumber && <a href={`tel:${siteConfig.phoneNumber}`}><Phone/><div><span>TELEPON PENJUALAN</span><strong>{siteConfig.phoneDisplay}</strong></div><ArrowUpRight size={19}/></a>}
-      <a href={`mailto:${siteConfig.businessEmail}`}><Mail/><div><span>EMAIL BISNIS</span><strong>{siteConfig.businessEmail}</strong></div><ArrowUpRight size={19}/></a>
+      <a href={`mailto:${siteConfig.businessEmail}`}><Mail/><div><span>EMAIL BISNIS</span><strong>{siteConfig.businessEmail.split("@")[0]}<wbr/>@{siteConfig.businessEmail.split("@")[1]}</strong></div><ArrowUpRight size={19}/></a>
     </div>
     <dl className="sales-service-info">
       <div><dt>Kontak penjualan & kunjungan</dt><dd>{siteConfig.salesContactName}</dd></div>
       <div><dt>Jam layanan · waktu Jakarta</dt><dd>{siteConfig.serviceHours}</dd></div>
     </dl>
+    <div className="company-locations">
     <div className="company-location sales-company-location">
       <div className="company-identity">
         <p className="eyebrow">PERUSAHAAN PENJUALAN</p><h3>{siteConfig.salesCompanyName}</h3>
@@ -42,6 +43,7 @@ export function BusinessContact({ onInquiry }: { onInquiry: () => void }) {
         <p className="company-visit-note">Hubungi tim penjualan untuk mengatur kunjungan pabrik.</p>
         <a className="text-link" href={factoryMapsUrl} target="_blank" rel="noreferrer">Lokasi Pabrik di Google Maps <ArrowUpRight size={17}/></a>
       </div></div>
+    </div>
     </div>
   </section>;
 }
