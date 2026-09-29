@@ -1,19 +1,15 @@
 'use client';
 
-import { useState } from 'react';
-import { ArrowLeft, ArrowRight, ArrowUpRight, Expand, Factory } from 'lucide-react';
-import { Dialog, DialogContent, DialogDescription, DialogTitle } from '@/components/ui/dialog';
-import { factoryGroups, factoryScenes } from '@/lib/factory-content';
+import { ArrowUpRight } from 'lucide-react';
 import { siteConfig } from '@/lib/site-content';
 
+const films = [
+  {id:'stitching-detail', number:'01', title:'Ketelitian dalam setiap jahitan.', description:'Lihat dari dekat gerakan tangan dan proses penyambungan komponen tas.', label:'DETAIL JAHITAN'},
+  {id:'production-line', number:'02', title:'Dari komponen menjadi bentuk.', description:'Cuplikan pengerjaan komponen pada meja produksi.', label:'PROSES PENGERJAAN'},
+  {id:'workshop-overview', number:'03', title:'Melihat proses lebih luas.', description:'Sudut pandang menyeluruh pada aktivitas di ruang produksi.', label:'SUASANA PRODUKSI'},
+];
+
 export function FactoryGallery({ onInquiry }: { onInquiry: () => void }) {
-  const [activeIndex, setActiveIndex] = useState<number | null>(null);
-  const activeScene = activeIndex === null ? null : factoryScenes[activeIndex];
-
-  function moveImage(direction: number) {
-    setActiveIndex(index => index === null ? null : (index + direction + factoryScenes.length) % factoryScenes.length);
-  }
-
   return <section className="factory-section section-wrap" id="pabrik" aria-labelledby="factory-heading">
     <div className="factory-heading-row">
       <div>
@@ -30,38 +26,14 @@ export function FactoryGallery({ onInquiry }: { onInquiry: () => void }) {
       <div><dt>Pengalaman tim</dt><dd><span className="factory-fact-value">{siteConfig.teamExperienceYears}<small>tahun</small></span><p>Keahlian pembuatan tas dan produk kulit.</p></dd></div>
       <div><dt>Toko yang telah dilayani</dt><dd><span className="factory-fact-value">{siteConfig.storesServedMoreThan}<small>+</small></span><p>Toko retail dan grosir tas di Indonesia.</p></dd></div>
     </dl>
-    <div className="factory-disclosure"><span>VISUALISASI KONSEP</span><p>Sepuluh gambar berikut merupakan visualisasi AI konsep produksi. Tata ruang, peralatan, dan angka pada papan adalah ilustrasi, bukan foto dokumentasi atau data operasional.</p></div>
-    {factoryGroups.map(group => <section className="factory-chapter" key={group.id} aria-labelledby={`factory-${group.id}`}>
-      <div className="factory-chapter-heading"><span>{group.number}</span><h3 id={`factory-${group.id}`}>{group.title}</h3></div>
-      <div className="factory-grid factory-cba-grid">
-      {factoryScenes.filter(scene => scene.group === group.id).map(scene => <figure className={`factory-card factory-cba-${scene.layout}`} key={scene.id}>
-        <button className="factory-image" onClick={() => setActiveIndex(factoryScenes.indexOf(scene))} aria-label={`Perbesar konsep ${scene.title}`} aria-haspopup="dialog">
-          <img src={scene.image} width={scene.width} height={scene.height} alt={scene.alt} loading="lazy"/>
-          <span className="factory-image-label">KONSEP · AI</span>
-          <span className="factory-expand" aria-hidden="true"><Expand size={19}/></span>
-        </button>
-        <figcaption>
-          <div className="factory-card-title"><span>{scene.number}</span><h4>{scene.title}</h4></div>
-          <p>{scene.subtitle}</p>
-        </figcaption>
-      </figure>)}
-      </div>
-    </section>)}
-    <div className="factory-bottom"><div><Factory size={23}/><p>{siteConfig.factoryCompanyName} · {siteConfig.factoryLocation}</p></div><a className="text-link" href="#oem">Jelajahi Layanan OEM <ArrowUpRight size={17}/></a></div>
-
-    <Dialog open={activeIndex !== null} onOpenChange={open => { if (!open) setActiveIndex(null); }}>
-      <DialogContent className="factory-lightbox" onKeyDownCapture={event => {
-        if (event.key === 'ArrowLeft' || event.key === 'ArrowRight') {
-          event.preventDefault();
-          moveImage(event.key === 'ArrowLeft' ? -1 : 1);
-        }
-      }}>
-        {activeScene && <>
-          <div className="factory-lightbox-heading"><p className="eyebrow">PT CIPTA BAKTI ABADI · KONSEP PRODUKSI</p><DialogTitle className="factory-lightbox-title">{activeScene.title}</DialogTitle><DialogDescription className="factory-lightbox-description">{activeScene.description} Gambar dan angka pada papan bersifat ilustratif, bukan dokumentasi atau data operasional.</DialogDescription></div>
-          <div className="factory-lightbox-image"><img src={activeScene.image} width={activeScene.width} height={activeScene.height} alt={activeScene.alt}/></div>
-          <div className="factory-lightbox-controls"><button onClick={() => moveImage(-1)} aria-label="Gambar sebelumnya"><ArrowLeft size={20}/><span>Sebelumnya</span></button><span className="factory-image-count" aria-live="polite">{(activeIndex ?? 0) + 1} / {factoryScenes.length}</span><button onClick={() => moveImage(1)} aria-label="Gambar berikutnya"><span>Berikutnya</span><ArrowRight size={20}/></button></div>
-        </>}
-      </DialogContent>
-    </Dialog>
+    <div className="craft-editorial">
+      <div className="craft-heading"><div><p className="eyebrow"><span className="indonesia-accent" aria-hidden="true"/> CERITA DI BALIK TAS</p><h3>Setiap detail,<br/><em>punya cerita.</em></h3></div><p>Kenali proses pengerjaan melalui tiga cuplikan video. Diskusikan material, detail, dan kebutuhan koleksi Anda bersama tim kami.</p></div>
+      <p className="craft-source-note">REFERENSI PROSES PRODUKSI · Video tanpa audio. Referensi proses, bukan verifikasi lokasi produksi.</p>
+      <div className="craft-film-grid">{films.map(film=><figure className={`craft-film craft-film-${film.number}`} key={film.id}>
+        <div className="craft-film-media"><video controls playsInline muted preload="none" poster={`/images/craft/${film.id}.webp`} aria-label={film.title}><source src={`/videos/craft/${film.id}.mp4`} type="video/mp4"/>Browser Anda tidak mendukung video.</video></div>
+        <figcaption><span className="craft-number">{film.number}</span><div><p className="eyebrow">{film.label}</p><h4>{film.title}</h4><p>{film.description}</p></div></figcaption>
+      </figure>)}</div>
+      <div className="craft-endnote"><p>Dari ide Anda, menuju koleksi berikutnya.</p><button className="text-link" onClick={onInquiry}>Diskusikan kebutuhan Anda <ArrowUpRight size={17}/></button></div>
+    </div>
   </section>;
 }

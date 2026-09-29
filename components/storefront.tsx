@@ -27,7 +27,7 @@ import {
   SheetTrigger,
 } from '@/components/ui/sheet';
 import { FactoryGallery } from '@/components/factory-gallery';
-import { factoryScenes, oemFactoryScene } from '@/lib/factory-content';
+
 import {
   siteConfig,
   type Product,
@@ -61,7 +61,7 @@ const nav = [
   ['Kabar Kami', '/news'],
   ['Hubungi Kami', '#kontak'],
 ];
-const factoryGate = factoryScenes.find((scene) => scene.id === 'gate')!;
+
 
 type ModelContext = {
   registerTool: (
@@ -435,18 +435,18 @@ export default function Storefront({
           <div className="factory-hero-media">
             <figure className="factory-hero-photo">
               <img
-                src={factoryGate.image}
-                width={factoryGate.width}
-                height={factoryGate.height}
-                alt={factoryGate.alt}
+                src="/images/craft/stitching-detail.webp"
+                width={1280}
+                height={720}
+                alt="Detail tangan saat menjahit komponen tas"
                 fetchPriority="high"
               />
               <span className="hero-concept-label">
-                VISUALISASI PABRIK · KONSEP AI
+                REFERENSI PROSES PRODUKSI
               </span>
               <figcaption>
-                <span>PABRIK KAMI DI YOGYAKARTA</span>
-                <strong>PT Cipta Bakti Abadi</strong>
+                <span>DETAIL DI BALIK KOLEKSI</span>
+                <strong>Ketelitian dalam setiap jahitan.</strong>
               </figcaption>
             </figure>
             <div className="hero-lifestyle-card">
@@ -929,14 +929,14 @@ export default function Storefront({
           </div>
           <figure className="oem-image oem-image-cba">
             <img
-              src={oemFactoryScene.image}
-              width={oemFactoryScene.width}
-              height={oemFactoryScene.height}
-              alt={oemFactoryScene.alt}
+              src="/images/craft/production-line.webp"
+              width={1280}
+              height={720}
+              alt="Pengerjaan komponen tas pada meja produksi"
               loading="lazy"
             />
-            <span className="oem-concept-label">KONSEP · AI</span>
-            <figcaption>PT CIPTA BAKTI ABADI · KONSEP PENJAHITAN</figcaption>
+            <span className="oem-concept-label">REFERENSI PROSES PRODUKSI</span>
+            <figcaption>PROSES & KETERAMPILAN · DETAIL PENGERJAAN</figcaption>
           </figure>
         </section>
         <section className="process section-wrap" id="cara-pengadaan">
