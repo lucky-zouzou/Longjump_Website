@@ -3,6 +3,8 @@ import './globals.css';
 import './responsive.css';
 import './sales.css';
 import './factory-atmosphere.css';
+import './operations.css';
+import { AnalyticsConsent } from '@/components/operations-public';
 import { siteConfig } from '@/lib/site-content';
 export const viewport: Viewport = {
   width: 'device-width',
@@ -15,5 +17,5 @@ export const metadata: Metadata = {
   icons: { icon: '/favicon.svg' },
 };
 export default function RootLayout({children}: Readonly<{children: React.ReactNode}>) {
-  return <html lang="id"><body>{children}</body></html>;
+  return <html lang="id"><body>{children}<AnalyticsConsent/></body></html>;
 }

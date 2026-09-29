@@ -5,11 +5,14 @@ import { ArrowUpRight, CheckCircle2, Minus, Plus, X } from 'lucide-react';
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from '@/components/ui/dialog';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
-import { getWhatsAppUrl, products, siteConfig, type InquiryTopic } from '@/lib/site-content';
+import { getWhatsAppUrl, products as initialProducts, siteConfig, type Product, type InquiryTopic } from '@/lib/site-content';
+import { getAnalyticsSession, type PublicSettings } from '@/components/operations-public';
 import { composeBusinessInquiry, normalizeQuantityInput, type InquiryItem } from '@/lib/inquiry';
 import { buyerTypes } from '@/lib/lead-validation';
 
 type Props = {
+  products?: Product[];
+  settings?: PublicSettings;
   open: boolean;
   onOpenChange: (open: boolean) => void;
   topic: InquiryTopic;
@@ -18,7 +21,9 @@ type Props = {
   onItemsChange: (items: InquiryItem[]) => void;
 };
 
-export function InquiryDialog({ open, onOpenChange, topic, onTopicChange, items, onItemsChange }: Props) {
+export function InquiryDialog({ open, onOpenChange, topic, onTopicChange, items, onItemsChange, products = initialProducts, settings }: Props) {
+  const [customFields,setCustomFields]=useState<Record<string,string>>({});
+  const [country,setCountry]=useState('Indonesia');
   const [company, setCompany] = useState('');
   const [name, setName] = useState('');
   const [contactType, setContactType] = useState<'WhatsApp' | 'Email'>('WhatsApp');
@@ -37,7 +42,7 @@ export function InquiryDialog({ open, onOpenChange, topic, onTopicChange, items,
   const [receipt, setReceipt] = useState<{ reference: string; message: string } | null>(null);
   const pendingRequest = useRef<{ serialized: string; key: string } | null>(null);
   const messageRef = useRef<HTMLTextAreaElement>(null);
-  const message = [name.trim() && `Nama kontak: ${name.trim()}`, contact.trim() && `${contactType}: ${contact.trim()}`, buyerType && `Jenis usaha: ${buyerType}`, composeBusinessInquiry({ topic, items, company, city, quantity, timeline, note })].filter(Boolean).join('\n\n');
+  const message = [name.trim() && `Nama kontak: ${name.trim()}`, contact.trim() && `${contactType}: ${contact.trim()}`, buyerType && `Jenis usaha: ${buyerType}`, country && `Negara: ${country}`, ...(settings?.extraFields||[]).map(f=>customFields[f.id]?`${f.label}: ${customFields[f.id]}`:''), composeBusinessInquiry({ topic, items, company, city, quantity, timeline, note },products)].filter(Boolean).join('\n\n');
   const whatsappUrl = getWhatsAppUrl(message);
   const selectedItems = topic === 'Grosir' ? items : [];
 
@@ -51,11 +56,12 @@ export function InquiryDialog({ open, onOpenChange, topic, onTopicChange, items,
     setReceipt(null); setName(''); setContact(''); setCompany(''); setCity(''); setBuyerType('');
     setQuantity(''); setTimeline(''); setNote(''); setConsent(false); setStatus(''); setShowMessage(false);
     pendingRequest.current = null; onItemsChange([]);
+    setCustomFields({}); setCountry('Indonesia');
   }
   async function submitInquiry() {
     if (submittingRef.current) return;
     submittingRef.current = true; setSubmitting(true); setStatus('');
-    const details = { topic, name, contactType, contact, company, buyerType, city, quantity: selectedItems.length ? '' : quantity, timeline, note, items: selectedItems, consent, website };
+    const details = { topic, name, contactType, contact, company, buyerType, city, country, customFields, analyticsSession:getAnalyticsSession(), quantity: selectedItems.length ? '' : quantity, timeline, note, items: selectedItems, consent, website };
     const serialized = JSON.stringify(details);
     if (!pendingRequest.current || pendingRequest.current.serialized !== serialized) pendingRequest.current = { serialized, key: crypto.randomUUID() };
     const abort = new AbortController();
@@ -73,7 +79,7 @@ export function InquiryDialog({ open, onOpenChange, topic, onTopicChange, items,
 
   return <Dialog open={open} onOpenChange={next => { if (submittingRef.current) return; if (!next && receipt) resetInquiry(); onOpenChange(next); }}>
     <DialogContent className="inquiry-dialog">
-      <DialogHeader><p className="eyebrow">LOONG JUMP · BUSINESS ENQUIRY</p><DialogTitle className="inquiry-title">{receipt ? 'Permintaan tersimpan.' : topic === 'Grosir' ? 'Minta penawaran.' : 'Diskusikan proyek OEM.'}</DialogTitle><DialogDescription className="inquiry-description">{receipt ? 'Tim penjualan dapat melihat kebutuhan Anda dan menindaklanjuti melalui kontak yang Anda berikan.' : 'Isi kontak dan kebutuhan pembelian Anda. Tim kami akan menyiapkan penawaran yang sesuai.'}</DialogDescription></DialogHeader>
+      <DialogHeader><p className="eyebrow">LOONG JUMP · BUSINESS ENQUIRY</p><DialogTitle className="inquiry-title">{receipt ? 'Permintaan tersimpan.' : topic === 'Grosir' ? settings?.formTitle||'Minta penawaran.' : 'Diskusikan proyek OEM.'}</DialogTitle><DialogDescription className="inquiry-description">{receipt ? 'Tim penjualan dapat melihat kebutuhan Anda dan menindaklanjuti melalui kontak yang Anda berikan.' : settings?.formIntro||'Isi kontak dan kebutuhan pembelian Anda. Tim kami akan menyiapkan penawaran yang sesuai.'}</DialogDescription></DialogHeader>
       {receipt ? <section className="inquiry-success" aria-live="polite"><CheckCircle2 size={36}/><p className="eyebrow">NOMOR PERMINTAAN</p><strong className="receipt-number">{receipt.reference}</strong><p>Simpan nomor ini untuk tindak lanjut.<br/>Kontak Anda: <strong>{contact}</strong></p><p>Harga, stok, sampel, dan pengiriman akan dikonfirmasi oleh tim. Permintaan ini belum menjadi pesanan.</p><a className="button button-primary" href={getWhatsAppUrl(`Nomor permintaan: ${receipt.reference}\n\n${receipt.message}`)!} target="_blank" rel="noreferrer">Lanjut diskusi di WhatsApp <ArrowUpRight size={18}/></a><p className="inquiry-privacy">Permintaan sudah disimpan. WhatsApp bersifat opsional; pesan baru terkirim setelah Anda mengirimnya di WhatsApp.</p><button className="text-link" onClick={resetInquiry}>Buat permintaan baru <ArrowUpRight size={16}/></button></section> :
       <form className="inquiry-form" onSubmit={event => {
         event.preventDefault();
@@ -85,7 +91,8 @@ export function InquiryDialog({ open, onOpenChange, topic, onTopicChange, items,
         {selectedItems.length > 0 && <section className="inquiry-selection" aria-label="Pilihan produk untuk penawaran">
           <div className="selection-heading"><p>{selectedItems.length} model dipilih</p><button type="button" onClick={() => onItemsChange([])}>Hapus semua</button></div>
           {selectedItems.map(item => {
-            const product = products.find(p => p.id === item.productId)!;
+            const product = products.find(p => p.id === item.productId);
+            if(!product)return null;
             return <div className="selection-row" key={item.productId}>
               {product.image && <img src={product.image} width="62" height="62" alt=""/>}
               <div className="selection-item-copy"><h3>{product.name}</h3><div className="quantity-control"><button type="button" aria-label={`Kurangi jumlah ${product.name}`} disabled={Number(item.quantity) <= 1} onClick={() => updateQuantity(item.productId, String(Math.max(1, Number(item.quantity) - 1)))}><Minus size={14}/></button><Input aria-label={`Jumlah ${product.name} dalam pcs`} type="number" inputMode="numeric" required min="1" max="1000000" step="1" value={item.quantity} onChange={e => updateQuantity(item.productId, e.target.value)}/><button type="button" aria-label={`Tambah jumlah ${product.name}`} disabled={Number(item.quantity) >= 1000000} onClick={() => updateQuantity(item.productId, String(Math.min(1000000, Number(item.quantity) + 1)))}><Plus size={14}/></button><span>pcs</span></div></div>
@@ -106,6 +113,7 @@ export function InquiryDialog({ open, onOpenChange, topic, onTopicChange, items,
           {!selectedItems.length && <label htmlFor="lead-quantity">Perkiraan jumlah <span>(pcs, opsional)</span><Input id="lead-quantity" type="number" inputMode="numeric" min="1" max="1000000" step="1" value={quantity} onChange={e => setQuantity(normalizeQuantityInput(e.target.value))} placeholder={topic === 'Grosir' ? 'Mulai 1 pcs' : 'Kebutuhan produksi'}/></label>}
           <label htmlFor="lead-timeline">Target waktu <span>(opsional)</span><Input id="lead-timeline" value={timeline} onChange={e => setTimeline(e.target.value)} placeholder="Bulan / rencana kebutuhan" maxLength={100}/></label>
         </div>
+        <div className="extra-inquiry-fields"><label htmlFor="lead-country">Negara / wilayah<Input id="lead-country" value={country} onChange={e=>setCountry(e.target.value)} maxLength={80} autoComplete="country-name"/></label>{settings?.extraFields.map(f=><label key={f.id} htmlFor={`lead-extra-${f.id}`}>{f.label}{f.required?' *':''}<Input id={`lead-extra-${f.id}`} value={customFields[f.id]||''} onChange={e=>setCustomFields(old=>({...old,[f.id]:e.target.value}))} required={f.required} maxLength={500}/></label>)}</div>
         <label className="inquiry-note" htmlFor="lead-note">Kebutuhan Anda <span>{topic === 'OEM & Custom' ? '*' : '(opsional)'}</span><Textarea id="lead-note" required={topic === 'OEM & Custom'} minLength={topic === 'OEM & Custom' ? 10 : undefined} value={note} onChange={e => setNote(e.target.value)} placeholder={topic === 'OEM & Custom' ? 'Jelaskan desain, logo, material, dan kemasan (minimal 10 karakter)…' : 'Pilihan warna, kebutuhan toko, sampel, atau permintaan rekomendasi…'} maxLength={1500} rows={3}/></label>
         <label className="inquiry-trap" aria-hidden="true">Website<Input tabIndex={-1} autoComplete="off" value={website} onChange={e => setWebsite(e.target.value)}/></label>
         </fieldset>

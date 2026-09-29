@@ -1,4 +1,4 @@
-import { products } from './site-content';
+import { products, type Product } from './site-content';
 
 export const categoryLabels: Record<string, string> = {
   'TOTE BAG': 'Tote',
@@ -18,9 +18,9 @@ export const collectionSeries = [
   { id: 'travel', title: 'Travel & Organize', description: 'Untuk perjalanan dan isi tas Anda.', coverId: '42624239336', productIds: ['43073514980', '46862108115', '42624239336'] },
 ];
 
-export function filterCatalog(category = 'Semua', seriesId: string | null = null) {
+export function filterCatalog(category = 'Semua', seriesId: string | null = null, catalog: Product[] = products) {
   const series = collectionSeries.find(item => item.id === seriesId);
-  return products.filter(product =>
+  return catalog.filter(product =>
     (category === 'Semua' || product.category === category) &&
     (seriesId === null || !!series?.productIds.includes(product.id)),
   );

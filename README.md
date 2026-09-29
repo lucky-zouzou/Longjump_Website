@@ -2,6 +2,10 @@
 
 面向印尼精品店、经销商和企业 OEM 客户的销售型独立站。主流程为浏览产品 → 多款选型或 OEM 需求 → 提交询盘 → 销售跟进，不含线上交易。
 
+## 运营工作台（本次升级）
+
+自托管服务器新增 `/manage/`，提供团队角色、询盘自动分配、内容发布、手机 PWA、真实访问分析、搜索报表导入和可选 AI 客服。完整功能、外部服务接入边界、权限、备份与回退见 [运营工作台与部署说明](docs/operations-deployment.md)。本次生产运行需要 Node.js 24，与 Docker 一致。
+
 ## 页面结构
 
 本地工厂与一件批发价首屏 → 工厂规模 / 服务门店 / 起批优势 → 批发 / OEM 两条采购入口 → 四个系列与 13 款已核实商品目录 → 搜索、分类与多款询价清单 → 批发合作 → OEM 定制 → 三步询盘流程 → 工厂与品牌信任资料 → 新款预告 → 常见问题 → 联系方式。新增 `/sales` 销售跟进后台、`/privasi` 隐私说明。
@@ -42,9 +46,9 @@
 
 ### 本地运行
 
-使用 Node.js 22.13+ 和 pnpm，先执行 `pnpm install`。
+使用 Node.js 24 和 pnpm，先执行 `pnpm install`。
 
-**平台预览模式**（OpenAI Sites 托管 / Cloudflare D1）：`pnpm dev`。首次使用数据库时执行 `pnpm build`，再执行 `pnpm exec wrangler d1 execute DB --local --config dist/server/wrangler.json --persist-to .wrangler/state --file drizzle/0000_lame_loners.sql`，随后运行 `pnpm dev`。该迁移只应用一次；以后用 `pnpm db:generate` 生成追加迁移。本地后台测试可在不入库的 `.dev.vars` 设置 `SALES_ADMIN_EMAILS="seedy@sites.test"`，通过预览的登录入口使用本地模拟身份。
+**平台预览模式**（OpenAI Sites 托管 / Cloudflare D1）：`pnpm dev`。首次使用数据库时执行 `pnpm build`，再执行 `pnpm exec wrangler d1 execute DB --local --config dist/server/wrangler.json --persist-to .wrangler/state --file drizzle/0000_lame_loners.sql`，随后运行 `pnpm dev`。该迁移只应用一次；本次运营升级还需应用后续 SQL 迁移，完整运营后台应使用下方自托管模式。运营表和触发器由手工 SQL 迁移维护。本地后台测试可在不入库的 `.dev.vars` 设置 `SALES_ADMIN_EMAILS="seedy@sites.test"`，通过预览的登录入口使用本地模拟身份。
 
 **自托管模式**（自有服务器，生产部署即此模式）：`pnpm build:server` 产出 `dist-node/`，然后：
 

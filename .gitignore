@@ -38,6 +38,9 @@ next-env.d.ts
 /.wrangler/
 /outputs/
 /work/
+/data/
+/backups/
+/secrets/
 /.pnpm-store/
 *.tsbuildinfo
 # Original generated concepts are retained locally; optimized website copies are versioned.

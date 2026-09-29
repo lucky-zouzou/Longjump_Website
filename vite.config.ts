@@ -42,6 +42,7 @@ export default defineConfig(async () => {
   if (process.env.LOONGJUMP_TARGET === 'node') {
     return {
       plugins: [vinext()],
+      css: { postcss: { plugins: [tailwindcss()] } },
       // import.meta.dirname avoids URL percent-encoding issues on paths with
       // non-ASCII characters (the V17 URL.pathname form only worked in Docker
       // where the checkout path is plain /app).

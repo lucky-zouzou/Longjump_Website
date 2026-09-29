@@ -3,6 +3,7 @@
 services:
   web:
     build: ./app
+    image: loongjump-website:current
     container_name: loongjump-web
     restart: unless-stopped
     ports:
@@ -15,6 +16,10 @@ services:
       SALES_ADMIN_EMAILS: admin@loongjump.com
       LOONGJUMP_ADMIN_PASSWORD_FILE: /run/secrets/admin_password
       LOONGJUMP_BACKUP_RETENTION_DAYS: 30
+      # Optional; values come from the server's .env, never the repository.
+      OPENAI_API_KEY: ${OPENAI_API_KEY:-}
+      LOONGJUMP_AI_MODEL: ${LOONGJUMP_AI_MODEL:-}
+      LOONGJUMP_AI_DAILY_LIMIT: ${LOONGJUMP_AI_DAILY_LIMIT:-200}
     secrets:
       - admin_password
     volumes:
