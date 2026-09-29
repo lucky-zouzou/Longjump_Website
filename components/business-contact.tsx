@@ -8,7 +8,7 @@ export function BusinessContact({ onInquiry }: { onInquiry: () => void }) {
     <div className="contact-top"><p className="eyebrow">LANGSUNG KE TIM KAMI</p><span>GROSIR · RESELLER · OEM</span></div>
     <div className="contact-main">
       <h2>Pabriknya di sini.<br/>Peluangnya untuk <em>Anda.</em></h2>
-      <div><p>Tim penjualan LOONG JUMP di {siteConfig.salesCompanyName} siap membantu pilihan produk, penawaran, dan kebutuhan bisnis Anda.</p><button className="button button-primary" onClick={onInquiry}>Tinggalkan Kebutuhan Pembelian <ArrowUpRight size={19}/></button></div>
+      <div><p>Tim penjualan LOONG JUMP di {siteConfig.salesCompanyName} siap membantu Anda memilih tas, menanyakan harga, atau merencanakan koleksi untuk brand sendiri.</p><button className="button button-primary" onClick={onInquiry}>Ceritakan Kebutuhan Anda <ArrowUpRight size={19}/></button></div>
     </div>
     <div className="contact-channels">
       {siteConfig.whatsappNumber && <a href={getWhatsAppUrl()!} target="_blank" rel="noreferrer"><MessageCircle/><div><span>WHATSAPP · LOONG JUMP</span><strong>{siteConfig.phoneDisplay}</strong></div><ArrowUpRight size={19}/></a>}
