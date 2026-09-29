@@ -435,14 +435,14 @@ export default function Storefront({
           <div className="factory-hero-media">
             <figure className="factory-hero-photo">
               <img
-                src="/images/craft/stitching-detail.webp"
-                width={1280}
-                height={720}
-                alt="Detail tangan saat menjahit komponen tas"
+                src="/images/craft/artisan-heritage.webp"
+                width={1672}
+                height={941}
+                alt="Ilustrasi AI: tangan perajin menjahit detail tas kulit hijau dengan teliti"
                 fetchPriority="high"
               />
               <span className="hero-concept-label">
-                REFERENSI PROSES PRODUKSI
+                VISUAL KERAJINAN · AI
               </span>
               <figcaption>
                 <span>DETAIL DI BALIK KOLEKSI</span>
