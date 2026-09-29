@@ -1,4 +1,4 @@
-import { products, type InquiryTopic } from './site-content';
+import { products, type Product, type InquiryTopic } from './site-content';
 
 export const selectionStorageKey = 'loongjump.inquiry-selection.v1';
 export type InquiryItem = { productId: string; quantity: string };
@@ -23,7 +23,7 @@ export function normalizeQuantityInput(value: string) {
 }
 
 // Only product IDs and quantities are saved on this device; never buyer details.
-export function restoreSelection(raw: string | null): InquiryItem[] {
+export function restoreSelection(raw: string | null, catalog: Product[] = products): InquiryItem[] {
   if (!raw) return [];
   try {
     const parsed: unknown = JSON.parse(raw);
@@ -32,17 +32,17 @@ export function restoreSelection(raw: string | null): InquiryItem[] {
     return parsed.flatMap((row: unknown) => {
       if (!row || typeof row !== 'object') return [];
       const { productId, quantity } = row as Record<string, unknown>;
-      if (typeof productId !== 'string' || !products.some(p => p.id === productId) || seen.has(productId)) return [];
+      if (typeof productId !== 'string' || !catalog.some(p => p.id === productId) || seen.has(productId)) return [];
       seen.add(productId);
       return [{ productId, quantity: typeof quantity === 'string' && isValidQuantity(quantity) ? String(Number(quantity)) : '1' }];
     });
   } catch { return []; }
 }
 
-export function composeBusinessInquiry(details: InquiryDetails) {
+export function composeBusinessInquiry(details: InquiryDetails, catalog: Product[] = products) {
   const { topic, items, company, city, quantity, timeline, note } = details;
   const selected = topic === 'Grosir' ? items.flatMap(item => {
-    const product = products.find(p => p.id === item.productId);
+    const product = catalog.find(p => p.id === item.productId);
     return product ? [`${product.name} — ${isValidQuantity(item.quantity) ? Number(item.quantity) + ' pcs' : 'jumlah belum diisi'}\nReferensi: ${product.sourceUrl}`] : [];
   }) : [];
   return [

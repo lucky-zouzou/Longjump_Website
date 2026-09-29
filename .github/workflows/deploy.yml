@@ -1,6 +1,8 @@
 name: Deploy to production
 
 on:
+  pull_request:
+    branches: [main]
   push:
     branches: [main]
 
@@ -9,7 +11,26 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
+  validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 10.33.2
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm exec tsc --noEmit
+      - run: node scripts/check-inquiries.mjs
+      - run: node scripts/check-operations.mjs
+      - run: pnpm build:server
   deploy:
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    needs: validate
     runs-on: ubuntu-latest
     timeout-minutes: 30
     permissions:
@@ -27,10 +48,8 @@ jobs:
           echo "MARK0: function entered"
           mkdir -p ~/.ssh && chmod 700 ~/.ssh
           [ -n "$SSH_KEY" ] || { echo "DIAG: SSH_DEPLOY_KEY 为空（secret 名或值有问题）"; exit 1; }
-          echo "DIAG: 原始字符数 $(printf '%s' "$SSH_KEY" | wc -c | tr -d ' ')"
           # 清洗粘贴常见杂质：围栏、行首尾空白、空行、CRLF
           printf '%s\n' "$SSH_KEY" | sed -e 's/\r$//' -e 's/^[[:space:]]*//' -e 's/[[:space:]]*$//' -e '/^$/d' -e '/^```/d' > ~/.ssh/deploy_key && chmod 600 ~/.ssh/deploy_key
-          echo "DIAG: 清洗后字符数 $(wc -c < ~/.ssh/deploy_key | tr -d ' ')，第一行: $(head -1 ~/.ssh/deploy_key)"
           ssh-keygen -y -f ~/.ssh/deploy_key >/dev/null 2>&1 && echo "DIAG: key 格式 OK" || { echo "DIAG: key 格式无效（BEGIN/END 是否完整、是否为私钥而非公钥）"; exit 1; }
           echo "DIAG: SERVER 已配置（硬编码）"
           printf '%s\n' \
@@ -40,40 +59,20 @@ jobs:
           # Package source (same exclusions as the manual deploy); the archive
           # must live outside the tree so tar never sees it as a changing file.
           tar --exclude=.git --exclude=node_modules --exclude=dist --exclude=dist-node \
-              --exclude=.wrangler --exclude=output --exclude=设备预览 --exclude='.env*' \
+              --exclude=.wrangler --exclude=output --exclude=设备预览 --exclude='.env*' --exclude='data' --exclude='backups' --exclude='secrets' \
               -czf /tmp/source.tar.gz .
 
           ssh -i ~/.ssh/deploy_key -o BatchMode=yes $SERVER 'mkdir -p /opt/loongjump-website/upload'
           scp -i ~/.ssh/deploy_key -o BatchMode=yes /tmp/source.tar.gz $SERVER:/opt/loongjump-website/upload/
 
-          # Swap in the new source, rebuild and restart. On failure the
-          # previous source directory is restored and the old container
-          # keeps running (compose never recreates after a failed build).
+          # Build before switching, snapshot data, and roll back on failed health checks.
           ssh -i ~/.ssh/deploy_key -o BatchMode=yes $SERVER 'set -e
             cd /opt/loongjump-website
-            rm -rf app.new && mkdir -p app.new
+            if [ -d app.new ]; then mv app.new "app.pending-$(date -u +%Y%m%dT%H%M%SZ)"; fi
+            mkdir app.new
             tar xzf upload/source.tar.gz -C app.new
-            mv app app.old 2>/dev/null || true
-            mv app.new app
-            cp app/compose.yaml compose.yaml
-            if docker compose up -d --build; then
-              rm -rf app.old
-            else
-              mv app app.failed && mv app.old app
-              exit 1
-            fi
-            docker image prune -f >/dev/null'
+            bash app.new/server/deploy.sh'
 
-          # Wait for the healthcheck, then verify the public site end to end.
-          for i in $(seq 1 60); do
-            status=$(ssh -i ~/.ssh/deploy_key -o BatchMode=yes $SERVER 'docker inspect --format "{{.State.Health.Status}}" loongjump-web' 2>/dev/null || echo starting)
-            [ "$status" = "healthy" ] && break
-            sleep 10
-          done
-          [ "$status" = "healthy" ] || { echo "container did not become healthy"; exit 1; }
-
-          curl -fsS --retry 5 -o /dev/null https://loongjump.com/
-          curl -fsS --retry 5 -o /dev/null https://loongjump.com/signin-with-chatgpt
           echo "Deploy OK"
           }
           echo "MARK-A: about to call deploy function"

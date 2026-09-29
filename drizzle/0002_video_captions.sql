@@ -1,0 +1,1 @@
+ALTER TABLE ops_content ADD COLUMN caption_url TEXT NOT NULL DEFAULT '';

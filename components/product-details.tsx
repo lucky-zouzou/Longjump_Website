@@ -2,9 +2,10 @@
 
 import { ArrowUpRight, Check, MessageCircle, Plus } from 'lucide-react';
 import { Dialog, DialogContent, DialogDescription, DialogTitle } from '@/components/ui/dialog';
-import { products } from '@/lib/site-content';
+import { products as initialProducts, type Product } from '@/lib/site-content';
 
-export function ProductDetails({ productId, selected, onClose, onAdd, onInquiry }: {
+export function ProductDetails({ productId, selected, onClose, onAdd, onInquiry, products = initialProducts }: {
+  products?: Product[];
   productId: string | null;
   selected: boolean;
   onClose: () => void;
@@ -19,7 +20,7 @@ export function ProductDetails({ productId, selected, onClose, onAdd, onInquiry 
       <p className="product-detail-note">Tanyakan material, ukuran, pilihan warna, stok, dan harga untuk kebutuhan toko Anda.</p>
       <button className="button button-primary product-detail-quote" onClick={() => onInquiry(product.id)} aria-label={`Minta penawaran untuk ${product.name}`}><MessageCircle size={18}/>Minta Penawaran</button>
       <button className="button button-outline" onClick={() => onAdd(product.id)} disabled={selected}>{selected ? <Check size={17}/> : <Plus size={17}/>} {selected ? 'Sudah dalam daftar' : 'Tambah ke Daftar Penawaran'}</button>
-      <a className="text-link" href={product.sourceUrl} target="_blank" rel="noreferrer">Lihat Referensi di Shopee <ArrowUpRight size={16}/></a>
+      <a className="text-link" href={product.sourceUrl} target="_blank" rel="noreferrer">Lihat Referensi Produk <ArrowUpRight size={16}/></a>
     </div>
   </>}</DialogContent></Dialog>;
 }
