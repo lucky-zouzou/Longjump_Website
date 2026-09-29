@@ -4,7 +4,6 @@
 
 import { useEffect, useState, type SubmitEvent } from 'react';
 import { usePathname } from 'next/navigation';
-import Link from 'next/link';
 import { getWhatsAppUrl, siteConfig } from '@/lib/site-content';
 
 export type PublicSettings = {
@@ -106,9 +105,9 @@ export function AnalyticsConsent() {
   return consent === null ? (
     <aside className="analytics-consent" aria-label="Pilihan statistik">
       <p>
-        Boleh kami mengukur kunjungan untuk memperbaiki situs? Tidak menyimpan
-        IP mentah atau isi formulir dalam statistik.{' '}
-        <Link href="/privasi">Privasi</Link>
+        Boleh kami menggunakan statistik kunjungan untuk membuat situs ini lebih nyaman?
+        Statistik tidak menyimpan alamat IP lengkap atau isi formulir Anda.{' '}
+        <a href="/privasi">Privasi</a>
       </p>
       <div>
         <button onClick={() => choose('no')}>Tidak</button>
@@ -172,7 +171,7 @@ export function PublishedUpdates({ content }: { content: PublicContent[] }) {
             <h3>{c.title}</h3>
             <p>{c.body.slice(0, 220)}</p>
             {c.kind === 'news' ? (
-              <Link href={`/news/${encodeURIComponent(c.id)}`}>Baca cerita ↗</Link>
+              <a href={`/news/${encodeURIComponent(c.id)}`}>Baca cerita ↗</a>
             ) : c.link_url ? (
               <a href={c.link_url}>Lihat selengkapnya ↗</a>
             ) : null}

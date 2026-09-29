@@ -2,7 +2,6 @@
 // Keep the existing responsive image pipeline and semantic grouping of the storefront.
 /* oxlint-disable next/no-img-element, jsx-a11y/prefer-tag-over-role */
 
-import Link from 'next/link';
 import { useCallback, useEffect, useMemo, useState } from 'react';
 import {
   ArrowUpRight,
@@ -16,6 +15,7 @@ import {
   PackageCheck,
   Plus,
   Scissors,
+  Sparkles,
 } from 'lucide-react';
 import {
   Sheet,
@@ -57,7 +57,7 @@ const nav = [
   ['Pabrik Kami', '#pabrik'],
   ['Harga Grosir', '#kemitraan'],
   ['OEM & Custom', '#oem'],
-  ['Cara Pengadaan', '#cara-pengadaan'],
+  ['Cara Pesan', '#cara-pengadaan'],
   ['Kabar Kami', '/news'],
   ['Hubungi Kami', '#kontak'],
 ];
@@ -314,13 +314,11 @@ export default function Storefront({
       <a className="skip-link" href="#main">
         Lewati ke konten
       </a>
-      <div className="announcement">
-        <Factory size={16} aria-hidden="true" /> PABRIK SENDIRI DI INDONESIA{' '}
-        <span>Ambil 1 pcs, tetap harga grosir.</span>
-        <a href="#kemitraan">
-          Kenali keuntungannya <ArrowUpRight size={15} />
-        </a>
-      </div>
+      <aside className="launch-banner" aria-label="Perayaan peluncuran situs LOONG JUMP">
+        <div className="launch-intro"><Sparkles size={22} aria-hidden="true" /><div><span>SITUS RESMI KINI HADIR</span><strong>Akhirnya, kami hadir!</strong></div></div>
+        <p><strong>{siteConfig.teamExperienceYears} tahun keahlian dalam pembuatan tas</strong><span aria-hidden="true"> · </span>Kualitas premium, harga bersahabat.</p>
+        <a href="#koleksi">Rayakan bersama kami <ArrowUpRight size={17} aria-hidden="true" /></a>
+      </aside>
       <header className="site-header">
         <div className="header-top">
           <div className="header-utility">
@@ -336,7 +334,7 @@ export default function Storefront({
                 <SheetHeader>
                   <SheetTitle>LOONG JUMP</SheetTitle>
                   <SheetDescription>
-                    Wholesale & OEM · Indonesia
+                    Grosir & Tas Custom · Indonesia
                   </SheetDescription>
                 </SheetHeader>
                 <nav aria-label="Navigasi seluler">
@@ -400,13 +398,14 @@ export default function Storefront({
               PABRIK TAS LOKAL · INDONESIA
             </p>
             <h1>
-              Pabrik lokal.
+              Pabrik tas lokal.
               <br />
               <em>Harga grosir.</em>
             </h1>
             <p className="hero-description">
-              Tas pilihan dengan harga bersahabat, langsung dari pabrik kami di
-              Yogyakarta. Lebih dekat untuk kebutuhan usaha Anda.
+              Dari pabrik kami di Yogyakarta, hadir tas dengan detail istimewa
+              dan harga yang bersahabat. Belanja grosir mulai 1 pcs atau
+              wujudkan koleksi untuk brand Anda sendiri.
             </p>
             <div className="hero-wholesale-offer">
               <strong>
@@ -479,14 +478,14 @@ export default function Storefront({
             </dd>
           </div>
           <div>
-            <dt>Toko retail & grosir telah dilayani</dt>
+            <dt>Toko yang sudah kami layani</dt>
             <dd>
               {siteConfig.storesServedMoreThan}
               <span>+ toko</span>
             </dd>
           </div>
           <div>
-            <dt>Sudah dapat harga grosir</dt>
+            <dt>Belanja grosir mulai</dt>
             <dd>
               1 <span>pcs saja</span>
             </dd>
@@ -508,8 +507,8 @@ export default function Storefront({
             <div>
               <h3>Harga grosir untuk toko Anda</h3>
               <p>
-                Pilih koleksi LOONG JUMP. Gabungkan beberapa model dalam satu
-                permintaan harga.
+                Pilih koleksi LOONG JUMP. Pilih beberapa model sekaligus,
+                lalu tanyakan harganya kepada kami.
               </p>
               <span>
                 Jelajahi produk · mulai 1 pcs <ArrowUpRight size={16} />
@@ -524,11 +523,11 @@ export default function Storefront({
             <div>
               <h3>Produk untuk brand Anda</h3>
               <p>
-                Sampaikan desain, logo, material, jumlah, dan rencana peluncuran
-                koleksi.
+                Punya ide tas untuk brand sendiri? Ceritakan desain, bahan,
+                logo, dan jumlah yang Anda butuhkan.
               </p>
               <span>
-                Ajukan brief OEM <ArrowUpRight size={16} />
+                Ceritakan ide Anda <ArrowUpRight size={16} />
               </span>
             </div>
           </button>
@@ -544,8 +543,9 @@ export default function Storefront({
               </h2>
             </div>
             <p className="section-intro">
-              Tas untuk keseharian, butik, dan toko Anda. Pilih model favorit,
-              lalu tanyakan harga grosir langsung kepada tim kami.
+              Temukan tas wanita, tote bag, tas selempang, dan ransel untuk
+              butik, reseller, atau pemakaian sehari-hari. Pilih yang Anda suka,
+              lalu tanyakan harga grosirnya kepada kami.
             </p>
           </div>
           <div
@@ -585,9 +585,9 @@ export default function Storefront({
             </button>
           </div>
           <p className="catalog-inquiry-note">
-            Harga sesuai kebutuhan pembelian. Pilih{' '}
+            Ingin tahu harganya? Pilih{' '}
             <strong>Minta Harga Grosir</strong> atau kumpulkan beberapa model
-            untuk ditanyakan sekaligus.
+            untuk meminta penawaran sekaligus.
           </p>
           <label className="catalog-search">
             Cari model atau referensi
@@ -682,13 +682,11 @@ export default function Storefront({
                         </span>
                       </button>
                       <div className="product-meta">
-                        <span>{item.category}</span>
+                        <span>{categoryLabels[item.category] || item.category}</span>
                         <span>1 pcs · harga grosir</span>
                       </div>
                       <h3>
-                        <button onClick={() => setDetailProductId(item.id)}>
-                          {item.name}
-                        </button>
+                        <a href={`/products/${encodeURIComponent(item.id)}`}>{item.name}</a>
                       </h3>
                       <p>{item.description}</p>
                       <div className="product-card-actions">
@@ -726,13 +724,12 @@ export default function Storefront({
                 <div className="catalog-reference-intro">
                   <h3 id="catalog-references-heading">
                     {illustratedProducts.length
-                      ? 'Pilihan lain dari official shop'
+                      ? 'Pilihan lain di toko resmi'
                       : 'Pilihan model'}
                   </h3>
                   <p>
-                    Jelajahi referensi berikut dan tambahkan ke daftar
-                    penawaran. Lihat foto dan pilihan terbaru melalui halaman
-                    produk di official shop.
+                    Temukan model lainnya di bawah ini. Foto dan pilihan terbaru
+                    dapat Anda lihat di toko resmi kami.
                   </p>
                 </div>
                 <div className="catalog-reference-grid">
@@ -749,9 +746,7 @@ export default function Storefront({
                           <span>REF. {item.id}</span>
                         </div>
                         <h4>
-                          <button onClick={() => setDetailProductId(item.id)}>
-                            {item.name}
-                          </button>
+                          <a href={`/products/${encodeURIComponent(item.id)}`}>{item.name}</a>
                         </h4>
                         <p>{item.description}</p>
                         <div className="reference-actions">
@@ -785,7 +780,7 @@ export default function Storefront({
                             target="_blank"
                             rel="noreferrer"
                           >
-                            Official Shop <ArrowUpRight size={15} />
+                            Toko Resmi <ArrowUpRight size={15} />
                           </a>
                         </div>
                       </article>
@@ -833,7 +828,7 @@ export default function Storefront({
               target="_blank"
               rel="noreferrer"
             >
-              Lihat Semua di Official Shop <ArrowUpRight size={16} />
+              Lihat Semua di Toko Resmi <ArrowUpRight size={16} />
             </a>
           </div>
         </section>
@@ -899,17 +894,17 @@ export default function Storefront({
 
         <section className="oem" id="oem">
           <div className="oem-copy">
-            <p className="eyebrow">OEM & CUSTOM DEVELOPMENT</p>
+            <p className="eyebrow">TAS CUSTOM UNTUK BRAND ANDA</p>
             <h2>
               Koleksi Anda.
               <br />
               <em>Karakter Anda.</em>
             </h2>
             <p>
-              Bawa identitas brand Anda ke dalam setiap detail. Didukung tim
-              dengan {siteConfig.teamExperienceYears} tahun pengalaman dalam
-              pembuatan tas dan produk kulit, layanan OEM kami membantu
-              perusahaan dan mitra mengembangkan koleksi khusus.
+              Punya ide koleksi sendiri? Tim kami membawa pengalaman
+              {' '}{siteConfig.teamExperienceYears} tahun dalam pembuatan tas dan produk kulit.
+              Lewat layanan OEM, kami membantu Anda mengembangkan tas custom,
+              dari pilihan bahan hingga logo dan detail akhir.
             </p>
             <div className="oem-options">
               <span>Logo & identitas brand</span>
@@ -945,18 +940,18 @@ export default function Storefront({
             {[
               [
                 '01',
-                'Pilih produk atau brief OEM',
-                'Kumpulkan model dan jumlah, atau jelaskan kebutuhan produk untuk brand Anda.',
+                'Pilih tas atau ceritakan ide Anda',
+                'Pilih model dan jumlah yang Anda inginkan. Untuk tas custom, ceritakan desain dan kebutuhan brand Anda.',
               ],
               [
                 '02',
                 'Kirim permintaan penawaran',
-                'Tinggalkan kontak dan kota tujuan. Dapatkan nomor permintaan sebagai referensi.',
+                'Isi kontak dan kota tujuan agar kami bisa menyiapkan penawaran. Nomor permintaan akan muncul setelah formulir terkirim.',
               ],
               [
                 '03',
-                'Sepakati penawaran bersama',
-                'Tim menghubungi Anda untuk harga, stok, sampel, dan pengiriman. Pemesanan dilanjutkan setelah kesepakatan.',
+                'Cocokkan detail, lalu pesan',
+                'Kami akan menghubungi Anda untuk membahas harga, stok, dan pengiriman. Pesanan dilanjutkan setelah semua detail disepakati.',
               ],
             ].map(([num, title, description]) => (
               <li className="process-step" key={num}>
@@ -972,6 +967,15 @@ export default function Storefront({
           </ol>
         </section>
 
+        <section className="service-guides section-wrap" aria-labelledby="service-guides-heading">
+          <p className="eyebrow">KENALI LAYANAN KAMI</p>
+          <h2 id="service-guides-heading">Langkah berikutnya, sesuai kebutuhan Anda.</h2>
+          <div>
+            <a href="/layanan/grosir-tas"><span>01 · UNTUK TOKO & RESELLER</span><h3>Grosir tas mulai 1 pcs</h3><p>Cara memilih model, menanyakan harga, dan menyiapkan pesanan.</p><ArrowUpRight aria-hidden="true" /></a>
+            <a href="/layanan/tas-custom-oem"><span>02 · UNTUK BRAND ANDA</span><h3>Tas custom & OEM</h3><p>Panduan bahan, logo, sampel, dan pengembangan koleksi sendiri.</p><ArrowUpRight aria-hidden="true" /></a>
+            <a href="/layanan/pabrik-tas-yogyakarta"><span>03 · LEBIH DEKAT DENGAN KAMI</span><h3>Pabrik tas di Yogyakarta</h3><p>Kenali pabrik di Sleman dan cara mengatur kunjungan bersama tim.</p><ArrowUpRight aria-hidden="true" /></a>
+          </div>
+        </section>
         <FactoryGallery onInquiry={() => startInquiry('Grosir')} />
 
         <section
@@ -1052,7 +1056,7 @@ export default function Storefront({
             Tumbuh bersama usaha Anda.
           </p>
           <nav aria-label="Navigasi footer">
-            <Link href="/privasi">Privasi</Link>
+            <a href="/privasi">Privasi</a>
             {nav.map(([label, href]) => (
               <a key={href} href={href}>
                 {label}
@@ -1068,7 +1072,7 @@ export default function Storefront({
             rights reserved.
           </span>
           <span>
-            Wholesale & OEM · Indonesia <span className="brand-rule" />
+            Grosir & Tas Custom · Indonesia <span className="brand-rule" />
           </span>
           <a href="#home">Kembali ke atas ↑</a>
         </div>

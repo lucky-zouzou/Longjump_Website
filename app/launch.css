@@ -1,0 +1,28 @@
+.launch-banner { display:flex; align-items:center; justify-content:center; gap:clamp(20px,3vw,48px); padding:18px 4%; color:#fff; background:#b52332; background-image:radial-gradient(ellipse at top right,#ed5b5530,transparent 55%); border-bottom:1px solid #921526; }
+.launch-intro { display:flex; align-items:center; gap:12px; flex-shrink:0; }
+.launch-intro span { display:block; font-size:9px; font-weight:600; letter-spacing:.18em; margin-bottom:4px; }
+.launch-intro strong { font-family:Georgia,serif; font-size:24px; line-height:1.1; font-weight:400; }
+.launch-banner p { font-size:13px; line-height:1.7; margin:0; max-width:540px; }
+.launch-banner p strong { font-weight:600; }
+.launch-banner > a { display:inline-flex; align-items:center; justify-content:center; gap:10px; padding:10px 14px; border:1px solid #ffffff88; border-radius:4px; font-size:12px; white-space:nowrap; min-height:44px; }
+.launch-banner > a:hover { background:#ffffff15; }
+.launch-banner a:focus-visible { outline:2px solid white; outline-offset:4px; }
+.service-guides { background:#f1f3eb; }
+.service-guides h2 { font:400 clamp(27px,3vw,42px)/1.2 Georgia,serif; margin:15px 0 28px; }
+.service-guides > div { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:22px; }
+.service-guides > div > a { display:block; padding:25px; background:#fffef9; border:1px solid #d6dfd0; border-radius:8px; }
+.service-guides a > span { font-size:10px; letter-spacing:.06em; }
+.service-guides h3 { font-size:21px; margin:16px 0 10px; line-height:1.4; }
+.service-guides p { font-size:14px; line-height:1.75; }
+.service-guides a > svg { margin-top:20px; }
+.service-guides a:hover { border-color:#174d3b; }
+.product-card h3 a:hover,.catalog-reference-card h4 a:hover { text-decoration:underline; text-underline-offset:4px; }
+.service-page h2 { font-size:25px; margin:32px 0 12px; line-height:1.3; }
+.service-page p,.service-page li { line-height:1.85; }
+.service-page ol { padding-left:24px; list-style:decimal; }
+.service-page li { margin:10px 0; }
+.service-page nav { display:flex; flex-wrap:wrap; gap:16px; margin:40px 0; }
+.service-page nav a { text-decoration:underline; text-underline-offset:4px; }
+.service-page .service-intro { font-size:19px; color:#526954; }
+@media(max-width:1023px) { .launch-banner { gap:15px 25px; flex-wrap:wrap; } .launch-banner p { max-width:450px; } .launch-banner p span { display:none; } .launch-banner p strong { display:block; } }
+@media(max-width:600px) { .launch-banner { display:grid; grid-template-columns:1fr; gap:10px; padding:18px 20px; text-align:center; } .launch-intro { justify-content:center; } .launch-intro strong { font-size:23px; } .launch-banner p { font-size:12px; } .launch-banner > a { justify-self:center; padding:6px 12px; min-height:40px; } .service-guides > div { grid-template-columns:1fr; } }

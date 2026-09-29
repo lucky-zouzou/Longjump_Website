@@ -4,10 +4,10 @@ import { ArrowUpRight } from 'lucide-react';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 
 const questions = [
-  ['Apakah saya harus membayar di website?', 'Tidak. Situs ini menerima permintaan penawaran dan kebutuhan pembelian. Tim penjualan mengonfirmasi harga, stok, dan rincian secara langsung sebelum Anda menyepakati pemesanan.'],
-  ['Belum tahu model yang cocok, apakah bisa mengajukan kebutuhan?', 'Bisa. Pilih Ajukan Kebutuhan, isi kontak dan kota tujuan, lalu jelaskan kebutuhan toko atau proyek Anda. Model dan jumlah dapat dibahas bersama tim.'],
+  ['Apakah saya harus membayar di website?', 'Tidak perlu membayar di situs ini. Pilih tas atau ceritakan kebutuhan Anda, lalu kami akan menghubungi Anda untuk membahas harga dan stok. Pembayaran dilakukan setelah rincian pesanan disepakati.'],
+  ['Belum tahu harus pilih yang mana?', 'Tentu. Klik “Bantu saya memilih” di bagian koleksi, lalu ceritakan kebutuhan dan kota tujuan Anda. Kami akan membantu memilih model dan jumlah yang sesuai.'],
   ['Apakah 1 pcs sudah mendapat harga grosir?', 'Ya. Untuk pilihan koleksi LOONG JUMP, Anda dapat memulai dari 1 pcs dengan harga grosir. Harga, warna, dan stok model yang dipilih dikonfirmasi oleh tim saat konsultasi.'],
-  ['Bagaimana cara meminta penawaran beberapa model?', 'Tambahkan model ke Daftar Penawaran, atur jumlah masing-masing, lalu isi kebutuhan dan kota tujuan. Isi kontak, lalu kirim permintaan. Data disimpan untuk tim penjualan dan Anda menerima nomor permintaan. WhatsApp tersedia untuk melanjutkan diskusi.'],
+  ['Bagaimana cara meminta penawaran beberapa model?', 'Klik “Simpan pilihan” pada tas yang Anda suka. Buka daftar penawaran, atur jumlahnya, lalu isi kontak dan kota tujuan. Setelah dikirim, Anda akan mendapat nomor permintaan dan bisa melanjutkan percakapan melalui WhatsApp.'],
   ['Berapa minimum pesanan untuk OEM?', 'Minimum pesanan OEM dibahas sesuai desain, material, dan opsi kustomisasi. Ketentuan grosir mulai 1 pcs berlaku untuk koleksi LOONG JUMP; minimum OEM disepakati untuk setiap proyek.'],
   ['Bagaimana dengan sampel dan waktu produksi?', 'Sampaikan kebutuhan sampel serta target waktu Anda. Biaya sampel, tahapan persetujuan, dan jadwal produksi dikonfirmasi bersama tim sebelum proyek dimulai.'],
   ['Dari mana produk dikirim?', 'Produk dikirim dari Indonesia. Pabrik kami berada di Sleman, Yogyakarta. Berikan kota tujuan agar tim dapat mengonfirmasi pilihan pengiriman, biaya, dan estimasi sesuai pesanan Anda.'],
