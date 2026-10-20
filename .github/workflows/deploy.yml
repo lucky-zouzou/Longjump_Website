@@ -27,6 +27,7 @@ jobs:
       - run: pnpm exec tsc --noEmit
       - run: node scripts/check-inquiries.mjs
       - run: node scripts/check-operations.mjs
+      - run: node scripts/check-engagement.mjs
       - run: pnpm build:server
   deploy:
     if: github.event_name == 'push' && github.ref == 'refs/heads/main'

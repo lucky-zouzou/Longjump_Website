@@ -26,6 +26,7 @@ import {
   SheetTitle,
   SheetTrigger,
 } from '@/components/ui/sheet';
+import { DailyPromotion, FactoryCommunity } from '@/components/engagement';
 import { FactoryGallery } from '@/components/factory-gallery';
 
 import {
@@ -58,6 +59,8 @@ const nav = [
   ['Harga Grosir', '#kemitraan'],
   ['OEM & Custom', '#oem'],
   ['Cara Pesan', '#cara-pengadaan'],
+  ['Promo', '#promo'],
+  ['Komunitas', '#komunitas'],
   ['Kabar Kami', '/news'],
   ['Hubungi Kami', '#kontak'],
 ];
@@ -96,6 +99,7 @@ export default function Storefront({
   }, []);
   const [menuOpen, setMenuOpen] = useState(false);
   const [inquiryOpen, setInquiryOpen] = useState(false);
+  const [promotionContext,setPromotionContext] = useState('');
   const [topic, setTopic] = useState<InquiryTopic>('Grosir');
   const [selectedItems, setSelectedItems] = useState<InquiryItem[]>([]);
   const [selectionReady, setSelectionReady] = useState(false);
@@ -190,9 +194,10 @@ export default function Storefront({
     } else addSelection(id);
   }
   const startInquiry = useCallback(
-    (nextTopic: InquiryTopic = 'Grosir', nextProduct: string | null = null) => {
+    (nextTopic: InquiryTopic = 'Grosir', nextProduct: string | null = null, context = '') => {
       if (nextProduct && products.some((item) => item.id === nextProduct))
         addSelection(nextProduct);
+      setPromotionContext(context);
       setTopic(nextTopic);
       setDetailProductId(null);
       setInquiryOpen(true);
@@ -467,6 +472,20 @@ export default function Storefront({
             </a>
           </div>
         </section>
+        <nav className="home-engagement-links" aria-label="Promo dan komunitas pabrik">
+          <a href="#promo" className="home-promo-link">
+            <span className="home-feature-icon" aria-hidden="true">%</span>
+            <span><small>PILIHAN SPESIAL</small><strong>Promo hari ini</strong><span>Temukan penawaran harian & mingguan dari pabrik.</span></span>
+            <ArrowUpRight aria-hidden="true" />
+          </a>
+          <a href="#komunitas" className="home-community-link">
+            <MessageCircle className="home-feature-icon" aria-hidden="true" />
+            <span><small>KAMI INGIN MENDENGAR</small><strong>Komunitas pabrik</strong><span>Bagikan pengalaman, kritik, dan ide Anda.</span></span>
+            <ArrowUpRight aria-hidden="true" />
+          </a>
+        </nav>
+        <DailyPromotion onInquiry={(id,context) => startInquiry('Grosir', id,context)} />
+        <FactoryCommunity />
         <dl
           className="local-proof-strip section-wrap"
           aria-label="Keunggulan pabrik lokal"
@@ -1115,6 +1134,7 @@ export default function Storefront({
         />
       )}
       <InquiryDialog
+        promotionContext={promotionContext}
         products={products}
         settings={publicData?.settings}
         open={inquiryOpen}

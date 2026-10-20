@@ -1,3 +1,4 @@
+import { handleEngagement } from './engagement.mjs';
 import { randomUUID, createHash } from 'node:crypto';
 import { mkdirSync, writeFileSync } from 'node:fs';
 import { resolve } from 'node:path';
@@ -265,6 +266,10 @@ export async function handleOperations(request, context) {
       }
       if (!data || typeof data !== 'object' || Array.isArray(data))
         fail(400, 'JSON 对象无效');
+    }
+    if (['/api/public/promotions','/api/public/community','/api/ops/promotions','/api/ops/community'].includes(path)) {
+      const result = handleEngagement({db,path,method,data,user,url,clientKey,fail,str,choice,revision,limit,audit,transaction,json});
+      if (result) return result;
     }
     if (path === '/api/public/content' && method === 'GET') {
       const s = settings(db);
