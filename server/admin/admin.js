@@ -71,6 +71,8 @@ const state = {
 const manager = () => ['owner', 'manager'].includes(state.user?.role);
 const allowed = (key) =>
   ({
+    promotions: ['owner','manager','editor'],
+    community: ['owner','manager','editor'],
     dashboard: ['owner', 'manager', 'analyst'],
     leads: ['owner', 'manager', 'sales'],
     content: ['owner', 'manager', 'editor'],
@@ -84,6 +86,8 @@ const tabs = {
   dashboard: ['◫', '运营总览'],
   leads: ['↗', '询盘与客户'],
   content: ['▤', '内容与素材'],
+  promotions: ['◇','今日促销'],
+  community: ['♡','工厂社区'],
   team: ['♧', '团队管理'],
   analytics: ['▥', '全球数据分析'],
   search: ['◎', '搜索表现'],
@@ -422,7 +426,29 @@ async function audit() {
     )}</section>`
   );
 }
+const feedbackStates = { pending:'待处理', approved:'已公开', rejected:'不公开 / 已处理' };
+async function promotionsPage() {
+ const d=await api(`promotions?offset=${state.offset}`); state.promotions=d.promotions.slice(0,50); state.promoProducts=d.products;
+ return heading('今日促销','每天或每周安排一款。以雅加达时间开始，自动结束；不会自动生成折扣。',button('新建促销','new-promotion','',true))+table(['产品 / 标题','价格 IDR','排期','状态','操作'],state.promotions.map(p=>[`${e(p.product_name)}<br>${e(p.title)}`,`${p.price.toLocaleString()}${p.regular_price?` <del>${p.regular_price.toLocaleString()}</del>`:''}`,`${e(new Intl.DateTimeFormat('zh-CN',{dateStyle:'medium',timeStyle:'short',timeZone:'Asia/Jakarta'}).format(new Date(p.starts_at)))} 至 ${e(new Intl.DateTimeFormat('zh-CN',{dateStyle:'medium',timeStyle:'short',timeZone:'Asia/Jakarta'}).format(new Date(p.ends_at)))} WIB`,e(p.state!=='published'?contentStates[p.state]:Date.parse(p.ends_at)<=Date.now()?'已到期':Date.parse(p.starts_at)>Date.now()?'已排期':'进行中'),button('编辑','promotion',p.id)]))+pagination(d.promotions.length>50);
+}
+function pagination(more){return `<div class="actions"><button class="btn" data-action="prev" ${state.offset?'':'disabled'}>上一页</button><button class="btn" data-action="next" ${more?'':'disabled'}>下一页</button></div>`;}
+function openPromotion(id){
+ const p=state.promotions.find(p=>p.id===id)||{}; state.editing=p;
+ const day=p.starts_at?new Date(Date.parse(p.starts_at)+7*3600000).toISOString().slice(0,10):new Date(Date.now()+7*3600000).toISOString().slice(0,10);
+ modal('促销排期',form('promotion',`<p class="notice">金额为整数印尼盾（IDR）。原价可留空，只填写真实原价。每日促销持续24小时，每周促销持续7天；从所选日期雅加达时间00:00开始。相邻周期可预先安排不同产品，时间不得重叠。</p><div class="form-grid">${select('产品','productId',Object.fromEntries(state.promoProducts.map(p=>[p.id,p.title])),p.product_id)}${field('印尼语促销标题','title',p.title||'Pilihan spesial untuk Anda','text',true)}${field('特价 IDR','price',p.price||'','number',true)}${field('真实原价 IDR（可留空）','regularPrice',p.regular_price||'','number')}${select('促销周期','cadence',{daily:'每日一款',weekly:'每周一款'},p.cadence||'daily')}${field('开始日期（WIB）','day',day,'date',true)}${select('状态','state',contentStates,p.state||'draft')}</div>`));
+}
+async function communityPage(){
+ const d=await api(`community?state=${state.feedbackState||'pending'}&offset=${state.offset}`);state.feedback=d.feedback;
+ return heading('工厂社区','先处理客户意见，再决定是否公开。正面、负面意见采用同样标准；不要公开联系方式、订单号或其他个人信息。')+`<label>筛选<select id="feedback-state">${options(feedbackStates,state.feedbackState||'pending')}</select></label>`+table(['客户 / 联系方式（不公开）','主题 / 原始意见','公开许可','操作'],d.feedback.map(p=>[`${e(p.display_name)}<br>${e(p.contact||'未留联系方式')}`,`${e(p.category)}<p style="white-space:pre-wrap">${e(p.message)}</p>`,p.consent_public?'客户同意公开':'仅反馈给工厂',button('查看与回复','feedback',p.id)]))+pagination(d.hasMore);
+}
+function openFeedback(id){
+ const p=state.feedback.find(p=>p.id===id);state.editing=p;
+ modal('处理客户意见',`<p><strong>${e(p.display_name)}</strong> · ${e(p.contact||'未留联系方式')}（联系方式不公开）</p><p style="white-space:pre-wrap">${e(p.message)}</p>`+form('feedback',`${select('处理状态','state',p.consent_public?feedbackStates:{pending:'待处理',rejected:'已处理（不公开）'},p.state)}${textarea('工厂回复（公开意见的回复也会公开；私密意见请用联系方式跟进）','reply',p.reply)}<p class="notice">${p.consent_public?'发布前确认意见和回复不含个人信息或垃圾广告。原始意见不可篡改；含私人信息时请联系客户重新提交。':'客户未同意公开，系统禁止发布。'}</p>`));
+}
+
 const renderers = {
+  promotions: promotionsPage,
+  community: communityPage,
   dashboard,
   leads,
   content,
@@ -569,6 +595,8 @@ document.addEventListener('click', async (event) => {
   const action = b.dataset.action,
     id = b.dataset.id;
   try {
+    if (action === 'promotion' || action === 'new-promotion') openPromotion(id);
+    if (action === 'feedback') openFeedback(id);
     if (action === 'refresh') await render();
     if (action === 'close') $('#editor').close();
     if (action === 'lead') await openLead(id);
@@ -586,6 +614,7 @@ document.addEventListener('click', async (event) => {
 });
 document.addEventListener('change', async (event) => {
   const t = event.target;
+  if (t.id === 'feedback-state') { state.feedbackState=t.value; state.offset=0; void render(); }
   if (t.id === 'period') {
     state.days = Number(t.value);
     void render();
@@ -643,6 +672,8 @@ document.addEventListener('submit', async (event) => {
   b.disabled = true;
   f.querySelector('.form-error').textContent = '';
   try {
+    if (action === 'promotion') await api('promotions',state.editing.id?'PATCH':'POST',{...d,id:state.editing.id,revision:state.editing.revision,price:Number(d.price),regularPrice:d.regularPrice?Number(d.regularPrice):null,startsAt:new Date(d.day+'T00:00:00+07:00').toISOString()});
+    if (action === 'feedback') await api('community','PATCH',{...d,id:state.editing.id,revision:state.editing.revision});
     if (action === 'lead')
       await api('leads', 'PATCH', {
         ...d,

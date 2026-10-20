@@ -11,6 +11,7 @@ import { composeBusinessInquiry, normalizeQuantityInput, type InquiryItem } from
 import { buyerTypes } from '@/lib/lead-validation';
 
 type Props = {
+  promotionContext?: string;
   products?: Product[];
   settings?: PublicSettings;
   open: boolean;
@@ -21,7 +22,7 @@ type Props = {
   onItemsChange: (items: InquiryItem[]) => void;
 };
 
-export function InquiryDialog({ open, onOpenChange, topic, onTopicChange, items, onItemsChange, products = initialProducts, settings }: Props) {
+export function InquiryDialog({ open, onOpenChange, topic, onTopicChange, items, onItemsChange, products = initialProducts, settings, promotionContext = '' }: Props) {
   const [customFields,setCustomFields]=useState<Record<string,string>>({});
   const [country,setCountry]=useState('Indonesia');
   const [company, setCompany] = useState('');
@@ -42,7 +43,8 @@ export function InquiryDialog({ open, onOpenChange, topic, onTopicChange, items,
   const [receipt, setReceipt] = useState<{ reference: string; message: string } | null>(null);
   const pendingRequest = useRef<{ serialized: string; key: string } | null>(null);
   const messageRef = useRef<HTMLTextAreaElement>(null);
-  const message = [name.trim() && `Nama kontak: ${name.trim()}`, contact.trim() && `${contactType}: ${contact.trim()}`, buyerType && `Jenis usaha: ${buyerType}`, country && `Negara: ${country}`, ...(settings?.extraFields||[]).map(f=>customFields[f.id]?`${f.label}: ${customFields[f.id]}`:''), composeBusinessInquiry({ topic, items, company, city, quantity, timeline, note },products)].filter(Boolean).join('\n\n');
+  const inquiryNote = [promotionContext,note].filter(Boolean).join('\n\n');
+  const message = [name.trim() && `Nama kontak: ${name.trim()}`, contact.trim() && `${contactType}: ${contact.trim()}`, buyerType && `Jenis usaha: ${buyerType}`, country && `Negara: ${country}`, ...(settings?.extraFields||[]).map(f=>customFields[f.id]?`${f.label}: ${customFields[f.id]}`:''), composeBusinessInquiry({ topic, items, company, city, quantity, timeline, note: inquiryNote },products)].filter(Boolean).join('\n\n');
   const whatsappUrl = getWhatsAppUrl(message);
   const selectedItems = topic === 'Grosir' ? items : [];
 
@@ -61,7 +63,7 @@ export function InquiryDialog({ open, onOpenChange, topic, onTopicChange, items,
   async function submitInquiry() {
     if (submittingRef.current) return;
     submittingRef.current = true; setSubmitting(true); setStatus('');
-    const details = { topic, name, contactType, contact, company, buyerType, city, country, customFields, analyticsSession:getAnalyticsSession(), quantity: selectedItems.length ? '' : quantity, timeline, note, items: selectedItems, consent, website };
+    const details = { topic, name, contactType, contact, company, buyerType, city, country, customFields, analyticsSession:getAnalyticsSession(), quantity: selectedItems.length ? '' : quantity, timeline, note: inquiryNote, items: selectedItems, consent, website };
     const serialized = JSON.stringify(details);
     if (!pendingRequest.current || pendingRequest.current.serialized !== serialized) pendingRequest.current = { serialized, key: crypto.randomUUID() };
     const abort = new AbortController();
@@ -114,7 +116,7 @@ export function InquiryDialog({ open, onOpenChange, topic, onTopicChange, items,
           <label htmlFor="lead-timeline">Target waktu <span>(opsional)</span><Input id="lead-timeline" value={timeline} onChange={e => setTimeline(e.target.value)} placeholder="Bulan / rencana kebutuhan" maxLength={100}/></label>
         </div>
         <div className="extra-inquiry-fields"><label htmlFor="lead-country">Negara / wilayah<Input id="lead-country" value={country} onChange={e=>setCountry(e.target.value)} maxLength={80} autoComplete="country-name"/></label>{settings?.extraFields.map(f=><label key={f.id} htmlFor={`lead-extra-${f.id}`}>{f.label}{f.required?' *':''}<Input id={`lead-extra-${f.id}`} value={customFields[f.id]||''} onChange={e=>setCustomFields(old=>({...old,[f.id]:e.target.value}))} required={f.required} maxLength={500}/></label>)}</div>
-        <label className="inquiry-note" htmlFor="lead-note">Kebutuhan Anda <span>{topic === 'OEM & Custom' ? '*' : '(opsional)'}</span><Textarea id="lead-note" required={topic === 'OEM & Custom'} minLength={topic === 'OEM & Custom' ? 10 : undefined} value={note} onChange={e => setNote(e.target.value)} placeholder={topic === 'OEM & Custom' ? 'Jelaskan desain, logo, material, dan kemasan (minimal 10 karakter)…' : 'Pilihan warna, kebutuhan toko, sampel, atau permintaan rekomendasi…'} maxLength={1500} rows={3}/></label>
+        {promotionContext && <p className="inquiry-note">{promotionContext}</p>}<label className="inquiry-note" htmlFor="lead-note">Kebutuhan Anda <span>{topic === 'OEM & Custom' ? '*' : '(opsional)'}</span><Textarea id="lead-note" required={topic === 'OEM & Custom'} minLength={topic === 'OEM & Custom' ? 10 : undefined} value={note} onChange={e => setNote(e.target.value)} placeholder={topic === 'OEM & Custom' ? 'Jelaskan desain, logo, material, dan kemasan (minimal 10 karakter)…' : 'Pilihan warna, kebutuhan toko, sampel, atau permintaan rekomendasi…'} maxLength={Math.max(0,1500-promotionContext.length-(promotionContext?2:0))} rows={3}/></label>
         <label className="inquiry-trap" aria-hidden="true">Website<Input tabIndex={-1} autoComplete="off" value={website} onChange={e => setWebsite(e.target.value)}/></label>
         </fieldset>
         <aside className="inquiry-review" aria-label="Ringkasan konsultasi">
