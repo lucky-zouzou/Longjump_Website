@@ -105,8 +105,8 @@ export function AnalyticsConsent() {
   return consent === null ? (
     <aside className="analytics-consent" aria-label="Pilihan statistik">
       <p>
-        Boleh kami menggunakan statistik kunjungan untuk membuat situs ini lebih nyaman?
-        Statistik tidak menyimpan alamat IP lengkap atau isi formulir Anda.{' '}
+        Boleh kami menggunakan statistik internal kunjungan untuk membuat situs ini lebih nyaman?
+        Statistik internal ini tidak menyimpan alamat IP lengkap atau isi formulir Anda. Informasi pengukuran iklan melalui Google Tag Manager tersedia di halaman privasi.{' '}
         <a href="/privasi">Privasi</a>
       </p>
       <div>
