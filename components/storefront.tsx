@@ -363,7 +363,7 @@ export default function Storefront({
             </Sheet>
           </div>
           <a className="wordmark" href="#home" aria-label="LOONG JUMP beranda">
-            LOONG JUMP<span>BETTER LIFE, EASY GOING</span>
+            <img className="brand-logo-image" src="/images/brand-logo.png" alt="LOONG JUMP" width="670" height="377" />
           </a>
           <div className="header-actions">
             <button
@@ -1067,7 +1067,7 @@ export default function Storefront({
       <footer className="footer">
         <div className="footer-main">
           <a className="wordmark" href="#home">
-            LOONG JUMP<span>BETTER LIFE, EASY GOING</span>
+            <img className="brand-logo-image" src="/images/brand-logo.png" alt="LOONG JUMP" width="670" height="377" />
           </a>
           <p>
             Pabrik lokal. Harga grosir.

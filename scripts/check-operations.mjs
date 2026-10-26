@@ -81,7 +81,7 @@ try {
       db
         .prepare("SELECT count(*) n FROM ops_content WHERE kind='product'")
         .get().n,
-      13,
+      50,
     );
   });
   await test('unauthenticated and cross-origin writes fail', async () => {
@@ -237,7 +237,7 @@ try {
         await call(
           'ops/content',
           'POST',
-          { ...input, id: '28692951139', kind: 'product', revision: 0 },
+          { ...input, id: '20500-white-f', kind: 'product', revision: 0 },
           { id: 'editor' },
         )
       ).status,

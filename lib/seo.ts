@@ -17,7 +17,7 @@ export const organizationId = `${siteUrl}/#organization`;
 export const organizationSchema = {
   '@type': 'Organization', '@id': organizationId,
   name: siteConfig.brandName, legalName: siteConfig.salesCompanyName,
-  url: siteUrl, logo: absoluteUrl('/favicon.svg'),
+  url: siteUrl, logo: absoluteUrl('/images/brand-logo.png'),
   email: siteConfig.businessEmail, telephone: siteConfig.phoneNumber,
   address: { '@type': 'PostalAddress', streetAddress: siteConfig.salesAddress, addressLocality: 'Jakarta Barat', addressCountry: 'ID' },
   sameAs: [siteConfig.shopUrl],

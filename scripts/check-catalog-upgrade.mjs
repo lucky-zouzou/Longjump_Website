@@ -1,0 +1,14 @@
+import assert from 'node:assert/strict';
+import { DatabaseSync } from 'node:sqlite';
+import { readFileSync, readdirSync } from 'node:fs';
+import { products } from '../lib/site-content.ts';
+const db = new DatabaseSync(':memory:');
+for (const name of readdirSync('drizzle').filter(n=>n.endsWith('.sql') && n!=='0003_owner_catalog.sql').sort()) db.exec(readFileSync(`drizzle/${name}`,'utf8'));
+db.exec("INSERT INTO ops_content(id,kind,title,state,updated_at) VALUES ('28692951139','product','Previous product','published','2026-10-25'),('editor-news','news','Keep news','published','2026-10-25')");
+db.exec(readFileSync('drizzle/0003_owner_catalog.sql','utf8'));
+assert.equal(db.prepare("SELECT COUNT(*) n FROM ops_content WHERE kind='product' AND state='published'").get().n,50);
+assert.equal(db.prepare("SELECT state FROM ops_content WHERE id='28692951139'").get().state,'draft');
+assert.equal(db.prepare("SELECT title FROM catalog_backup_20261026 WHERE id='28692951139'").get().title,'Previous product');
+assert.equal(db.prepare("SELECT state FROM ops_content WHERE id='editor-news'").get().state,'published');
+for (const p of products) assert.equal(db.prepare('SELECT media_url FROM ops_content WHERE id=?').get(p.id).media_url,p.image);
+console.log('Catalog upgrade passed: 50 images, old catalog recoverable, news unchanged.');
