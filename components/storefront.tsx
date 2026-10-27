@@ -46,6 +46,8 @@ import { CollectionPreview } from '@/components/collection-preview';
 import { collectionSeries, categoryLabels, filterCatalog } from '@/lib/catalog';
 import { HeroFilm } from '@/components/hero-film';
 import { BusinessContact } from '@/components/business-contact';
+import { BrandLogo } from '@/components/brand-logo';
+import { responsiveImage, catalogImageSizes } from '@/lib/images';
 import {
   CustomerChat,
   PublishedBanner,
@@ -363,7 +365,7 @@ export default function Storefront({
             </Sheet>
           </div>
           <a className="wordmark" href="#home" aria-label="LOONG JUMP beranda">
-            <img className="brand-logo-image" src="/images/brand-logo.png" alt="LOONG JUMP" width="670" height="377" />
+            <BrandLogo />
           </a>
           <div className="header-actions">
             <button
@@ -439,7 +441,7 @@ export default function Storefront({
           <div className="factory-hero-media">
             <figure className="factory-hero-photo">
               <img
-                src="/images/craft/artisan-heritage.webp"
+                {...responsiveImage('/images/craft/artisan-heritage.webp', '(max-width: 767px) 90vw, 50vw')}
                 width={1672}
                 height={941}
                 alt="Ilustrasi AI: tangan perajin menjahit detail tas kulit hijau dengan teliti"
@@ -690,7 +692,7 @@ export default function Storefront({
                         aria-haspopup="dialog"
                       >
                         <img
-                          src={item.image!}
+                          {...responsiveImage(item.image!, catalogImageSizes)}
                           alt={item.name}
                           width="1024"
                           height="1024"
@@ -943,7 +945,7 @@ export default function Storefront({
           </div>
           <figure className="oem-image oem-image-cba">
             <img
-              src="/images/craft/production-line.webp"
+              {...responsiveImage('/images/craft/production-line.webp', '(max-width: 767px) 90vw, 50vw')}
               width={1280}
               height={720}
               alt="Pengerjaan komponen tas pada meja produksi"
@@ -1004,7 +1006,7 @@ export default function Storefront({
         >
           <div className="about-image">
             <img
-              src="/images/brand-detail.jpg"
+              {...responsiveImage('/images/brand-detail.jpg', '(max-width: 767px) 90vw, 50vw')}
               alt="Simbol sayap LOONG JUMP berwarna emas pada detail tas bertekstur"
               width="2666"
               height="1499"
@@ -1067,7 +1069,7 @@ export default function Storefront({
       <footer className="footer">
         <div className="footer-main">
           <a className="wordmark" href="#home">
-            <img className="brand-logo-image" src="/images/brand-logo.png" alt="LOONG JUMP" width="670" height="377" />
+            <BrandLogo />
           </a>
           <p>
             Pabrik lokal. Harga grosir.

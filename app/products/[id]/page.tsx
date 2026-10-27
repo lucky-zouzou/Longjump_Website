@@ -4,6 +4,7 @@ import { notFound } from 'next/navigation';
 import { getLiveProducts } from '@/lib/server-catalog';
 import { getWhatsAppUrl } from '@/lib/site-content';
 import { categoryLabels } from '@/lib/catalog';
+import { responsiveImage, detailImageSizes } from '@/lib/images';
 import { pageMetadata, breadcrumbSchema, serializeJsonLd, absoluteUrl } from '@/lib/seo';
 export const dynamic = 'force-dynamic';
 type Props = { params: Promise<{ id: string }> };
@@ -26,7 +27,7 @@ export default async function ProductPage({ params }: Props) {
       <a href="/#koleksi">← Koleksi</a>
       <p className="eyebrow">{categoryLabels[p.category] || p.category}</p>
       <h1>{p.name}</h1>
-      {p.image && <img src={p.image} alt={p.name} />}
+      {p.image && <img {...responsiveImage(p.image, detailImageSizes)} alt={p.name} />}
       <div className="article-body">{p.description}</div>
       <p>
         REF. {p.id} · Tanyakan pilihan warna, ukuran, stok, dan harga kepada tim kami.

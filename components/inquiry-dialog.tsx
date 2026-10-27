@@ -9,6 +9,7 @@ import { getWhatsAppUrl, products as initialProducts, siteConfig, type Product, 
 import { getAnalyticsSession, type PublicSettings } from '@/components/operations-public';
 import { composeBusinessInquiry, normalizeQuantityInput, type InquiryItem } from '@/lib/inquiry';
 import { buyerTypes } from '@/lib/lead-validation';
+import { responsiveImage } from '@/lib/images';
 
 type Props = {
   promotionContext?: string;
@@ -96,7 +97,7 @@ export function InquiryDialog({ open, onOpenChange, topic, onTopicChange, items,
             const product = products.find(p => p.id === item.productId);
             if(!product)return null;
             return <div className="selection-row" key={item.productId}>
-              {product.image && <img src={product.image} width="62" height="62" alt=""/>}
+              {product.image && <img {...responsiveImage(product.image, '62px')} width="62" height="62" alt=""/>}
               <div className="selection-item-copy"><h3>{product.name}</h3><div className="quantity-control"><button type="button" aria-label={`Kurangi jumlah ${product.name}`} disabled={Number(item.quantity) <= 1} onClick={() => updateQuantity(item.productId, String(Math.max(1, Number(item.quantity) - 1)))}><Minus size={14}/></button><Input aria-label={`Jumlah ${product.name} dalam pcs`} type="number" inputMode="numeric" required min="1" max="1000000" step="1" value={item.quantity} onChange={e => updateQuantity(item.productId, e.target.value)}/><button type="button" aria-label={`Tambah jumlah ${product.name}`} disabled={Number(item.quantity) >= 1000000} onClick={() => updateQuantity(item.productId, String(Math.min(1000000, Number(item.quantity) + 1)))}><Plus size={14}/></button><span>pcs</span></div></div>
               <button type="button" className="remove-selection" aria-label={`Hapus ${product.name} dari daftar`} onClick={() => onItemsChange(items.filter(row => row.productId !== item.productId))}><X size={17}/></button>
             </div>;

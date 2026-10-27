@@ -1,4 +1,6 @@
 'use client';
+
+import { responsiveImage } from '@/lib/images';
 import { useEffect, useState, type SubmitEvent } from 'react';
 type Promotion = {
   id: string;
@@ -99,7 +101,7 @@ export function DailyPromotion({
       {promo ? (
         <article className="promo-product">
           {promo.image && (
-            <img src={promo.image} alt={promo.product_name} loading="lazy" />
+            <img {...responsiveImage(promo.image, '(max-width: 767px) 90vw, 480px')} alt={promo.product_name} loading="lazy" />
           )}
           <div>
             <span className="promo-badge">

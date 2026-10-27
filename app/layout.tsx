@@ -18,7 +18,7 @@ export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: 'LOONG JUMP | Pabrik Tas Yogyakarta, Grosir & OEM',
   description: 'Tas dari pabrik di Yogyakarta. Belanja grosir mulai 1 pcs atau kembangkan koleksi tas custom untuk brand Anda bersama LOONG JUMP.',
-  icons: { icon: '/favicon.svg' },
+  icons: { icon: '/favicon-20261027.png', apple: '/apple-touch-icon-20261027.png' },
 };
 export default function RootLayout({children}: Readonly<{children: React.ReactNode}>) {
   return <html lang="id">

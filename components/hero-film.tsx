@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from 'react';
 import { Pause, Play } from 'lucide-react';
+import { responsiveImage } from '@/lib/images';
 
 type ConnectionPreference = { saveData?: boolean };
 const portraitFilmQuery = '(max-width: 760px) and (orientation: portrait)';
@@ -95,12 +96,12 @@ export function HeroFilm() {
 
   return <>
     <div className="hero-visual" ref={visualRef} aria-hidden="true">
-      <img src="/images/hero.jpg" width="2666" height="1499" alt="" fetchPriority="high"/>
+      <img {...responsiveImage('/images/hero.jpg', '(max-width: 767px) 100vw, 60vw')} alt="" fetchPriority="high"/>
       <video
         id="hero-brand-film"
         ref={videoRef}
         className={`hero-film${hasFrame ? ' is-ready' : ''}`}
-        poster="/images/hero.jpg"
+        poster={responsiveImage('/images/hero.jpg', '100vw').src}
         muted
         loop
         playsInline

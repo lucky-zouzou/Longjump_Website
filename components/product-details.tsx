@@ -3,6 +3,7 @@
 import { ArrowUpRight, Check, MessageCircle, Plus } from 'lucide-react';
 import { Dialog, DialogContent, DialogDescription, DialogTitle } from '@/components/ui/dialog';
 import { products as initialProducts, type Product } from '@/lib/site-content';
+import { responsiveImage, detailImageSizes } from '@/lib/images';
 
 export function ProductDetails({ productId, selected, onClose, onAdd, onInquiry, products = initialProducts }: {
   products?: Product[];
@@ -14,7 +15,7 @@ export function ProductDetails({ productId, selected, onClose, onAdd, onInquiry,
 }) {
   const product = products.find(item => item.id === productId);
   return <Dialog open={!!product} onOpenChange={open => { if (!open) onClose(); }}><DialogContent className={`product-dialog ${product?.image ? '' : 'product-dialog-reference'}`}>{product && <>
-    {product.image && <div className="product-detail-image"><img src={product.image} alt={product.name} width="1024" height="1024"/></div>}
+    {product.image && <div className="product-detail-image"><img {...responsiveImage(product.image, detailImageSizes)} alt={product.name}/></div>}
     <div className="product-detail-copy"><p className="eyebrow">{product.category}</p><DialogTitle className="product-detail-title">{product.name}</DialogTitle><DialogDescription className="product-detail-description">{product.description}</DialogDescription>
       <dl className="product-detail-facts"><div><dt>Referensi produk</dt><dd>{product.id}</dd></div><div><dt>Grosir</dt><dd>Mulai 1 pcs</dd></div><div><dt>Pengiriman</dt><dd>Dari Indonesia</dd></div><div><dt>Warna & spesifikasi</dt><dd>Dikonfirmasi saat konsultasi</dd></div></dl>
       <p className="product-detail-note">Tanyakan material, ukuran, pilihan warna, stok, dan harga untuk kebutuhan toko Anda.</p>

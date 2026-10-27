@@ -1,9 +1,11 @@
 import type { Metadata } from 'next';
 import { siteConfig } from './site-content';
+import { brandLogo, responsiveImage } from './images';
 
 export const siteUrl = 'https://loongjump.com';
 export const absoluteUrl = (path: string) => new URL(path, siteUrl).toString();
 export function pageMetadata(title: string, description: string, path: string, image = '/images/brand-detail.jpg'): Metadata {
+  image = responsiveImage(image, '100vw').src;
   return {
     title, description,
     alternates: { canonical: absoluteUrl(path) },
@@ -17,7 +19,7 @@ export const organizationId = `${siteUrl}/#organization`;
 export const organizationSchema = {
   '@type': 'Organization', '@id': organizationId,
   name: siteConfig.brandName, legalName: siteConfig.salesCompanyName,
-  url: siteUrl, logo: absoluteUrl('/images/brand-logo.png'),
+  url: siteUrl, logo: absoluteUrl(brandLogo),
   email: siteConfig.businessEmail, telephone: siteConfig.phoneNumber,
   address: { '@type': 'PostalAddress', streetAddress: siteConfig.salesAddress, addressLocality: 'Jakarta Barat', addressCountry: 'ID' },
   sameAs: [siteConfig.shopUrl],

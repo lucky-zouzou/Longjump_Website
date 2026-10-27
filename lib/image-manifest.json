@@ -1,0 +1,1308 @@
+{
+  "/images/brand-detail.jpg": {
+    "width": 2666,
+    "height": 1499,
+    "variants": [
+      {
+        "width": 640,
+        "src": "/images/optimized-20261027/brand-detail-640.webp"
+      },
+      {
+        "width": 1280,
+        "src": "/images/optimized-20261027/brand-detail-1280.webp"
+      }
+    ]
+  },
+  "/images/fashion-shoulder-bag.jpg": {
+    "width": 1024,
+    "height": 1024,
+    "variants": [
+      {
+        "width": 640,
+        "src": "/images/optimized-20261027/fashion-shoulder-bag-640.webp"
+      },
+      {
+        "width": 1024,
+        "src": "/images/optimized-20261027/fashion-shoulder-bag-1024.webp"
+      }
+    ]
+  },
+  "/images/hero.jpg": {
+    "width": 2666,
+    "height": 1499,
+    "variants": [
+      {
+        "width": 640,
+        "src": "/images/optimized-20261027/hero-640.webp"
+      },
+      {
+        "width": 1280,
+        "src": "/images/optimized-20261027/hero-1280.webp"
+      }
+    ]
+  },
+  "/images/korea-tote-bag.jpg": {
+    "width": 1024,
+    "height": 1024,
+    "variants": [
+      {
+        "width": 640,
+        "src": "/images/optimized-20261027/korea-tote-bag-640.webp"
+      },
+      {
+        "width": 1024,
+        "src": "/images/optimized-20261027/korea-tote-bag-1024.webp"
+      }
+    ]
+  },
+  "/images/printed-hobo-bag.jpg": {
+    "width": 1024,
+    "height": 1024,
+    "variants": [
+      {
+        "width": 640,
+        "src": "/images/optimized-20261027/printed-hobo-bag-640.webp"
+      },
+      {
+        "width": 1024,
+        "src": "/images/optimized-20261027/printed-hobo-bag-1024.webp"
+      }
+    ]
+  },
+  "/images/soft-shoulder-bag.jpg": {
+    "width": 1024,
+    "height": 1024,
+    "variants": [
+      {
+        "width": 640,
+        "src": "/images/optimized-20261027/soft-shoulder-bag-640.webp"
+      },
+      {
+        "width": 1024,
+        "src": "/images/optimized-20261027/soft-shoulder-bag-1024.webp"
+      }
+    ]
+  },
+  "/images/stitching.jpg": {
+    "width": 864,
+    "height": 1152,
+    "variants": [
+      {
+        "width": 640,
+        "src": "/images/optimized-20261027/stitching-640.webp"
+      },
+      {
+        "width": 864,
+        "src": "/images/optimized-20261027/stitching-864.webp"
+      }
+    ]
+  },
+  "/images/factory-cba/01-gate-brand.webp": {
+    "width": 1672,
+    "height": 941,
+    "variants": [
+      {
+        "width": 640,
+        "src": "/images/optimized-20261027/factory-cba/01-gate-brand-640.webp"
+      },
+      {
+        "width": 1280,
+        "src": "/images/optimized-20261027/factory-cba/01-gate-brand-1280.webp"
+      }
+    ]
+  },
+  "/images/factory-cba/02-courtyard-office.webp": {
+    "width": 1672,
+    "height": 941,
+    "variants": [
+      {
+        "width": 640,
+        "src": "/images/optimized-20261027/factory-cba/02-courtyard-office-640.webp"
+      },
+      {
+        "width": 1280,
+        "src": "/images/optimized-20261027/factory-cba/02-courtyard-office-1280.webp"
+      }
+    ]
+  },
+  "/images/factory-cba/03-dispatch-logistics.webp": {
+    "width": 1672,
+    "height": 941,
+    "variants": [
+      {
+        "width": 640,
+        "src": "/images/optimized-20261027/factory-cba/03-dispatch-logistics-640.webp"
+      },
+      {
+        "width": 1280,
+        "src": "/images/optimized-20261027/factory-cba/03-dispatch-logistics-1280.webp"
+      }
+    ]
+  },
+  "/images/factory-cba/04-production-overview.webp": {
+    "width": 1672,
+    "height": 941,
+    "variants": [
+      {
+        "width": 640,
+        "src": "/images/optimized-20261027/factory-cba/04-production-overview-640.webp"
+      },
+      {
+        "width": 1280,
+        "src": "/images/optimized-20261027/factory-cba/04-production-overview-1280.webp"
+      }
+    ]
+  },
+  "/images/factory-cba/05-cutting-preparation.webp": {
+    "width": 1672,
+    "height": 941,
+    "variants": [
+      {
+        "width": 640,
+        "src": "/images/optimized-20261027/factory-cba/05-cutting-preparation-640.webp"
+      },
+      {
+        "width": 1280,
+        "src": "/images/optimized-20261027/factory-cba/05-cutting-preparation-1280.webp"
+      }
+    ]
+  },
+  "/images/factory-cba/06-sewing-line.webp": {
+    "width": 1672,
+    "height": 941,
+    "variants": [
+      {
+        "width": 640,
+        "src": "/images/optimized-20261027/factory-cba/06-sewing-line-640.webp"
+      },
+      {
+        "width": 1280,
+        "src": "/images/optimized-20261027/factory-cba/06-sewing-line-1280.webp"
+      }
+    ]
+  },
+  "/images/factory-cba/07-assembly-workflow.webp": {
+    "width": 1672,
+    "height": 941,
+    "variants": [
+      {
+        "width": 640,
+        "src": "/images/optimized-20261027/factory-cba/07-assembly-workflow-640.webp"
+      },
+      {
+        "width": 1280,
+        "src": "/images/optimized-20261027/factory-cba/07-assembly-workflow-1280.webp"
+      }
+    ]
+  },
+  "/images/factory-cba/08-quality-control.webp": {
+    "width": 1672,
+    "height": 941,
+    "variants": [
+      {
+        "width": 640,
+        "src": "/images/optimized-20261027/factory-cba/08-quality-control-640.webp"
+      },
+      {
+        "width": 1280,
+        "src": "/images/optimized-20261027/factory-cba/08-quality-control-1280.webp"
+      }
+    ]
+  },
+  "/images/factory-cba/09-warehouse-inventory.webp": {
+    "width": 1672,
+    "height": 941,
+    "variants": [
+      {
+        "width": 640,
+        "src": "/images/optimized-20261027/factory-cba/09-warehouse-inventory-640.webp"
+      },
+      {
+        "width": 1280,
+        "src": "/images/optimized-20261027/factory-cba/09-warehouse-inventory-1280.webp"
+      }
+    ]
+  },
+  "/images/factory-cba/10-team-management.webp": {
+    "width": 1672,
+    "height": 941,
+    "variants": [
+      {
+        "width": 640,
+        "src": "/images/optimized-20261027/factory-cba/10-team-management-640.webp"
+      },
+      {
+        "width": 1280,
+        "src": "/images/optimized-20261027/factory-cba/10-team-management-1280.webp"
+      }
+    ]
+  },
+  "/images/factory/exterior-concept.webp": {
+    "width": 1536,
+    "height": 1024,
+    "variants": [
+      {
+        "width": 640,
+        "src": "/images/optimized-20261027/factory/exterior-concept-640.webp"
+      },
+      {
+        "width": 1280,
+        "src": "/images/optimized-20261027/factory/exterior-concept-1280.webp"
+      }
+    ]
+  },
+  "/images/factory/materials-concept.webp": {
+    "width": 1536,
+    "height": 1024,
+    "variants": [
+      {
+        "width": 640,
+        "src": "/images/optimized-20261027/factory/materials-concept-640.webp"
+      },
+      {
+        "width": 1280,
+        "src": "/images/optimized-20261027/factory/materials-concept-1280.webp"
+      }
+    ]
+  },
+  "/images/factory/packing-concept.webp": {
+    "width": 1536,
+    "height": 1024,
+    "variants": [
+      {
+        "width": 640,
+        "src": "/images/optimized-20261027/factory/packing-concept-640.webp"
+      },
+      {
+        "width": 1280,
+        "src": "/images/optimized-20261027/factory/packing-concept-1280.webp"
+      }
+    ]
+  },
+  "/images/factory/quality-concept.webp": {
+    "width": 1536,
+    "height": 1024,
+    "variants": [
+      {
+        "width": 640,
+        "src": "/images/optimized-20261027/factory/quality-concept-640.webp"
+      },
+      {
+        "width": 1280,
+        "src": "/images/optimized-20261027/factory/quality-concept-1280.webp"
+      }
+    ]
+  },
+  "/images/factory/sample-concept.webp": {
+    "width": 1536,
+    "height": 1024,
+    "variants": [
+      {
+        "width": 640,
+        "src": "/images/optimized-20261027/factory/sample-concept-640.webp"
+      },
+      {
+        "width": 1280,
+        "src": "/images/optimized-20261027/factory/sample-concept-1280.webp"
+      }
+    ]
+  },
+  "/images/factory/sewing-concept.webp": {
+    "width": 1536,
+    "height": 1024,
+    "variants": [
+      {
+        "width": 640,
+        "src": "/images/optimized-20261027/factory/sewing-concept-640.webp"
+      },
+      {
+        "width": 1280,
+        "src": "/images/optimized-20261027/factory/sewing-concept-1280.webp"
+      }
+    ]
+  },
+  "/images/craft/artisan-heritage.png": {
+    "width": 1672,
+    "height": 941,
+    "variants": [
+      {
+        "width": 640,
+        "src": "/images/optimized-20261027/craft/artisan-heritage-640.webp"
+      },
+      {
+        "width": 1280,
+        "src": "/images/optimized-20261027/craft/artisan-heritage-1280.webp"
+      }
+    ]
+  },
+  "/images/craft/artisan-heritage.webp": {
+    "width": 1672,
+    "height": 941,
+    "variants": [
+      {
+        "width": 640,
+        "src": "/images/optimized-20261027/craft/artisan-heritage-640.webp"
+      },
+      {
+        "width": 1280,
+        "src": "/images/optimized-20261027/craft/artisan-heritage-1280.webp"
+      }
+    ]
+  },
+  "/images/craft/production-line.webp": {
+    "width": 1280,
+    "height": 720,
+    "variants": [
+      {
+        "width": 640,
+        "src": "/images/optimized-20261027/craft/production-line-640.webp"
+      },
+      {
+        "width": 1280,
+        "src": "/images/optimized-20261027/craft/production-line-1280.webp"
+      }
+    ]
+  },
+  "/images/craft/stitching-detail.webp": {
+    "width": 1280,
+    "height": 720,
+    "variants": [
+      {
+        "width": 640,
+        "src": "/images/optimized-20261027/craft/stitching-detail-640.webp"
+      },
+      {
+        "width": 1280,
+        "src": "/images/optimized-20261027/craft/stitching-detail-1280.webp"
+      }
+    ]
+  },
+  "/images/craft/workshop-overview.webp": {
+    "width": 1280,
+    "height": 720,
+    "variants": [
+      {
+        "width": 640,
+        "src": "/images/optimized-20261027/craft/workshop-overview-640.webp"
+      },
+      {
+        "width": 1280,
+        "src": "/images/optimized-20261027/craft/workshop-overview-1280.webp"
+      }
+    ]
+  },
+  "/images/catalog/mini-travel-backpack.jpg": {
+    "width": 1024,
+    "height": 1024,
+    "variants": [
+      {
+        "width": 640,
+        "src": "/images/optimized-20261027/catalog/mini-travel-backpack-640.webp"
+      },
+      {
+        "width": 1024,
+        "src": "/images/optimized-20261027/catalog/mini-travel-backpack-1024.webp"
+      }
+    ]
+  },
+  "/images/catalog/owner-20261026/20500-WHITE-F.jpg": {
+    "width": 1500,
+    "height": 1500,
+    "variants": [
+      {
+        "width": 320,
+        "src": "/images/optimized-20261027/catalog/owner-20261026/20500-WHITE-F-320.webp"
+      },
+      {
+        "width": 640,
+        "src": "/images/optimized-20261027/catalog/owner-20261026/20500-WHITE-F-640.webp"
+      },
+      {
+        "width": 960,
+        "src": "/images/optimized-20261027/catalog/owner-20261026/20500-WHITE-F-960.webp"
+      }
+    ]
+  },
+  "/images/catalog/owner-20261026/20500.jpg": {
+    "width": 1500,
+    "height": 1500,
+    "variants": [
+      {
+        "width": 320,
+        "src": "/images/optimized-20261027/catalog/owner-20261026/20500-320.webp"
+      },
+      {
+        "width": 640,
+        "src": "/images/optimized-20261027/catalog/owner-20261026/20500-640.webp"
+      },
+      {
+        "width": 960,
+        "src": "/images/optimized-20261027/catalog/owner-20261026/20500-960.webp"
+      }
+    ]
+  },
+  "/images/catalog/owner-20261026/2341-BLACK-M.jpg": {
+    "width": 1500,
+    "height": 1500,
+    "variants": [
+      {
+        "width": 320,
+        "src": "/images/optimized-20261027/catalog/owner-20261026/2341-BLACK-M-320.webp"
+      },
+      {
+        "width": 640,
+        "src": "/images/optimized-20261027/catalog/owner-20261026/2341-BLACK-M-640.webp"
+      },
+      {
+        "width": 960,
+        "src": "/images/optimized-20261027/catalog/owner-20261026/2341-BLACK-M-960.webp"
+      }
+    ]
+  },
+  "/images/catalog/owner-20261026/241221-GREY-F.jpg": {
+    "width": 1500,
+    "height": 1500,
+    "variants": [
+      {
+        "width": 320,
+        "src": "/images/optimized-20261027/catalog/owner-20261026/241221-GREY-F-320.webp"
+      },
+      {
+        "width": 640,
+        "src": "/images/optimized-20261027/catalog/owner-20261026/241221-GREY-F-640.webp"
+      },
+      {
+        "width": 960,
+        "src": "/images/optimized-20261027/catalog/owner-20261026/241221-GREY-F-960.webp"
+      }
+    ]
+  },
+  "/images/catalog/owner-20261026/2419-BLACK-M.jpg": {
+    "width": 1500,
+    "height": 1500,
+    "variants": [
+      {
+        "width": 320,
+        "src": "/images/optimized-20261027/catalog/owner-20261026/2419-BLACK-M-320.webp"
+      },
+      {
+        "width": 640,
+        "src": "/images/optimized-20261027/catalog/owner-20261026/2419-BLACK-M-640.webp"
+      },
+      {
+        "width": 960,
+        "src": "/images/optimized-20261027/catalog/owner-20261026/2419-BLACK-M-960.webp"
+      }
+    ]
+  },
+  "/images/catalog/owner-20261026/250218-KHAKI-L-SJ.jpg": {
+    "width": 1500,
+    "height": 1500,
+    "variants": [
+      {
+        "width": 320,
+        "src": "/images/optimized-20261027/catalog/owner-20261026/250218-KHAKI-L-SJ-320.webp"
+      },
+      {
+        "width": 640,
+        "src": "/images/optimized-20261027/catalog/owner-20261026/250218-KHAKI-L-SJ-640.webp"
+      },
+      {
+        "width": 960,
+        "src": "/images/optimized-20261027/catalog/owner-20261026/250218-KHAKI-L-SJ-960.webp"
+      }
+    ]
+  },
+  "/images/catalog/owner-20261026/3330-PIN-S.jpg": {
+    "width": 1500,
+    "height": 1500,
+    "variants": [
+      {
+        "width": 320,
+        "src": "/images/optimized-20261027/catalog/owner-20261026/3330-PIN-S-320.webp"
+      },
+      {
+        "width": 640,
+        "src": "/images/optimized-20261027/catalog/owner-20261026/3330-PIN-S-640.webp"
+      },
+      {
+        "width": 960,
+        "src": "/images/optimized-20261027/catalog/owner-20261026/3330-PIN-S-960.webp"
+      }
+    ]
+  },
+  "/images/catalog/owner-20261026/6187-BLACK-S.jpg": {
+    "width": 1500,
+    "height": 1500,
+    "variants": [
+      {
+        "width": 320,
+        "src": "/images/optimized-20261027/catalog/owner-20261026/6187-BLACK-S-320.webp"
+      },
+      {
+        "width": 640,
+        "src": "/images/optimized-20261027/catalog/owner-20261026/6187-BLACK-S-640.webp"
+      },
+      {
+        "width": 960,
+        "src": "/images/optimized-20261027/catalog/owner-20261026/6187-BLACK-S-960.webp"
+      }
+    ]
+  },
+  "/images/catalog/owner-20261026/6602-BROWN-M.jpg": {
+    "width": 1500,
+    "height": 1500,
+    "variants": [
+      {
+        "width": 320,
+        "src": "/images/optimized-20261027/catalog/owner-20261026/6602-BROWN-M-320.webp"
+      },
+      {
+        "width": 640,
+        "src": "/images/optimized-20261027/catalog/owner-20261026/6602-BROWN-M-640.webp"
+      },
+      {
+        "width": 960,
+        "src": "/images/optimized-20261027/catalog/owner-20261026/6602-BROWN-M-960.webp"
+      }
+    ]
+  },
+  "/images/catalog/owner-20261026/6815-BROMW-S.jpg": {
+    "width": 1500,
+    "height": 1500,
+    "variants": [
+      {
+        "width": 320,
+        "src": "/images/optimized-20261027/catalog/owner-20261026/6815-BROMW-S-320.webp"
+      },
+      {
+        "width": 640,
+        "src": "/images/optimized-20261027/catalog/owner-20261026/6815-BROMW-S-640.webp"
+      },
+      {
+        "width": 960,
+        "src": "/images/optimized-20261027/catalog/owner-20261026/6815-BROMW-S-960.webp"
+      }
+    ]
+  },
+  "/images/catalog/owner-20261026/9655-WHITE-F.jpg": {
+    "width": 1500,
+    "height": 1500,
+    "variants": [
+      {
+        "width": 320,
+        "src": "/images/optimized-20261027/catalog/owner-20261026/9655-WHITE-F-320.webp"
+      },
+      {
+        "width": 640,
+        "src": "/images/optimized-20261027/catalog/owner-20261026/9655-WHITE-F-640.webp"
+      },
+      {
+        "width": 960,
+        "src": "/images/optimized-20261027/catalog/owner-20261026/9655-WHITE-F-960.webp"
+      }
+    ]
+  },
+  "/images/catalog/owner-20261026/9750-BLACK-F.jpg": {
+    "width": 1500,
+    "height": 1500,
+    "variants": [
+      {
+        "width": 320,
+        "src": "/images/optimized-20261027/catalog/owner-20261026/9750-BLACK-F-320.webp"
+      },
+      {
+        "width": 640,
+        "src": "/images/optimized-20261027/catalog/owner-20261026/9750-BLACK-F-640.webp"
+      },
+      {
+        "width": 960,
+        "src": "/images/optimized-20261027/catalog/owner-20261026/9750-BLACK-F-960.webp"
+      }
+    ]
+  },
+  "/images/catalog/owner-20261026/B00101-1-WineRed-L.jpg": {
+    "width": 1500,
+    "height": 1500,
+    "variants": [
+      {
+        "width": 320,
+        "src": "/images/optimized-20261027/catalog/owner-20261026/B00101-1-WineRed-L-320.webp"
+      },
+      {
+        "width": 640,
+        "src": "/images/optimized-20261027/catalog/owner-20261026/B00101-1-WineRed-L-640.webp"
+      },
+      {
+        "width": 960,
+        "src": "/images/optimized-20261027/catalog/owner-20261026/B00101-1-WineRed-L-960.webp"
+      }
+    ]
+  },
+  "/images/catalog/owner-20261026/B00101-2-WineRed-M.jpg": {
+    "width": 1500,
+    "height": 1500,
+    "variants": [
+      {
+        "width": 320,
+        "src": "/images/optimized-20261027/catalog/owner-20261026/B00101-2-WineRed-M-320.webp"
+      },
+      {
+        "width": 640,
+        "src": "/images/optimized-20261027/catalog/owner-20261026/B00101-2-WineRed-M-640.webp"
+      },
+      {
+        "width": 960,
+        "src": "/images/optimized-20261027/catalog/owner-20261026/B00101-2-WineRed-M-960.webp"
+      }
+    ]
+  },
+  "/images/catalog/owner-20261026/B00102-2-WineRed-M.jpg": {
+    "width": 1500,
+    "height": 1500,
+    "variants": [
+      {
+        "width": 320,
+        "src": "/images/optimized-20261027/catalog/owner-20261026/B00102-2-WineRed-M-320.webp"
+      },
+      {
+        "width": 640,
+        "src": "/images/optimized-20261027/catalog/owner-20261026/B00102-2-WineRed-M-640.webp"
+      },
+      {
+        "width": 960,
+        "src": "/images/optimized-20261027/catalog/owner-20261026/B00102-2-WineRed-M-960.webp"
+      }
+    ]
+  },
+  "/images/catalog/owner-20261026/B00102-3-WineRed-S.jpg": {
+    "width": 1500,
+    "height": 1500,
+    "variants": [
+      {
+        "width": 320,
+        "src": "/images/optimized-20261027/catalog/owner-20261026/B00102-3-WineRed-S-320.webp"
+      },
+      {
+        "width": 640,
+        "src": "/images/optimized-20261027/catalog/owner-20261026/B00102-3-WineRed-S-640.webp"
+      },
+      {
+        "width": 960,
+        "src": "/images/optimized-20261027/catalog/owner-20261026/B00102-3-WineRed-S-960.webp"
+      }
+    ]
+  },
+  "/images/catalog/owner-20261026/B00103-3-WineRed-F.jpg": {
+    "width": 1500,
+    "height": 1500,
+    "variants": [
+      {
+        "width": 320,
+        "src": "/images/optimized-20261027/catalog/owner-20261026/B00103-3-WineRed-F-320.webp"
+      },
+      {
+        "width": 640,
+        "src": "/images/optimized-20261027/catalog/owner-20261026/B00103-3-WineRed-F-640.webp"
+      },
+      {
+        "width": 960,
+        "src": "/images/optimized-20261027/catalog/owner-20261026/B00103-3-WineRed-F-960.webp"
+      }
+    ]
+  },
+  "/images/catalog/owner-20261026/DS-12-BLACK-M.jpg": {
+    "width": 1500,
+    "height": 1500,
+    "variants": [
+      {
+        "width": 320,
+        "src": "/images/optimized-20261027/catalog/owner-20261026/DS-12-BLACK-M-320.webp"
+      },
+      {
+        "width": 640,
+        "src": "/images/optimized-20261027/catalog/owner-20261026/DS-12-BLACK-M-640.webp"
+      },
+      {
+        "width": 960,
+        "src": "/images/optimized-20261027/catalog/owner-20261026/DS-12-BLACK-M-960.webp"
+      }
+    ]
+  },
+  "/images/catalog/owner-20261026/DS-13-BEIGE-S.jpg": {
+    "width": 1500,
+    "height": 1500,
+    "variants": [
+      {
+        "width": 320,
+        "src": "/images/optimized-20261027/catalog/owner-20261026/DS-13-BEIGE-S-320.webp"
+      },
+      {
+        "width": 640,
+        "src": "/images/optimized-20261027/catalog/owner-20261026/DS-13-BEIGE-S-640.webp"
+      },
+      {
+        "width": 960,
+        "src": "/images/optimized-20261027/catalog/owner-20261026/DS-13-BEIGE-S-960.webp"
+      }
+    ]
+  },
+  "/images/catalog/owner-20261026/DS-15-BEIGE-S.jpg": {
+    "width": 1500,
+    "height": 1500,
+    "variants": [
+      {
+        "width": 320,
+        "src": "/images/optimized-20261027/catalog/owner-20261026/DS-15-BEIGE-S-320.webp"
+      },
+      {
+        "width": 640,
+        "src": "/images/optimized-20261027/catalog/owner-20261026/DS-15-BEIGE-S-640.webp"
+      },
+      {
+        "width": 960,
+        "src": "/images/optimized-20261027/catalog/owner-20261026/DS-15-BEIGE-S-960.webp"
+      }
+    ]
+  },
+  "/images/catalog/owner-20261026/DS-17-BLACK-L.jpg": {
+    "width": 1500,
+    "height": 1500,
+    "variants": [
+      {
+        "width": 320,
+        "src": "/images/optimized-20261027/catalog/owner-20261026/DS-17-BLACK-L-320.webp"
+      },
+      {
+        "width": 640,
+        "src": "/images/optimized-20261027/catalog/owner-20261026/DS-17-BLACK-L-640.webp"
+      },
+      {
+        "width": 960,
+        "src": "/images/optimized-20261027/catalog/owner-20261026/DS-17-BLACK-L-960.webp"
+      }
+    ]
+  },
+  "/images/catalog/owner-20261026/DS-19-BLACK-M.jpg": {
+    "width": 1500,
+    "height": 1500,
+    "variants": [
+      {
+        "width": 320,
+        "src": "/images/optimized-20261027/catalog/owner-20261026/DS-19-BLACK-M-320.webp"
+      },
+      {
+        "width": 640,
+        "src": "/images/optimized-20261027/catalog/owner-20261026/DS-19-BLACK-M-640.webp"
+      },
+      {
+        "width": 960,
+        "src": "/images/optimized-20261027/catalog/owner-20261026/DS-19-BLACK-M-960.webp"
+      }
+    ]
+  },
+  "/images/catalog/owner-20261026/DS-4-BEIGE-S.jpg": {
+    "width": 1500,
+    "height": 1500,
+    "variants": [
+      {
+        "width": 320,
+        "src": "/images/optimized-20261027/catalog/owner-20261026/DS-4-BEIGE-S-320.webp"
+      },
+      {
+        "width": 640,
+        "src": "/images/optimized-20261027/catalog/owner-20261026/DS-4-BEIGE-S-640.webp"
+      },
+      {
+        "width": 960,
+        "src": "/images/optimized-20261027/catalog/owner-20261026/DS-4-BEIGE-S-960.webp"
+      }
+    ]
+  },
+  "/images/catalog/owner-20261026/DS-6-BEIGE-M.jpg": {
+    "width": 1500,
+    "height": 1500,
+    "variants": [
+      {
+        "width": 320,
+        "src": "/images/optimized-20261027/catalog/owner-20261026/DS-6-BEIGE-M-320.webp"
+      },
+      {
+        "width": 640,
+        "src": "/images/optimized-20261027/catalog/owner-20261026/DS-6-BEIGE-M-640.webp"
+      },
+      {
+        "width": 960,
+        "src": "/images/optimized-20261027/catalog/owner-20261026/DS-6-BEIGE-M-960.webp"
+      }
+    ]
+  },
+  "/images/catalog/owner-20261026/DS-8-BEIGE-L.jpg": {
+    "width": 1500,
+    "height": 1500,
+    "variants": [
+      {
+        "width": 320,
+        "src": "/images/optimized-20261027/catalog/owner-20261026/DS-8-BEIGE-L-320.webp"
+      },
+      {
+        "width": 640,
+        "src": "/images/optimized-20261027/catalog/owner-20261026/DS-8-BEIGE-L-640.webp"
+      },
+      {
+        "width": 960,
+        "src": "/images/optimized-20261027/catalog/owner-20261026/DS-8-BEIGE-L-960.webp"
+      }
+    ]
+  },
+  "/images/catalog/owner-20261026/DS-9-BEIGE-M.jpg": {
+    "width": 1500,
+    "height": 1500,
+    "variants": [
+      {
+        "width": 320,
+        "src": "/images/optimized-20261027/catalog/owner-20261026/DS-9-BEIGE-M-320.webp"
+      },
+      {
+        "width": 640,
+        "src": "/images/optimized-20261027/catalog/owner-20261026/DS-9-BEIGE-M-640.webp"
+      },
+      {
+        "width": 960,
+        "src": "/images/optimized-20261027/catalog/owner-20261026/DS-9-BEIGE-M-960.webp"
+      }
+    ]
+  },
+  "/images/catalog/owner-20261026/G00101-3-Brown-S.jpg": {
+    "width": 1500,
+    "height": 1500,
+    "variants": [
+      {
+        "width": 320,
+        "src": "/images/optimized-20261027/catalog/owner-20261026/G00101-3-Brown-S-320.webp"
+      },
+      {
+        "width": 640,
+        "src": "/images/optimized-20261027/catalog/owner-20261026/G00101-3-Brown-S-640.webp"
+      },
+      {
+        "width": 960,
+        "src": "/images/optimized-20261027/catalog/owner-20261026/G00101-3-Brown-S-960.webp"
+      }
+    ]
+  },
+  "/images/catalog/owner-20261026/G00102-1-Brown-L.jpg": {
+    "width": 1500,
+    "height": 1500,
+    "variants": [
+      {
+        "width": 320,
+        "src": "/images/optimized-20261027/catalog/owner-20261026/G00102-1-Brown-L-320.webp"
+      },
+      {
+        "width": 640,
+        "src": "/images/optimized-20261027/catalog/owner-20261026/G00102-1-Brown-L-640.webp"
+      },
+      {
+        "width": 960,
+        "src": "/images/optimized-20261027/catalog/owner-20261026/G00102-1-Brown-L-960.webp"
+      }
+    ]
+  },
+  "/images/catalog/owner-20261026/G00102-3-Brown-S.jpg": {
+    "width": 1500,
+    "height": 1500,
+    "variants": [
+      {
+        "width": 320,
+        "src": "/images/optimized-20261027/catalog/owner-20261026/G00102-3-Brown-S-320.webp"
+      },
+      {
+        "width": 640,
+        "src": "/images/optimized-20261027/catalog/owner-20261026/G00102-3-Brown-S-640.webp"
+      },
+      {
+        "width": 960,
+        "src": "/images/optimized-20261027/catalog/owner-20261026/G00102-3-Brown-S-960.webp"
+      }
+    ]
+  },
+  "/images/catalog/owner-20261026/GY202601-BROWN-L.jpg": {
+    "width": 1500,
+    "height": 1500,
+    "variants": [
+      {
+        "width": 320,
+        "src": "/images/optimized-20261027/catalog/owner-20261026/GY202601-BROWN-L-320.webp"
+      },
+      {
+        "width": 640,
+        "src": "/images/optimized-20261027/catalog/owner-20261026/GY202601-BROWN-L-640.webp"
+      },
+      {
+        "width": 960,
+        "src": "/images/optimized-20261027/catalog/owner-20261026/GY202601-BROWN-L-960.webp"
+      }
+    ]
+  },
+  "/images/catalog/owner-20261026/GY202602-BROWN-L.jpg": {
+    "width": 1500,
+    "height": 1500,
+    "variants": [
+      {
+        "width": 320,
+        "src": "/images/optimized-20261027/catalog/owner-20261026/GY202602-BROWN-L-320.webp"
+      },
+      {
+        "width": 640,
+        "src": "/images/optimized-20261027/catalog/owner-20261026/GY202602-BROWN-L-640.webp"
+      },
+      {
+        "width": 960,
+        "src": "/images/optimized-20261027/catalog/owner-20261026/GY202602-BROWN-L-960.webp"
+      }
+    ]
+  },
+  "/images/catalog/owner-20261026/GY202603-PINK-F.jpg": {
+    "width": 1500,
+    "height": 1500,
+    "variants": [
+      {
+        "width": 320,
+        "src": "/images/optimized-20261027/catalog/owner-20261026/GY202603-PINK-F-320.webp"
+      },
+      {
+        "width": 640,
+        "src": "/images/optimized-20261027/catalog/owner-20261026/GY202603-PINK-F-640.webp"
+      },
+      {
+        "width": 960,
+        "src": "/images/optimized-20261027/catalog/owner-20261026/GY202603-PINK-F-960.webp"
+      }
+    ]
+  },
+  "/images/catalog/owner-20261026/H-007-PINK-M.jpg": {
+    "width": 1500,
+    "height": 1500,
+    "variants": [
+      {
+        "width": 320,
+        "src": "/images/optimized-20261027/catalog/owner-20261026/H-007-PINK-M-320.webp"
+      },
+      {
+        "width": 640,
+        "src": "/images/optimized-20261027/catalog/owner-20261026/H-007-PINK-M-640.webp"
+      },
+      {
+        "width": 960,
+        "src": "/images/optimized-20261027/catalog/owner-20261026/H-007-PINK-M-960.webp"
+      }
+    ]
+  },
+  "/images/catalog/owner-20261026/H-008-BLACK-M.jpg": {
+    "width": 1500,
+    "height": 1500,
+    "variants": [
+      {
+        "width": 320,
+        "src": "/images/optimized-20261027/catalog/owner-20261026/H-008-BLACK-M-320.webp"
+      },
+      {
+        "width": 640,
+        "src": "/images/optimized-20261027/catalog/owner-20261026/H-008-BLACK-M-640.webp"
+      },
+      {
+        "width": 960,
+        "src": "/images/optimized-20261027/catalog/owner-20261026/H-008-BLACK-M-960.webp"
+      }
+    ]
+  },
+  "/images/catalog/owner-20261026/H001-1-BLACK-L.jpg": {
+    "width": 1500,
+    "height": 1500,
+    "variants": [
+      {
+        "width": 320,
+        "src": "/images/optimized-20261027/catalog/owner-20261026/H001-1-BLACK-L-320.webp"
+      },
+      {
+        "width": 640,
+        "src": "/images/optimized-20261027/catalog/owner-20261026/H001-1-BLACK-L-640.webp"
+      },
+      {
+        "width": 960,
+        "src": "/images/optimized-20261027/catalog/owner-20261026/H001-1-BLACK-L-960.webp"
+      }
+    ]
+  },
+  "/images/catalog/owner-20261026/H001-4-WHITE-XS.jpg": {
+    "width": 1024,
+    "height": 1024,
+    "variants": [
+      {
+        "width": 320,
+        "src": "/images/optimized-20261027/catalog/owner-20261026/H001-4-WHITE-XS-320.webp"
+      },
+      {
+        "width": 640,
+        "src": "/images/optimized-20261027/catalog/owner-20261026/H001-4-WHITE-XS-640.webp"
+      },
+      {
+        "width": 960,
+        "src": "/images/optimized-20261027/catalog/owner-20261026/H001-4-WHITE-XS-960.webp"
+      }
+    ]
+  },
+  "/images/catalog/owner-20261026/H001-5-WHITE-F.jpg": {
+    "width": 1500,
+    "height": 1500,
+    "variants": [
+      {
+        "width": 320,
+        "src": "/images/optimized-20261027/catalog/owner-20261026/H001-5-WHITE-F-320.webp"
+      },
+      {
+        "width": 640,
+        "src": "/images/optimized-20261027/catalog/owner-20261026/H001-5-WHITE-F-640.webp"
+      },
+      {
+        "width": 960,
+        "src": "/images/optimized-20261027/catalog/owner-20261026/H001-5-WHITE-F-960.webp"
+      }
+    ]
+  },
+  "/images/catalog/owner-20261026/H018-1-WHTTE-FEGER.jpg": {
+    "width": 1500,
+    "height": 1500,
+    "variants": [
+      {
+        "width": 320,
+        "src": "/images/optimized-20261027/catalog/owner-20261026/H018-1-WHTTE-FEGER-320.webp"
+      },
+      {
+        "width": 640,
+        "src": "/images/optimized-20261027/catalog/owner-20261026/H018-1-WHTTE-FEGER-640.webp"
+      },
+      {
+        "width": 960,
+        "src": "/images/optimized-20261027/catalog/owner-20261026/H018-1-WHTTE-FEGER-960.webp"
+      }
+    ]
+  },
+  "/images/catalog/owner-20261026/H018-2-WineRed-M.jpg": {
+    "width": 1500,
+    "height": 1500,
+    "variants": [
+      {
+        "width": 320,
+        "src": "/images/optimized-20261027/catalog/owner-20261026/H018-2-WineRed-M-320.webp"
+      },
+      {
+        "width": 640,
+        "src": "/images/optimized-20261027/catalog/owner-20261026/H018-2-WineRed-M-640.webp"
+      },
+      {
+        "width": 960,
+        "src": "/images/optimized-20261027/catalog/owner-20261026/H018-2-WineRed-M-960.webp"
+      }
+    ]
+  },
+  "/images/catalog/owner-20261026/H038-1-BLACK-L.jpg": {
+    "width": 1500,
+    "height": 1500,
+    "variants": [
+      {
+        "width": 320,
+        "src": "/images/optimized-20261027/catalog/owner-20261026/H038-1-BLACK-L-320.webp"
+      },
+      {
+        "width": 640,
+        "src": "/images/optimized-20261027/catalog/owner-20261026/H038-1-BLACK-L-640.webp"
+      },
+      {
+        "width": 960,
+        "src": "/images/optimized-20261027/catalog/owner-20261026/H038-1-BLACK-L-960.webp"
+      }
+    ]
+  },
+  "/images/catalog/owner-20261026/H068-1-HighclassGrey-L.jpg": {
+    "width": 1500,
+    "height": 1500,
+    "variants": [
+      {
+        "width": 320,
+        "src": "/images/optimized-20261027/catalog/owner-20261026/H068-1-HighclassGrey-L-320.webp"
+      },
+      {
+        "width": 640,
+        "src": "/images/optimized-20261027/catalog/owner-20261026/H068-1-HighclassGrey-L-640.webp"
+      },
+      {
+        "width": 960,
+        "src": "/images/optimized-20261027/catalog/owner-20261026/H068-1-HighclassGrey-L-960.webp"
+      }
+    ]
+  },
+  "/images/catalog/owner-20261026/H2502-BLACK-L.jpg": {
+    "width": 1500,
+    "height": 1500,
+    "variants": [
+      {
+        "width": 320,
+        "src": "/images/optimized-20261027/catalog/owner-20261026/H2502-BLACK-L-320.webp"
+      },
+      {
+        "width": 640,
+        "src": "/images/optimized-20261027/catalog/owner-20261026/H2502-BLACK-L-640.webp"
+      },
+      {
+        "width": 960,
+        "src": "/images/optimized-20261027/catalog/owner-20261026/H2502-BLACK-L-960.webp"
+      }
+    ]
+  },
+  "/images/catalog/owner-20261026/H2503-BLACK-M.jpg": {
+    "width": 1500,
+    "height": 1500,
+    "variants": [
+      {
+        "width": 320,
+        "src": "/images/optimized-20261027/catalog/owner-20261026/H2503-BLACK-M-320.webp"
+      },
+      {
+        "width": 640,
+        "src": "/images/optimized-20261027/catalog/owner-20261026/H2503-BLACK-M-640.webp"
+      },
+      {
+        "width": 960,
+        "src": "/images/optimized-20261027/catalog/owner-20261026/H2503-BLACK-M-960.webp"
+      }
+    ]
+  },
+  "/images/catalog/owner-20261026/H2504-BLACK-S.jpg": {
+    "width": 1024,
+    "height": 1024,
+    "variants": [
+      {
+        "width": 320,
+        "src": "/images/optimized-20261027/catalog/owner-20261026/H2504-BLACK-S-320.webp"
+      },
+      {
+        "width": 640,
+        "src": "/images/optimized-20261027/catalog/owner-20261026/H2504-BLACK-S-640.webp"
+      },
+      {
+        "width": 960,
+        "src": "/images/optimized-20261027/catalog/owner-20261026/H2504-BLACK-S-960.webp"
+      }
+    ]
+  },
+  "/images/catalog/owner-20261026/KPL8136-PINK-F.jpg": {
+    "width": 1500,
+    "height": 1500,
+    "variants": [
+      {
+        "width": 320,
+        "src": "/images/optimized-20261027/catalog/owner-20261026/KPL8136-PINK-F-320.webp"
+      },
+      {
+        "width": 640,
+        "src": "/images/optimized-20261027/catalog/owner-20261026/KPL8136-PINK-F-640.webp"
+      },
+      {
+        "width": 960,
+        "src": "/images/optimized-20261027/catalog/owner-20261026/KPL8136-PINK-F-960.webp"
+      }
+    ]
+  },
+  "/images/catalog/owner-20261026/KPL8174-PINK-F.jpg": {
+    "width": 1500,
+    "height": 1500,
+    "variants": [
+      {
+        "width": 320,
+        "src": "/images/optimized-20261027/catalog/owner-20261026/KPL8174-PINK-F-320.webp"
+      },
+      {
+        "width": 640,
+        "src": "/images/optimized-20261027/catalog/owner-20261026/KPL8174-PINK-F-640.webp"
+      },
+      {
+        "width": 960,
+        "src": "/images/optimized-20261027/catalog/owner-20261026/KPL8174-PINK-F-960.webp"
+      }
+    ]
+  },
+  "/images/catalog/owner-20261026/KPL8711-PINK-F.jpg": {
+    "width": 1500,
+    "height": 1500,
+    "variants": [
+      {
+        "width": 320,
+        "src": "/images/optimized-20261027/catalog/owner-20261026/KPL8711-PINK-F-320.webp"
+      },
+      {
+        "width": 640,
+        "src": "/images/optimized-20261027/catalog/owner-20261026/KPL8711-PINK-F-640.webp"
+      },
+      {
+        "width": 960,
+        "src": "/images/optimized-20261027/catalog/owner-20261026/KPL8711-PINK-F-960.webp"
+      }
+    ]
+  },
+  "/images/catalog/owner-20261026/KPL8757-PINK-F.jpg": {
+    "width": 1500,
+    "height": 1500,
+    "variants": [
+      {
+        "width": 320,
+        "src": "/images/optimized-20261027/catalog/owner-20261026/KPL8757-PINK-F-320.webp"
+      },
+      {
+        "width": 640,
+        "src": "/images/optimized-20261027/catalog/owner-20261026/KPL8757-PINK-F-640.webp"
+      },
+      {
+        "width": 960,
+        "src": "/images/optimized-20261027/catalog/owner-20261026/KPL8757-PINK-F-960.webp"
+      }
+    ]
+  },
+  "/images/catalog/owner-20261026/KPL8784-PINK-F.jpg": {
+    "width": 1500,
+    "height": 1500,
+    "variants": [
+      {
+        "width": 320,
+        "src": "/images/optimized-20261027/catalog/owner-20261026/KPL8784-PINK-F-320.webp"
+      },
+      {
+        "width": 640,
+        "src": "/images/optimized-20261027/catalog/owner-20261026/KPL8784-PINK-F-640.webp"
+      },
+      {
+        "width": 960,
+        "src": "/images/optimized-20261027/catalog/owner-20261026/KPL8784-PINK-F-960.webp"
+      }
+    ]
+  },
+  "/images/catalog/owner-20261026/KPL8828-PINK-F.jpg": {
+    "width": 1500,
+    "height": 1500,
+    "variants": [
+      {
+        "width": 320,
+        "src": "/images/optimized-20261027/catalog/owner-20261026/KPL8828-PINK-F-320.webp"
+      },
+      {
+        "width": 640,
+        "src": "/images/optimized-20261027/catalog/owner-20261026/KPL8828-PINK-F-640.webp"
+      },
+      {
+        "width": 960,
+        "src": "/images/optimized-20261027/catalog/owner-20261026/KPL8828-PINK-F-960.webp"
+      }
+    ]
+  }
+}
