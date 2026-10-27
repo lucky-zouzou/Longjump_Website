@@ -7,7 +7,12 @@ cd /opt/loongjump-website
 release="$(date -u +%Y%m%dT%H%M%SZ)"
 previous_image="$(docker inspect --format '{{.Image}}' loongjump-web)"
 docker tag "$previous_image" "loongjump-website:rollback-$release"
-docker build -t "loongjump-website:release-$release" app.new
+if [ -n "${LOONGJUMP_PREBUILT_IMAGE:-}" ]; then
+  docker image inspect "$LOONGJUMP_PREBUILT_IMAGE" >/dev/null
+  docker tag "$LOONGJUMP_PREBUILT_IMAGE" "loongjump-website:release-$release"
+else
+  docker build -t "loongjump-website:release-$release" app.new
+fi
 # Each deployment uses a separate backup directory, even within the same day.
 docker exec loongjump-web node server/cli.mjs backup --output "/backups/predeploy-$release"
 cp compose.yaml "compose.previous-$release.yaml"
@@ -32,6 +37,11 @@ for attempt in $(seq 1 45); do
   sleep 4
 done
 [ "$healthy" = true ] || rollback
+if [ -n "${LOONGJUMP_EXPECTED_REVISION:-}" ]; then
+  actual_revision="$(docker inspect --format '{{index .Config.Labels "org.opencontainers.image.revision"}}' loongjump-web)"
+  [ "$actual_revision" = "$LOONGJUMP_EXPECTED_REVISION" ] || rollback
+  echo "Running revision: $actual_revision"
+fi
 curl -fsS --retry 3 -o /dev/null https://loongjump.com/ || rollback
 curl -fsS --retry 3 https://loongjump.com/api/public/content | python3 -c 'import json,sys;d=json.load(sys.stdin);assert isinstance(d["content"],list) and "settings" in d' || rollback
 curl -fsS --retry 3 -o /dev/null https://loongjump.com/manage/manifest.webmanifest || rollback

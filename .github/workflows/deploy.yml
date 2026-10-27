@@ -40,10 +40,18 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - name: Build production image on runner
+        run: |
+          set -eo pipefail
+          docker build --label "org.opencontainers.image.revision=$GITHUB_SHA" \
+            -t "loongjump-website:ci-$GITHUB_SHA" .
+          docker save "loongjump-website:ci-$GITHUB_SHA" | gzip -1 > /tmp/loongjump-image.tar.gz
+
       - name: Deploy to server
         env:
           SSH_KEY: ${{ secrets.SSH_DEPLOY_KEY }}
           SERVER: root@47.238.71.113
+          DEPLOY_IMAGE: loongjump-website:ci-${{ github.sha }}
         run: |
           set -eo pipefail
           deploy() {
@@ -64,16 +72,20 @@ jobs:
               --exclude=.wrangler --exclude=output --exclude=设备预览 --exclude='.env*' --exclude='data' --exclude='backups' --exclude='secrets' \
               -czf /tmp/source.tar.gz .
 
-          ssh -i ~/.ssh/deploy_key -o BatchMode=yes $SERVER 'mkdir -p /opt/loongjump-website/upload'
-          scp -i ~/.ssh/deploy_key -o BatchMode=yes /tmp/source.tar.gz $SERVER:/opt/loongjump-website/upload/
+          ssh_opts=(-i ~/.ssh/deploy_key -o BatchMode=yes -o ConnectTimeout=30 -o ServerAliveInterval=30 -o ServerAliveCountMax=6)
+          ssh "${ssh_opts[@]}" "$SERVER" 'mkdir -p /opt/loongjump-website/upload; df -h /opt/loongjump-website'
+          scp "${ssh_opts[@]}" /tmp/source.tar.gz /tmp/loongjump-image.tar.gz "$SERVER":/opt/loongjump-website/upload/
 
-          # Build before switching, snapshot data, and roll back on failed health checks.
-          ssh -i ~/.ssh/deploy_key -o BatchMode=yes $SERVER 'set -e
+          # Load the runner-built image, snapshot data, and roll back on failed health checks.
+          ssh "${ssh_opts[@]}" "$SERVER" bash -s -- "$DEPLOY_IMAGE" "$GITHUB_SHA" <<'REMOTE'
+            set -e
             cd /opt/loongjump-website
+            docker load -i upload/loongjump-image.tar.gz
             if [ -d app.new ]; then mv app.new "app.pending-$(date -u +%Y%m%dT%H%M%SZ)"; fi
             mkdir app.new
             tar xzf upload/source.tar.gz -C app.new
-            bash app.new/server/deploy.sh'
+            LOONGJUMP_PREBUILT_IMAGE="$1" LOONGJUMP_EXPECTED_REVISION="$2" bash app.new/server/deploy.sh
+          REMOTE
 
           echo "Deploy OK"
           }
