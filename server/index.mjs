@@ -73,7 +73,26 @@ const cookies = (req) =>
   );
 
 const loginPage = (token, returnTo, message = '') =>
-  `<!doctype html><html lang="id"><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Sales Desk · LOONG JUMP</title><style>body{font-family:system-ui,sans-serif;background:#FFFEF9;color:#124734;margin:0;display:grid;place-items:center;min-height:100vh}form{background:#fff;padding:40px;border-radius:14px;max-width:380px;width:82%;border:1px solid #EAF2DF;box-shadow:0 10px 40px rgba(18,71,52,.10)}h1{margin:0 0 6px;font-size:22px;letter-spacing:.04em}small{color:#18543D;display:block;margin-bottom:18px}input,button{box-sizing:border-box;width:100%;padding:12px;margin:8px 0 16px;border:1px solid #d8e2d0;border-radius:7px;font-size:15px}input:focus{outline:2px solid #124734;outline-offset:1px}button{background:#124734;color:#FFFEF9;border:0;font-weight:600;cursor:pointer}button:hover{background:#18543D}p{line-height:1.5;color:#52666f;font-size:14px}.error{color:#9b2c2c;font-weight:600}</style><form method="post" action="/signin-with-chatgpt"><h1><img src="/images/brand-logo-20261027.png" alt="LOONG JUMP" width="197" height="90"></h1><small>SALES DESK · Ruang tim penjualan</small>${message ? `<p class="error">${message}</p>` : ''}<input type="hidden" name="csrf" value="${token}"><input type="hidden" name="return_to" value="${returnTo}"><label>Email<input type="email" name="email" autocomplete="username" required></label><label>Kata sandi<input type="password" name="password" autocomplete="current-password" required></label><button>Masuk</button><p>Akses khusus pengelola. Hubungi pemilik situs jika Anda belum memiliki akun.</p></form></html>`;
+  `<!doctype html><html lang="zh-CN"><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title data-i18n="LOONG JUMP · 运营工作台">LOONG JUMP · 运营工作台</title><script type="module" src="/manage/login.js"></script><style>body{font-family:system-ui,sans-serif;background:#FFFEF9;color:#124734;margin:0;display:grid;place-items:center;min-height:100vh}form{background:#fff;padding:40px;border-radius:14px;max-width:380px;width:82%;border:1px solid #EAF2DF;box-shadow:0 10px 40px rgba(18,71,52,.10)}h1{margin:0 0 6px;font-size:22px;letter-spacing:.04em}small{color:#18543D;display:block;margin-bottom:18px}input,button{box-sizing:border-box;width:100%;padding:12px;margin:8px 0 16px;border:1px solid #d8e2d0;border-radius:7px;font-size:15px}input:focus{outline:2px solid #124734;outline-offset:1px}button{background:#124734;color:#FFFEF9;border:0;font-weight:600;cursor:pointer}button:hover{background:#18543D}p{line-height:1.5;color:#52666f;font-size:14px}.error{color:#9b2c2c;font-weight:600}.language-control{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:22px;font-size:14px}.language-control select{padding:8px;border:1px solid #d8e2d0;border-radius:7px;background:white;color:#124734;max-width:65%}</style><form method="post" action="/signin-with-chatgpt"><label class="language-control"><span data-i18n="界面语言">界面语言</span><select data-language-switch data-i18n-aria-label="界面语言" aria-label="界面语言"><option value="zh-CN">中文</option><option value="id">Bahasa Indonesia</option></select></label><h1><img src="/images/brand-logo-20261027.png" alt="LOONG JUMP" width="197" height="90"></h1><small data-i18n="销售团队工作台">销售团队工作台</small>${message ? `<p class="error" data-i18n-error>${message}</p>` : ''}<input type="hidden" name="csrf" value="${token}"><input type="hidden" name="return_to" value="${returnTo}"><label><span data-i18n="登录邮箱">登录邮箱</span><input type="email" name="email" autocomplete="username" required></label><label><span data-i18n="密码">密码</span><input type="password" name="password" autocomplete="current-password" required></label><button data-i18n="登录">登录</button><p data-i18n="仅限管理员使用。如需账号，请联系网站所有者。">仅限管理员使用。如需账号，请联系网站所有者。</p></form></html>`;
+
+function sendLoginPage(res, status, csrf, returnTo, message = '') {
+  res.writeHead(status, {
+    'content-type': 'text/html; charset=utf-8',
+    'content-security-policy':
+      "default-src 'none'; script-src 'self'; img-src 'self'; style-src 'unsafe-inline'; form-action 'self'; frame-ancestors 'none'",
+    'set-cookie': cookie('lj_login', csrf, 900),
+  });
+  res.end(
+    loginPage(
+      csrf,
+      safeReturnTo(returnTo || '/manage/')
+        .replaceAll('&', '&amp;')
+        .replaceAll('"', '&quot;')
+        .replaceAll('<', '&lt;'),
+      message,
+    ),
+  );
+}
 
 // Mirrors app/chatgpt-auth.ts safeRelativeReturnPath so a login redirect never
 // leaves the site or loops back into the auth paths.
@@ -146,8 +165,13 @@ const server = http.createServer(async (req, res) => {
       if (req.method === 'POST') {
         const input = await smallBody(req);
         if (!c.lj_login || input.get('csrf') !== c.lj_login) {
-          res.writeHead(403);
-          res.end('Invalid form token');
+          sendLoginPage(
+            res,
+            403,
+            csrf,
+            input.get('return_to'),
+            'Invalid form token',
+          );
           return;
         }
         const email = String(input.get('email') || '')
@@ -163,8 +187,13 @@ const server = http.createServer(async (req, res) => {
           now - attempt.window_start < 900000 &&
           attempt.attempts >= 8
         ) {
-          res.writeHead(429);
-          res.end('Terlalu banyak percobaan. Coba lagi dalam 15 menit.');
+          sendLoginPage(
+            res,
+            429,
+            csrf,
+            input.get('return_to'),
+            'Terlalu banyak percobaan. Coba lagi dalam 15 menit.',
+          );
           return;
         }
         db.prepare(
@@ -203,21 +232,12 @@ const server = http.createServer(async (req, res) => {
         }
         message = 'Email atau kata sandi salah.';
       }
-      res.writeHead(req.method === 'POST' ? 401 : 200, {
-        'content-type': 'text/html; charset=utf-8',
-        'content-security-policy':
-          "default-src 'none'; img-src 'self'; style-src 'unsafe-inline'; form-action 'self'; frame-ancestors 'none'",
-        'set-cookie': cookie('lj_login', csrf, 900),
-      });
-      res.end(
-        loginPage(
-          csrf,
-          safeReturnTo(url.searchParams.get('return_to') || '/manage/')
-            .replaceAll('&', '&amp;')
-            .replaceAll('"', '&quot;')
-            .replaceAll('<', '&lt;'),
-          message,
-        ),
+      sendLoginPage(
+        res,
+        req.method === 'POST' ? 401 : 200,
+        csrf,
+        url.searchParams.get('return_to'),
+        message,
       );
       return;
     }
@@ -243,6 +263,10 @@ const server = http.createServer(async (req, res) => {
     }
     const assets = {
       '/manage/app.js': ['admin.js', 'text/javascript'],
+      '/manage/i18n.js': ['i18n.js', 'text/javascript'],
+      '/manage/translations.js': ['translations.js', 'text/javascript'],
+      '/manage/drafts.js': ['drafts.js', 'text/javascript'],
+      '/manage/login.js': ['login.js', 'text/javascript'],
       '/manage/style.css': ['admin.css', 'text/css'],
       '/manage/sw.js': ['sw.js', 'text/javascript'],
       '/manage/manifest.webmanifest': [

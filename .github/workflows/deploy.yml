@@ -29,6 +29,7 @@ jobs:
       - run: node scripts/check-image-assets.mjs
       - run: node scripts/check-inquiries.mjs
       - run: node scripts/check-operations.mjs
+      - run: node scripts/check-admin-i18n.mjs
       - run: node scripts/check-engagement.mjs
       - run: pnpm build:server
   deploy:
