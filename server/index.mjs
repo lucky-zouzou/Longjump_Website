@@ -1,4 +1,5 @@
 import http from 'node:http';
+import {syncConfig,scheduleInquirySync} from './admin-inquiry-sync.mjs';
 import { Readable } from 'node:stream';
 import { resolve } from 'node:path';
 import { readFileSync, existsSync, statSync, createReadStream } from 'node:fs';
@@ -21,6 +22,7 @@ import {
   sendWebResponse,
 } from 'vinext/server/prod-server';
 
+const adminSyncConfig=syncConfig();
 const origin = new URL(process.env.LOONGJUMP_ORIGIN || 'http://localhost:3000');
 if (
   origin.protocol !== 'https:' &&
@@ -422,6 +424,7 @@ const server = http.createServer(async (req, res) => {
       db,
       user,
       mediaDir,
+      adminSyncConfig,
       clientKey: hashToken(req.socket.remoteAddress || 'unknown'),
     });
     if (operations) {
@@ -456,6 +459,7 @@ const maintenance = setInterval(() => {
   } catch (error) { console.error('Maintenance failed:',error.message); }
 },86400000);
 maintenance.unref();
+const stopInquirySync=scheduleInquirySync(db,adminSyncConfig);
 server.listen(
   Number(process.env.PORT || 3000),
   process.env.HOST || '0.0.0.0',
@@ -468,6 +472,7 @@ if (process.env.LOONGJUMP_BACKUP_DIR) {
 for (const signal of ['SIGINT', 'SIGTERM'])
   process.on(signal, () =>
     server.close(() => {
+      stopInquirySync();
       db.close();
       process.exit(0);
     }),

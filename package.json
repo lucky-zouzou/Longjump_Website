@@ -14,6 +14,7 @@
     "lint": "oxlint",
     "format": "oxfmt",
     "db:generate": "drizzle-kit generate",
+    "test:admin-sync": "node --test scripts/check-admin-sync.mjs",
     "test:operations": "node scripts/check-operations.mjs",
     "test:operations:http": "node scripts/check-operations-http.mjs"
   },
