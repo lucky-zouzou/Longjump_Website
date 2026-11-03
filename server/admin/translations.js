@@ -1,5 +1,8 @@
 // Interface copy only. Customer records, product text and saved values are never translated.
 export const indonesian = {
+ '仅管理员可查看同步队列':'Hanya administrator yang dapat melihat antrean sinkronisasi',
+ 'Admin 自动同步':'Sinkronisasi otomatis Admin','已配置':'Dikonfigurasi','待配置':'Belum dikonfigurasi','已送达':'Terkirim','待同步':'Menunggu sinkronisasi','自动重试':'Coba ulang otomatis','Admin 同步':'Sinkronisasi Admin','请管理员完成服务器同步配置，询盘已保留在队列中。':'Administrator perlu mengonfigurasi sinkronisasi server. Permintaan sudah tersimpan di antrean.',
+
   '字段标识必须唯一，以字母开头，只能包含小写字母、数字与下划线':
     'ID bidang harus unik, diawali huruf, dan hanya berisi huruf kecil, angka, serta garis bawah',
   所有者: 'Pemilik',
