@@ -83,3 +83,28 @@ assert.ok(expandedInquiry.includes(`${products[2].name} — 8 pcs`));
 assert.ok(expandedInquiry.includes(`${products[3].name} — 3 pcs`));
 assert.ok(expandedInquiry.includes(products[2].sourceUrl));
 console.log('Checks passed: sales WhatsApp recipient and encoded messages, phone, separate sales/factory identities and maps, 50 owner-supplied products, 4 series, multi-model quantities, OEM separation, and safe device storage.');
+
+// Fast wholesale requests retain qualification and retry safety without optional details.
+const inquiryUrl = moduleUrl(inquirySource);
+const validationSource = (await readFile(new URL('../lib/lead-validation.ts', import.meta.url), 'utf8'))
+  .replace("'./site-content'", JSON.stringify(contentUrl)).replace("'./inquiry'", JSON.stringify(inquiryUrl));
+const { validateLead } = await import(moduleUrl(validationSource));
+const { normalizeWhatsApp } = await import(inquiryUrl);
+for (const input of ['0812 3456 7890', '6281234567890', '+62 (812) 3456-7890', '81234567890']) assert.equal(normalizeWhatsApp(input), '+6281234567890');
+assert.equal(normalizeWhatsApp('+60 12-345 6789'), '+60123456789');
+assert.equal(normalizeWhatsApp('0812345678', 'Malaysia'), '0812345678');
+assert.equal(normalizeWhatsApp('0812abc3456'), '0812abc3456');
+const quick = { requestKey: '11111111-1111-4111-8111-111111111111', topic: 'Grosir', name: 'LOCAL QA', contactType: 'WhatsApp', contact: '0812 3456 7890', city: 'Surabaya', country: 'Indonesia', company: '', buyerType: '', quantity: '', timeline: '', note: '', items: [], consent: true, website: '' };
+const validated = validateLead(quick);
+assert.equal(validated.details.contact, '+6281234567890');
+assert.equal(validated.details.company, '');
+assert.deepEqual(validated.details.items, []);
+assert.deepEqual(validateLead({ ...quick, contact: '+6281234567890' }), validated);
+for (const field of ['name', 'contact', 'city']) assert.throws(() => validateLead({ ...quick, [field]: '' }));
+for (const contact of ['not-a-number', '123', '0812abc3456', '+1234567890123456']) assert.throws(() => validateLead({ ...quick, contact }));
+assert.throws(() => validateLead({ ...quick, consent: false }));
+assert.throws(() => validateLead({ ...quick, topic: 'OEM & Custom' }));
+assert.equal(validateLead({ ...quick, topic: 'OEM & Custom', note: 'Tas dengan logo toko', items: [{ productId: products[0].id, quantity: '10' }] }).details.items.length, 0);
+assert.equal(validateLead({ ...quick, company: 'Toko Lokal', buyerType: 'Butik / toko', items: [{ productId: products[0].id, quantity: '24' }] }).details.items[0].quantity, '24');
+assert.throws(() => validateLead(quick, products, [{ id: 'material', label: 'Material', required: true }]));
+console.log('Checks passed: quick catalog leads, normalized Indonesian WhatsApp, foreign contacts, required fields/consent, configurable required fields, store qualification and OEM separation.');

@@ -105,8 +105,10 @@ export function AnalyticsConsent() {
   return consent === null ? (
     <aside className="analytics-consent" aria-label="Pilihan statistik">
       <p>
-        Boleh kami menggunakan statistik internal kunjungan untuk membuat situs ini lebih nyaman?
-        Statistik internal ini tidak menyimpan alamat IP lengkap atau isi formulir Anda. Informasi pengukuran iklan melalui Google Tag Manager tersedia di halaman privasi.{' '}
+        Boleh kami menggunakan statistik internal kunjungan untuk membuat situs
+        ini lebih nyaman? Statistik internal ini tidak menyimpan alamat IP
+        lengkap atau isi formulir Anda. Informasi pengukuran iklan melalui
+        Google Tag Manager tersedia di halaman privasi.{' '}
         <a href="/privasi">Privasi</a>
       </p>
       <div>
@@ -158,11 +160,11 @@ export function PublishedUpdates({ content }: { content: PublicContent[] }) {
                   aria-label={c.title}
                 >
                   <track
-                      src={c.caption_url || undefined}
-                      kind="captions"
-                      srcLang="id"
-                      label="Bahasa Indonesia"
-                      default
+                    src={c.caption_url || undefined}
+                    kind="captions"
+                    srcLang="id"
+                    label="Bahasa Indonesia"
+                    default
                   />
                 </video>
               ) : (
@@ -182,9 +184,11 @@ export function PublishedUpdates({ content }: { content: PublicContent[] }) {
   );
 }
 export function CustomerChat({
+  docked = false,
   settings,
   onInquiry,
 }: {
+  docked?: boolean;
   settings: PublicSettings;
   onInquiry: () => void;
 }) {
@@ -228,14 +232,16 @@ export function CustomerChat({
     }
   }
   return (
-    <div className={`customer-chat chat-style-${settings.chatStyle}`}>
+    <div
+      className={`customer-chat chat-style-${settings.chatStyle}${docked ? ' chat-docked' : ''}`}
+    >
       <button
         className="chat-launch"
         aria-expanded={open}
         aria-controls="customer-chat-panel"
         onClick={() => setOpen(!open)}
       >
-        {open ? '× Tutup' : settings.chatTitle}
+        {open ? '× Tutup' : docked ? 'Chat / bantuan' : settings.chatTitle}
       </button>
       {open && (
         <section

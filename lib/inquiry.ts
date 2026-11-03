@@ -23,7 +23,10 @@ export function normalizeQuantityInput(value: string) {
 }
 
 // Only product IDs and quantities are saved on this device; never buyer details.
-export function restoreSelection(raw: string | null, catalog: Product[] = products): InquiryItem[] {
+export function restoreSelection(
+  raw: string | null,
+  catalog: Product[] = products,
+): InquiryItem[] {
   if (!raw) return [];
   try {
     const parsed: unknown = JSON.parse(raw);
@@ -32,29 +35,76 @@ export function restoreSelection(raw: string | null, catalog: Product[] = produc
     return parsed.flatMap((row: unknown) => {
       if (!row || typeof row !== 'object') return [];
       const { productId, quantity } = row as Record<string, unknown>;
-      if (typeof productId !== 'string' || !catalog.some(p => p.id === productId) || seen.has(productId)) return [];
+      if (
+        typeof productId !== 'string' ||
+        !catalog.some((p) => p.id === productId) ||
+        seen.has(productId)
+      )
+        return [];
       seen.add(productId);
-      return [{ productId, quantity: typeof quantity === 'string' && isValidQuantity(quantity) ? String(Number(quantity)) : '1' }];
+      return [
+        {
+          productId,
+          quantity:
+            typeof quantity === 'string' && isValidQuantity(quantity)
+              ? String(Number(quantity))
+              : '1',
+        },
+      ];
     });
-  } catch { return []; }
+  } catch {
+    return [];
+  }
 }
 
-export function composeBusinessInquiry(details: InquiryDetails, catalog: Product[] = products) {
+export function composeBusinessInquiry(
+  details: InquiryDetails,
+  catalog: Product[] = products,
+) {
   const { topic, items, company, city, quantity, timeline, note } = details;
-  const selected = topic === 'Grosir' ? items.flatMap(item => {
-    const product = catalog.find(p => p.id === item.productId);
-    return product ? [`${product.name} — ${isValidQuantity(item.quantity) ? Number(item.quantity) + ' pcs' : 'jumlah belum diisi'}\nReferensi: ${product.sourceUrl}`] : [];
-  }) : [];
+  const selected =
+    topic === 'Grosir'
+      ? items.flatMap((item) => {
+          const product = catalog.find((p) => p.id === item.productId);
+          return product
+            ? [
+                `${product.name} — ${isValidQuantity(item.quantity) ? Number(item.quantity) + ' pcs' : 'jumlah belum diisi'}\nReferensi: ${product.sourceUrl}`,
+              ]
+            : [];
+        })
+      : [];
   return [
     `Halo tim LOONG JUMP, saya ingin berkonsultasi tentang ${topic}.`,
     company.trim() && `Nama toko/perusahaan: ${company.trim()}`,
     city.trim() && `Kota tujuan pengiriman: ${city.trim()}`,
-    selected.length && 'Pilihan produk:\n' + selected.map((line, i) => `${i + 1}. ${line}`).join('\n\n'),
-    !selected.length && isValidQuantity(quantity) && `Perkiraan jumlah: ${Number(quantity)} pcs`,
+    selected.length &&
+      'Pilihan produk:\n' +
+        selected.map((line, i) => `${i + 1}. ${line}`).join('\n\n'),
+    !selected.length &&
+      isValidQuantity(quantity) &&
+      `Perkiraan jumlah: ${Number(quantity)} pcs`,
     timeline.trim() && `Target waktu: ${timeline.trim()}`,
     note.trim() && `Kebutuhan: ${note.trim()}`,
     topic === 'OEM & Custom'
       ? 'Mohon informasi opsi kustomisasi, minimum pesanan, sampel, harga, dan estimasi produksi.'
       : 'Mohon informasi harga grosir, pilihan warna, ketersediaan, dan pengiriman.',
-  ].filter(Boolean).join('\n\n');
+  ]
+    .filter(Boolean)
+    .join('\n\n');
+}
+
+// Accept familiar Indonesian mobile formats without changing explicit foreign numbers.
+export function normalizeWhatsApp(value: string, country = 'Indonesia') {
+  const trimmed = value.trim();
+  if (!/^\+?[\d ()-]+$/.test(trimmed)) return trimmed;
+  const digits = trimmed.replace(/\D/g, '');
+  if (
+    country.trim().toLowerCase() === 'indonesia' &&
+    !trimmed.startsWith('+')
+  ) {
+    if (digits.startsWith('08')) return '+62' + digits.slice(1);
+    if (digits.startsWith('8')) return '+62' + digits;
+    if (digits.startsWith('628')) return '+' + digits;
+  }
+  return trimmed.startsWith('+') ? '+' + digits : digits;
 }

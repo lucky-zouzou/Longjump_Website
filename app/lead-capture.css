@@ -1,0 +1,388 @@
+/* Wholesale acquisition: one clear route from home, collections and the persistent dock. */
+.lead-entry-hint {
+  font-size: 13px;
+  line-height: 1.6;
+  margin: 12px 0 0;
+  color: var(--muted-foreground);
+}
+.wholesale-lead-entry {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 28px;
+  padding: 26px 28px;
+  margin: 0 0 28px;
+  background: var(--secondary);
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--brand);
+  border-radius: 8px;
+}
+.wholesale-lead-entry h3 {
+  font-size: 23px;
+  line-height: 1.35;
+  margin: 9px 0;
+}
+.wholesale-lead-entry p:last-child {
+  max-width: 640px;
+  font-size: 14px;
+  line-height: 1.7;
+  color: var(--muted-foreground);
+}
+.wholesale-lead-entry .button {
+  flex-shrink: 0;
+  text-transform: none;
+  letter-spacing: 0;
+  white-space: normal;
+  text-align: center;
+}
+.wholesale-contact-dock {
+  position: fixed;
+  z-index: 45;
+  bottom: 18px;
+  right: 18px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px;
+  background: var(--background);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  box-shadow: 0 6px 28px #183c2522;
+  max-width: calc(100% - 36px);
+}
+.wholesale-contact-dock[hidden] {
+  display: none;
+}
+.dock-copy {
+  display: grid;
+  gap: 4px;
+  padding: 0 8px;
+  font-size: 13px;
+}
+.dock-copy span {
+  font-size: 11px;
+  color: var(--muted-foreground);
+}
+.wholesale-contact-dock .dock-inquiry {
+  min-height: 48px;
+  padding: 12px 18px;
+  font-size: 14px;
+  line-height: 1.4;
+  letter-spacing: 0;
+  text-transform: none;
+  white-space: normal;
+}
+.wholesale-contact-dock .chat-docked {
+  position: static;
+  gap: 0;
+}
+.chat-docked .chat-panel {
+  position: absolute;
+  right: 0;
+  bottom: calc(100% + 10px);
+  max-height: calc(100dvh - 140px);
+}
+.wholesale-contact-dock .chat-launch,
+.dock-help {
+  min-height: 48px;
+  padding: 10px 12px;
+  font-size: 13px;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background: var(--background);
+  color: var(--brand);
+  box-shadow: none;
+}
+body:has(.wholesale-contact-dock) .analytics-preference {
+  padding-bottom: 112px;
+}
+body:has(.inquiry-dialog) .analytics-consent {
+  display: none;
+}
+.wholesale-inquiry {
+  --dialog-padding: 28px;
+  max-width: 920px !important;
+}
+.wholesale-inquiry .inquiry-title {
+  font-size: 30px !important;
+  line-height: 1.2 !important;
+}
+.wholesale-inquiry .inquiry-description {
+  font-size: 14px !important;
+  line-height: 1.6 !important;
+}
+.wholesale-inquiry .inquiry-details {
+  display: grid;
+  gap: 16px;
+}
+.wholesale-inquiry .inquiry-topic label {
+  min-height: 42px;
+  padding: 8px;
+}
+.wholesale-inquiry .inquiry-context {
+  font-size: 13px;
+  line-height: 1.6;
+  margin: 0;
+}
+.inquiry-required-hint {
+  font-size: 12px;
+  color: var(--muted-foreground);
+  margin: 0;
+}
+.wholesale-inquiry .inquiry-fields {
+  gap: 14px;
+}
+.lead-contact-field {
+  grid-column: 1/-1;
+  min-width: 0;
+}
+.contact-label-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+}
+.contact-label-row label {
+  font-size: 14px;
+}
+.contact-label-row button {
+  font-size: 12px;
+  text-decoration: underline;
+  min-height: 32px;
+  color: var(--brand);
+}
+.field-hint {
+  font-size: 12px;
+  line-height: 1.5;
+  color: var(--muted-foreground);
+  margin: 6px 0 0;
+}
+.wholesale-inquiry .inquiry-fields input,
+.wholesale-inquiry .inquiry-fields select {
+  margin-top: 6px;
+  min-height: 46px;
+  font-size: 16px;
+  padding: 10px 12px;
+  width: 100%;
+}
+.inquiry-disclosure {
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  min-width: 0;
+  margin: 0;
+}
+.inquiry-disclosure summary {
+  padding: 14px;
+  font-size: 14px;
+  color: var(--brand);
+  cursor: pointer;
+  line-height: 1.5;
+}
+.inquiry-disclosure summary span {
+  font-size: 12px;
+  color: var(--muted-foreground);
+}
+.disclosure-content {
+  padding: 0 14px 14px;
+  display: grid;
+  gap: 16px;
+}
+.wholesale-inquiry .inquiry-selection {
+  padding: 0;
+  max-height: none;
+}
+.wholesale-inquiry .inquiry-review {
+  background: var(--secondary);
+  padding: 22px;
+  border-radius: 8px;
+  min-width: 0;
+}
+.wholesale-inquiry .quote-summary {
+  padding: 0;
+  margin-bottom: 16px;
+  background: none;
+}
+.wholesale-inquiry .quote-summary h3 {
+  font-size: 22px;
+}
+.wholesale-inquiry .inquiry-how {
+  display: none;
+}
+.wholesale-inquiry .inquiry-recipient {
+  font-size: 12px;
+  gap: 1px;
+}
+.wholesale-inquiry .inquiry-consent {
+  margin: 16px 0;
+  line-height: 1.6;
+}
+.wholesale-inquiry .inquiry-submit {
+  width: 100%;
+  min-height: 50px;
+  font-size: 15px;
+  text-transform: none;
+  letter-spacing: 0;
+}
+.wholesale-inquiry .inquiry-privacy {
+  margin: 12px 0;
+  font-size: 12px;
+  line-height: 1.5;
+}
+.wholesale-inquiry .message-preview-toggle {
+  margin-top: 8px;
+  font-size: 12px;
+  min-height: 32px;
+}
+.wholesale-inquiry .inquiry-direct-chat {
+  margin-top: 8px;
+  min-height: 36px;
+}
+.wholesale-inquiry .inquiry-error {
+  margin-top: 12px;
+}
+.wholesale-inquiry [data-slot='dialog-close'] {
+  min-width: 40px;
+  min-height: 40px;
+}
+@media (min-width: 768px) {
+  .wholesale-inquiry .inquiry-form {
+    grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr);
+    gap: 26px;
+    align-items: start;
+  }
+}
+@media (max-width: 767px) {
+  .wholesale-lead-entry {
+    align-items: stretch;
+    flex-direction: column;
+    gap: 16px;
+    padding: 20px;
+    margin-bottom: 24px;
+  }
+  .wholesale-lead-entry h3 {
+    font-size: 22px;
+  }
+  .wholesale-lead-entry .button {
+    width: 100%;
+    font-size: 14px;
+  }
+  .wholesale-contact-dock {
+    left: 0;
+    right: 0;
+    bottom: 0;
+    max-width: none;
+    border-radius: 12px 12px 0 0;
+    padding: 10px 12px calc(10px + env(safe-area-inset-bottom));
+    gap: 8px;
+  }
+  .dock-copy {
+    display: none;
+  }
+  .wholesale-contact-dock .dock-inquiry {
+    flex: 1;
+    padding: 12px 10px;
+    font-size: 14px;
+    gap: 7px;
+  }
+  .dock-inquiry > svg:last-child {
+    display: none;
+  }
+  .wholesale-contact-dock .chat-launch {
+    font-size: 12px;
+    padding: 10px;
+  }
+  .chat-docked .chat-panel {
+    right: 12px;
+    width: calc(100vw - 24px);
+  }
+  body:has(.wholesale-contact-dock) .analytics-consent {
+    bottom: calc(86px + env(safe-area-inset-bottom));
+  }
+  .wholesale-inquiry {
+    width: calc(100% - 16px) !important;
+    max-height: calc(100dvh - 16px);
+    --dialog-padding: 24px 18px;
+  }
+  .wholesale-inquiry .inquiry-title {
+    font-size: 25px !important;
+  }
+  .wholesale-inquiry .inquiry-form {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+  .wholesale-inquiry .inquiry-fields {
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+  .wholesale-inquiry .inquiry-fields label {
+    font-size: 13px;
+  }
+  .wholesale-inquiry .inquiry-fields label > span {
+    font-size: 11px;
+  }
+  .wholesale-inquiry .inquiry-review {
+    padding: 18px;
+  }
+  .wholesale-inquiry .quote-summary,
+  .wholesale-inquiry .inquiry-recipient {
+    display: none;
+  }
+  .wholesale-inquiry .inquiry-consent {
+    margin: 0 0 14px;
+  }
+}
+@media (max-width: 359px) {
+  .wholesale-inquiry .inquiry-fields {
+    grid-template-columns: 1fr;
+  }
+  .wholesale-contact-dock .dock-inquiry {
+    font-size: 12px;
+  }
+  .dock-inquiry > svg {
+    display: none;
+  }
+}
+
+@media (max-width: 767px) {
+  .factory-first-hero .hero-copy {
+    order: 0;
+  }
+  .factory-first-hero .factory-hero-media {
+    order: 1;
+  }
+  .wholesale-inquiry .inquiry-details {
+    gap: 12px;
+  }
+}
+@media (max-width: 600px) {
+  .launch-banner {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    padding: 10px 16px;
+    gap: 12px;
+    text-align: left;
+  }
+  .launch-banner p,
+  .launch-intro > svg {
+    display: none;
+  }
+  .launch-intro {
+    justify-content: flex-start;
+  }
+  .launch-intro strong {
+    font-size: 17px;
+  }
+  .launch-intro span {
+    font-size: 8px;
+    letter-spacing: 0.1em;
+  }
+  .launch-banner > a {
+    font-size: 11px;
+    padding: 8px;
+    min-height: 40px;
+    white-space: normal;
+    text-align: center;
+    max-width: 120px;
+  }
+}

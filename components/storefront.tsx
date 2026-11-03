@@ -67,7 +67,6 @@ const nav = [
   ['Hubungi Kami', '#kontak'],
 ];
 
-
 type ModelContext = {
   registerTool: (
     tool: {
@@ -101,12 +100,11 @@ export default function Storefront({
   }, []);
   const [menuOpen, setMenuOpen] = useState(false);
   const [inquiryOpen, setInquiryOpen] = useState(false);
-  const [promotionContext,setPromotionContext] = useState('');
+  const [promotionContext, setPromotionContext] = useState('');
   const [topic, setTopic] = useState<InquiryTopic>('Grosir');
   const [selectedItems, setSelectedItems] = useState<InquiryItem[]>([]);
   const [selectionReady, setSelectionReady] = useState(false);
   const [selectionStatus, setSelectionStatus] = useState('');
-  const [heroActionsVisible, setHeroActionsVisible] = useState(true);
   const [detailProductId, setDetailProductId] = useState<string | null>(null);
   const [category, setCategory] = useState('Semua');
   const [search, setSearch] = useState('');
@@ -146,19 +144,6 @@ export default function Storefront({
 
   // Hydration restores browser-only visibility and persisted selection.
   /* oxlint-disable react/react-compiler */
-  useEffect(() => {
-    const actionArea = document.querySelector('.hero-actions');
-    if (!actionArea || typeof IntersectionObserver === 'undefined') {
-      setHeroActionsVisible(false);
-      return;
-    }
-    // Show the persistent inquiry shortcut after the main action leaves view.
-    const observer = new IntersectionObserver(([entry]) =>
-      setHeroActionsVisible(entry.isIntersecting),
-    );
-    observer.observe(actionArea);
-    return () => observer.disconnect();
-  }, []);
 
   function chooseSeries(id: string | null) {
     setSeriesId(id);
@@ -196,7 +181,11 @@ export default function Storefront({
     } else addSelection(id);
   }
   const startInquiry = useCallback(
-    (nextTopic: InquiryTopic = 'Grosir', nextProduct: string | null = null, context = '') => {
+    (
+      nextTopic: InquiryTopic = 'Grosir',
+      nextProduct: string | null = null,
+      context = '',
+    ) => {
       if (nextProduct && products.some((item) => item.id === nextProduct))
         addSelection(nextProduct);
       setPromotionContext(context);
@@ -321,10 +310,26 @@ export default function Storefront({
       <a className="skip-link" href="#main">
         Lewati ke konten
       </a>
-      <aside className="launch-banner" aria-label="Perayaan peluncuran situs LOONG JUMP">
-        <div className="launch-intro"><Sparkles size={22} aria-hidden="true" /><div><span>SITUS RESMI KINI HADIR</span><strong>Akhirnya, kami hadir!</strong></div></div>
-        <p><strong>{siteConfig.teamExperienceYears} tahun keahlian dalam pembuatan tas</strong><span aria-hidden="true"> · </span>Kualitas premium, harga bersahabat.</p>
-        <a href="#koleksi">Rayakan bersama kami <ArrowUpRight size={17} aria-hidden="true" /></a>
+      <aside
+        className="launch-banner"
+        aria-label="Perayaan peluncuran situs LOONG JUMP"
+      >
+        <div className="launch-intro">
+          <Sparkles size={22} aria-hidden="true" />
+          <div>
+            <span>SITUS RESMI KINI HADIR</span>
+            <strong>Akhirnya, kami hadir!</strong>
+          </div>
+        </div>
+        <p>
+          <strong>
+            {siteConfig.teamExperienceYears} tahun keahlian dalam pembuatan tas
+          </strong>
+          <span aria-hidden="true"> · </span>Kualitas premium, harga bersahabat.
+        </p>
+        <a href="#koleksi">
+          Rayakan bersama kami <ArrowUpRight size={17} aria-hidden="true" />
+        </a>
       </aside>
       <header className="site-header">
         <div className="header-top">
@@ -371,12 +376,12 @@ export default function Storefront({
             <button
               className="header-contact"
               onClick={() => startInquiry()}
-              aria-label="Hubungi tim LOONG JUMP"
+              aria-label="Minta katalog dan harga grosir"
             >
               <span>
                 {selectedItems.length
                   ? `Daftar Penawaran (${selectedItems.length})`
-                  : 'Minta Penawaran'}
+                  : 'Katalog & Harga Grosir'}
               </span>
               {selectedItems.length ? (
                 <ClipboardList size={21} />
@@ -410,9 +415,9 @@ export default function Storefront({
               <em>Harga grosir.</em>
             </h1>
             <p className="hero-description">
-              Dari pabrik kami di Yogyakarta, hadir tas dengan detail istimewa
-              dan harga yang bersahabat. Belanja grosir mulai 1 pcs atau
-              wujudkan koleksi untuk brand Anda sendiri.
+              Lengkapi stok toko tas Anda langsung dari pabrik di Yogyakarta.
+              Minta katalog, harga grosir, dan rekomendasi model untuk toko
+              Anda. Belanja koleksi LOONG JUMP mulai 1 pcs.
             </p>
             <div className="hero-wholesale-offer">
               <strong>
@@ -428,12 +433,15 @@ export default function Storefront({
                 className="button button-primary"
                 onClick={() => startInquiry()}
               >
-                Minta Harga Pabrik <ArrowUpRight size={19} />
+                Minta Katalog & Harga Grosir <ArrowUpRight size={19} />
               </button>
               <a className="hero-link" href="#koleksi">
                 Pilih Koleksi <ArrowUpRight size={19} />
               </a>
             </div>
+            <p className="lead-entry-hint">
+              Cukup isi kontak & kota. Tidak perlu memilih model dahulu.
+            </p>
             <p className="hero-local-note">
               <MapPin size={16} /> Pabrik Yogyakarta · Pengiriman dari Indonesia
             </p>
@@ -441,15 +449,16 @@ export default function Storefront({
           <div className="factory-hero-media">
             <figure className="factory-hero-photo">
               <img
-                {...responsiveImage('/images/craft/artisan-heritage.webp', '(max-width: 767px) 90vw, 50vw')}
+                {...responsiveImage(
+                  '/images/craft/artisan-heritage.webp',
+                  '(max-width: 767px) 90vw, 50vw',
+                )}
                 width={1672}
                 height={941}
                 alt="Ilustrasi AI: tangan perajin menjahit detail tas kulit hijau dengan teliti"
                 fetchPriority="high"
               />
-              <span className="hero-concept-label">
-                VISUAL KERAJINAN · AI
-              </span>
+              <span className="hero-concept-label">VISUAL KERAJINAN · AI</span>
               <figcaption>
                 <span>DETAIL DI BALIK KOLEKSI</span>
                 <strong>Ketelitian dalam setiap jahitan.</strong>
@@ -474,19 +483,34 @@ export default function Storefront({
             </a>
           </div>
         </section>
-        <nav className="home-engagement-links" aria-label="Promo dan komunitas pabrik">
+        <nav
+          className="home-engagement-links"
+          aria-label="Promo dan komunitas pabrik"
+        >
           <a href="#promo" className="home-promo-link">
-            <span className="home-feature-icon" aria-hidden="true">%</span>
-            <span><small>PILIHAN SPESIAL</small><strong>Promo hari ini</strong><span>Temukan penawaran harian & mingguan dari pabrik.</span></span>
+            <span className="home-feature-icon" aria-hidden="true">
+              %
+            </span>
+            <span>
+              <small>PILIHAN SPESIAL</small>
+              <strong>Promo hari ini</strong>
+              <span>Temukan penawaran harian & mingguan dari pabrik.</span>
+            </span>
             <ArrowUpRight aria-hidden="true" />
           </a>
           <a href="#komunitas" className="home-community-link">
             <MessageCircle className="home-feature-icon" aria-hidden="true" />
-            <span><small>KAMI INGIN MENDENGAR</small><strong>Komunitas pabrik</strong><span>Bagikan pengalaman, kritik, dan ide Anda.</span></span>
+            <span>
+              <small>KAMI INGIN MENDENGAR</small>
+              <strong>Komunitas pabrik</strong>
+              <span>Bagikan pengalaman, kritik, dan ide Anda.</span>
+            </span>
             <ArrowUpRight aria-hidden="true" />
           </a>
         </nav>
-        <DailyPromotion onInquiry={(id,context) => startInquiry('Grosir', id,context)} />
+        <DailyPromotion
+          onInquiry={(id, context) => startInquiry('Grosir', id, context)}
+        />
         <FactoryCommunity />
         <dl
           className="local-proof-strip section-wrap"
@@ -528,8 +552,8 @@ export default function Storefront({
             <div>
               <h3>Harga grosir untuk toko Anda</h3>
               <p>
-                Pilih koleksi LOONG JUMP. Pilih beberapa model sekaligus,
-                lalu tanyakan harganya kepada kami.
+                Pilih koleksi LOONG JUMP. Pilih beberapa model sekaligus, lalu
+                tanyakan harganya kepada kami.
               </p>
               <span>
                 Jelajahi produk · mulai 1 pcs <ArrowUpRight size={16} />
@@ -565,10 +589,29 @@ export default function Storefront({
             </div>
             <p className="section-intro">
               Temukan tas wanita, tote bag, tas selempang, dan ransel untuk
-              butik, reseller, atau pemakaian sehari-hari. Pilih yang Anda suka,
-              lalu tanyakan harga grosirnya kepada kami.
+              melengkapi stok toko Anda. Pilih model sendiri atau minta
+              rekomendasi dari tim grosir kami.
             </p>
           </div>
+          <aside
+            className="wholesale-lead-entry"
+            aria-label="Katalog dan harga untuk toko"
+          >
+            <div>
+              <p className="eyebrow">UNTUK TOKO TAS & MITRA GROSIR</p>
+              <h3>Butuh katalog dan harga untuk toko Anda?</h3>
+              <p>
+                Tinggalkan kontak dan kota toko. Tim kami akan menghubungi Anda
+                untuk pilihan model, harga, dan pengiriman.
+              </p>
+            </div>
+            <button
+              className="button button-primary"
+              onClick={() => startInquiry()}
+            >
+              Minta Katalog & Harga <ArrowUpRight size={18} />
+            </button>
+          </aside>
           <div
             className="collection-series"
             role="group"
@@ -606,9 +649,8 @@ export default function Storefront({
             </button>
           </div>
           <p className="catalog-inquiry-note">
-            Ingin tahu harganya? Pilih{' '}
-            <strong>Minta Harga Grosir</strong> atau kumpulkan beberapa model
-            untuk meminta penawaran sekaligus.
+            Ingin tahu harganya? Pilih <strong>Minta Harga Grosir</strong> atau
+            kumpulkan beberapa model untuk meminta penawaran sekaligus.
           </p>
           <label className="catalog-search">
             Cari model atau referensi
@@ -703,11 +745,15 @@ export default function Storefront({
                         </span>
                       </button>
                       <div className="product-meta">
-                        <span>{categoryLabels[item.category] || item.category}</span>
+                        <span>
+                          {categoryLabels[item.category] || item.category}
+                        </span>
                         <span>1 pcs · harga grosir</span>
                       </div>
                       <h3>
-                        <a href={`/products/${encodeURIComponent(item.id)}`}>{item.name}</a>
+                        <a href={`/products/${encodeURIComponent(item.id)}`}>
+                          {item.name}
+                        </a>
                       </h3>
                       <p>{item.description}</p>
                       <div className="product-card-actions">
@@ -767,7 +813,9 @@ export default function Storefront({
                           <span>REF. {item.id}</span>
                         </div>
                         <h4>
-                          <a href={`/products/${encodeURIComponent(item.id)}`}>{item.name}</a>
+                          <a href={`/products/${encodeURIComponent(item.id)}`}>
+                            {item.name}
+                          </a>
                         </h4>
                         <p>{item.description}</p>
                         <div className="reference-actions">
@@ -922,10 +970,10 @@ export default function Storefront({
               <em>Karakter Anda.</em>
             </h2>
             <p>
-              Punya ide koleksi sendiri? Tim kami membawa pengalaman
-              {' '}{siteConfig.teamExperienceYears} tahun dalam pembuatan tas dan produk kulit.
-              Lewat layanan OEM, kami membantu Anda mengembangkan tas custom,
-              dari pilihan bahan hingga logo dan detail akhir.
+              Punya ide koleksi sendiri? Tim kami membawa pengalaman{' '}
+              {siteConfig.teamExperienceYears} tahun dalam pembuatan tas dan
+              produk kulit. Lewat layanan OEM, kami membantu Anda mengembangkan
+              tas custom, dari pilihan bahan hingga logo dan detail akhir.
             </p>
             <div className="oem-options">
               <span>Logo & identitas brand</span>
@@ -945,7 +993,10 @@ export default function Storefront({
           </div>
           <figure className="oem-image oem-image-cba">
             <img
-              {...responsiveImage('/images/craft/production-line.webp', '(max-width: 767px) 90vw, 50vw')}
+              {...responsiveImage(
+                '/images/craft/production-line.webp',
+                '(max-width: 767px) 90vw, 50vw',
+              )}
               width={1280}
               height={720}
               alt="Pengerjaan komponen tas pada meja produksi"
@@ -988,13 +1039,39 @@ export default function Storefront({
           </ol>
         </section>
 
-        <section className="service-guides section-wrap" aria-labelledby="service-guides-heading">
+        <section
+          className="service-guides section-wrap"
+          aria-labelledby="service-guides-heading"
+        >
           <p className="eyebrow">KENALI LAYANAN KAMI</p>
-          <h2 id="service-guides-heading">Langkah berikutnya, sesuai kebutuhan Anda.</h2>
+          <h2 id="service-guides-heading">
+            Langkah berikutnya, sesuai kebutuhan Anda.
+          </h2>
           <div>
-            <a href="/layanan/grosir-tas"><span>01 · UNTUK TOKO & RESELLER</span><h3>Grosir tas mulai 1 pcs</h3><p>Cara memilih model, menanyakan harga, dan menyiapkan pesanan.</p><ArrowUpRight aria-hidden="true" /></a>
-            <a href="/layanan/tas-custom-oem"><span>02 · UNTUK BRAND ANDA</span><h3>Tas custom & OEM</h3><p>Panduan bahan, logo, sampel, dan pengembangan koleksi sendiri.</p><ArrowUpRight aria-hidden="true" /></a>
-            <a href="/layanan/pabrik-tas-yogyakarta"><span>03 · LEBIH DEKAT DENGAN KAMI</span><h3>Pabrik tas di Yogyakarta</h3><p>Kenali pabrik di Sleman dan cara mengatur kunjungan bersama tim.</p><ArrowUpRight aria-hidden="true" /></a>
+            <a href="/layanan/grosir-tas">
+              <span>01 · UNTUK TOKO & RESELLER</span>
+              <h3>Grosir tas mulai 1 pcs</h3>
+              <p>
+                Cara memilih model, menanyakan harga, dan menyiapkan pesanan.
+              </p>
+              <ArrowUpRight aria-hidden="true" />
+            </a>
+            <a href="/layanan/tas-custom-oem">
+              <span>02 · UNTUK BRAND ANDA</span>
+              <h3>Tas custom & OEM</h3>
+              <p>
+                Panduan bahan, logo, sampel, dan pengembangan koleksi sendiri.
+              </p>
+              <ArrowUpRight aria-hidden="true" />
+            </a>
+            <a href="/layanan/pabrik-tas-yogyakarta">
+              <span>03 · LEBIH DEKAT DENGAN KAMI</span>
+              <h3>Pabrik tas di Yogyakarta</h3>
+              <p>
+                Kenali pabrik di Sleman dan cara mengatur kunjungan bersama tim.
+              </p>
+              <ArrowUpRight aria-hidden="true" />
+            </a>
           </div>
         </section>
         <FactoryGallery onInquiry={() => startInquiry('Grosir')} />
@@ -1006,7 +1083,10 @@ export default function Storefront({
         >
           <div className="about-image">
             <img
-              {...responsiveImage('/images/brand-detail.jpg', '(max-width: 767px) 90vw, 50vw')}
+              {...responsiveImage(
+                '/images/brand-detail.jpg',
+                '(max-width: 767px) 90vw, 50vw',
+              )}
               alt="Simbol sayap LOONG JUMP berwarna emas pada detail tas bertekstur"
               width="2666"
               height="1499"
@@ -1098,27 +1178,40 @@ export default function Storefront({
           <a href="#home">Kembali ke atas ↑</a>
         </div>
       </footer>
-      <button
-        className={`floating-contact ${heroActionsVisible ? 'hero-action-visible' : ''} ${selectedItems.length ? 'has-selection' : ''}`}
-        onClick={() => startInquiry()}
-        aria-label={
-          selectedItems.length
-            ? `Buka daftar penawaran, ${selectedItems.length} model`
-            : 'Buka konsultasi grosir'
-        }
+      <div
+        className="wholesale-contact-dock"
+        hidden={inquiryOpen || !!detailProductId || menuOpen}
+        aria-label="Konsultasi grosir"
       >
-        {selectedItems.length ? (
-          <ClipboardList size={21} />
+        <div className="dock-copy">
+          <strong>Stok untuk toko Anda</strong>
+          <span>Katalog · Harga · Pilihan model</span>
+        </div>
+        <button
+          className="button button-primary dock-inquiry"
+          onClick={() => startInquiry()}
+          aria-haspopup="dialog"
+        >
+          <ClipboardList size={20} aria-hidden="true" />
+          <span>
+            {selectedItems.length
+              ? `Minta Penawaran (${selectedItems.length})`
+              : 'Minta Harga Grosir'}
+          </span>
+          <ArrowUpRight size={17} aria-hidden="true" />
+        </button>
+        {publicData ? (
+          <CustomerChat
+            docked
+            settings={publicData.settings}
+            onInquiry={() => startInquiry()}
+          />
         ) : (
-          <MessageCircle size={21} />
+          <button className="dock-help" onClick={() => startInquiry()}>
+            Hubungi tim
+          </button>
         )}
-        <span>
-          {selectedItems.length ? 'Daftar Penawaran' : 'Minta Penawaran'}
-        </span>
-        {selectedItems.length > 0 && (
-          <span className="selection-badge">{selectedItems.length}</span>
-        )}
-      </button>
+      </div>
       <ProductDetails
         products={products}
         productId={detailProductId}
@@ -1129,12 +1222,6 @@ export default function Storefront({
         onAdd={addSelection}
         onInquiry={(id) => startInquiry('Grosir', id)}
       />
-      {publicData && (
-        <CustomerChat
-          settings={publicData.settings}
-          onInquiry={() => startInquiry()}
-        />
-      )}
       <InquiryDialog
         promotionContext={promotionContext}
         products={products}
