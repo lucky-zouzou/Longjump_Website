@@ -1,3 +1,4 @@
+import {syncStatus} from './admin-inquiry-sync.mjs';
 import { handleEngagement } from './engagement.mjs';
 import { randomUUID, createHash } from 'node:crypto';
 import { mkdirSync, writeFileSync } from 'node:fs';
@@ -502,6 +503,10 @@ export async function handleOperations(request, context) {
       });
       return json({ saved: true, id });
     }
+    if(path==='/api/ops/admin-sync'&&method==='GET'){
+      if(!managers(user))fail(403,'仅管理员可查看同步队列');
+      return json(syncStatus(db,context.adminSyncConfig));
+    }
     if (path === '/api/ops/leads' && method === 'GET') {
       if (!managers(user) && user.role !== 'sales')
         fail(403, '当前角色不能查看询盘');
@@ -541,7 +546,7 @@ export async function handleOperations(request, context) {
               request_key: _requestKey,
               session_id: _sessionId,
               ...lead
-            }) => ({ ...lead, details: JSON.parse(payload) }),
+            }) => ({ ...lead, details: JSON.parse(payload), adminSync:db.prepare('SELECT generation,delivered_generation,attempts,last_error,delivered_at FROM admin_inquiry_outbox WHERE inquiry_id=?').get(lead.id) }),
           ),
         hasMore: leads.length > 50,
         total: db

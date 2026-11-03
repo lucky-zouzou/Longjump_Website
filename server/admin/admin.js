@@ -298,13 +298,14 @@ async function leads() {
     `leads?status=${state.status}&scope=${state.scope}&offset=${state.offset}&q=${encodeURIComponent(state.q)}`,
   );
   state.leads = d.leads;
+  const sync=manager()?await api('admin-sync'):null;
   return (
     heading(
       t('每一次询盘，都有下一步。'),
       t('统一记录网站、WhatsApp、邮件、电话与展会线索。'),
       button(t('＋ 录入询盘'), 'new-lead', '', true),
     ) +
-    `<section class="panel leads-panel"><form id="lead-filter" class="toolbar"><input name="q" value="${e(state.q)}" placeholder="${t('搜索联系人、公司或询盘编号')}" aria-label="${t('搜索询盘')}"><select name="status" aria-label="${t('询盘状态')}">${options({ '': t('全部状态'), ...statuses }, state.status)}</select><select name="scope" aria-label="${t('归属')}">${options(manager() ? { '': t('全部询盘'), mine: t('我负责的'), pool: t('公共池') } : { '': t('我负责的') }, state.scope)}</select><button class="btn">${t('筛选')}</button>${button('↻', 'refresh')}</form>${table(
+    `${sync?`<div class="notice">${t('Admin 自动同步')} · ${sync.configured?t('已配置'):t('待配置')} · ${t('已送达')} ${sync.delivered||0} / ${sync.total||0} · ${t('待同步')} ${sync.pending||0} · ${t('自动重试')} ${sync.retrying||0}${sync.configured?'':` · ${t('请管理员完成服务器同步配置，询盘已保留在队列中。')}`}</div>`:''}<section class="panel leads-panel"><form id="lead-filter" class="toolbar"><input name="q" value="${e(state.q)}" placeholder="${t('搜索联系人、公司或询盘编号')}" aria-label="${t('搜索询盘')}"><select name="status" aria-label="${t('询盘状态')}">${options({ '': t('全部状态'), ...statuses }, state.status)}</select><select name="scope" aria-label="${t('归属')}">${options(manager() ? { '': t('全部询盘'), mine: t('我负责的'), pool: t('公共池') } : { '': t('我负责的') }, state.scope)}</select><button class="btn">${t('筛选')}</button>${button('↻', 'refresh')}</form>${table(
       [
         t('客户 / 编号'),
         t('采购需求'),
@@ -312,6 +313,7 @@ async function leads() {
         t('负责人'),
         t('来源 / 地区'),
         t('收到时间'),
+        t('Admin 同步'),
         t('操作'),
       ],
       d.leads.map((l) => [
@@ -321,6 +323,7 @@ async function leads() {
         e(person(l.assignee)),
         `${e(labels[l.source] || l.source)}<small>${e(labels[l.country] || l.country)}</small>`,
         e(date(l.created_at)),
+        l.adminSync?.delivered_generation===l.adminSync?.generation?tag(t('已送达')):tag(l.adminSync?.attempts?t('自动重试'):t('待同步'),'warn'),
         button(t('查看 / 跟进'), 'lead', l.id),
       ]),
     )}<div class="pagination"><span>${t('共 ')}${d.total}${t(' 条 · 第 ')}${Math.floor(state.offset / 50) + 1}${t(' 页')}</span><div class="actions"><button class="btn" data-action="prev" ${!state.offset ? 'disabled' : ''}>${t('上一页')}</button><button class="btn" data-action="next" ${!d.hasMore ? 'disabled' : ''}>${t('下一页')}</button></div></div></section>`
