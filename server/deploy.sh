@@ -45,4 +45,5 @@ fi
 curl -fsS --retry 3 -o /dev/null https://loongjump.com/ || rollback
 curl -fsS --retry 3 https://loongjump.com/api/public/content | python3 -c 'import json,sys;d=json.load(sys.stdin);assert isinstance(d["content"],list) and "settings" in d' || rollback
 curl -fsS --retry 3 -o /dev/null https://loongjump.com/manage/manifest.webmanifest || rollback
+docker exec loongjump-web node scripts/verify-admin-sync.mjs || rollback
 echo "Deployment verified: $release; previous source, image and database backup retained."

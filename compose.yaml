@@ -8,7 +8,11 @@ services:
     restart: unless-stopped
     ports:
       - "127.0.0.1:3001:3000"
+    # Both services run on the existing server. Admin provisions this root-only file first.
+    env_file:
+      - /root/loong-jump-v17/secrets/inquiry-sync.env
     environment:
+      LOONGJUMP_ADMIN_SYNC_URL: https://admin.loongjump.com/api/integrations/website-inquiries
       LOONGJUMP_ORIGIN: https://loongjump.com
       LOONGJUMP_ADMIN_ID: website-admin
       LOONGJUMP_ADMIN_EMAIL: admin@loongjump.com

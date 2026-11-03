@@ -14,6 +14,8 @@ LOONGJUMP_INQUIRY_SYNC_SECRET=<两端一致的安全随机共享密钥，至少3
 
 Admin 先部署对应接收端，配置相同来源与密钥。密钥不要放进代码、URL、公开仓库或网站前端。生产 HTTPS 校验不可关闭；HTTP 仅允许显式打开本机联调模式。
 
+现有同机部署已通过 Compose 接线：Admin 首次发布在 `/root/loong-jump-v17/secrets/inquiry-sync.env` 生成仅属主可读的共享配置，后续不轮换；网站读取该文件并使用固定的 Admin HTTPS 接收地址。因此必须先发布 Admin，网站才能启动。`scripts/verify-admin-sync.mjs` 用不创建记录的签名报文验证连接，并只输出队列计数，不输出客户资料或密钥。
+
 上线前备份网站与 Admin 数据库。迁移 `0004_admin_inquiry_sync.sql` 新增投递队列及数据库触发器，并把已有询盘加入队列。未设置连接时不发送；设置不完整时 Node 服务拒绝启动，避免悄悄误投递。
 
 ## 运行规则

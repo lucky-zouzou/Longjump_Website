@@ -28,6 +28,7 @@ jobs:
       - run: node scripts/check-catalog-upgrade.mjs
       - run: node scripts/check-image-assets.mjs
       - run: node scripts/check-inquiries.mjs
+      - run: node --test scripts/check-admin-sync.mjs
       - run: node scripts/check-operations.mjs
       - run: node scripts/check-admin-i18n.mjs
       - run: node scripts/check-engagement.mjs
