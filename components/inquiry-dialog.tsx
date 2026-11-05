@@ -33,6 +33,7 @@ import { responsiveImage } from '@/lib/images';
 
 type Props = {
   promotionContext?: string;
+  promotionsOnly?: boolean;
   products?: Product[];
   settings?: PublicSettings;
   open: boolean;
@@ -53,6 +54,7 @@ export function InquiryDialog({
   products = initialProducts,
   settings,
   promotionContext = '',
+  promotionsOnly = false,
 }: Props) {
   const [customFields, setCustomFields] = useState<Record<string, string>>({});
   const [country, setCountry] = useState('Indonesia');
@@ -225,23 +227,27 @@ export function InquiryDialog({
           <DialogTitle className="inquiry-title">
             {receipt
               ? 'Permintaan tersimpan.'
-              : topic === 'Grosir'
-                ? !settings?.formTitle ||
-                  settings.formTitle === 'Minta penawaran.'
-                  ? 'Katalog & harga untuk toko Anda.'
-                  : settings.formTitle
-                : 'Diskusikan proyek OEM.'}
+              : promotionsOnly
+                ? 'Cek stok & ongkir promo.'
+                : topic === 'Grosir'
+                  ? !settings?.formTitle ||
+                    settings.formTitle === 'Minta penawaran.'
+                    ? 'Katalog & harga untuk toko Anda.'
+                    : settings.formTitle
+                  : 'Diskusikan proyek OEM.'}
           </DialogTitle>
           <DialogDescription className="inquiry-description">
             {receipt
               ? 'Tim penjualan dapat melihat kebutuhan Anda dan menindaklanjuti melalui kontak yang Anda berikan.'
-              : settings?.formIntro &&
-                  settings.formIntro !==
-                    'Isi kontak dan kebutuhan pembelian Anda.'
-                ? settings.formIntro
-                : topic === 'Grosir'
-                  ? 'Tim kami akan menghubungi Anda untuk katalog dan penawaran sesuai kebutuhan.'
-                  : 'Isi kontak dan ceritakan kebutuhan proyek Anda. Tim kami akan menindaklanjuti penawaran OEM.'}
+              : promotionsOnly
+                ? 'Tinggalkan kontak dan kota tujuan agar tim grosir dapat mengonfirmasi pilihan Anda.'
+                : settings?.formIntro &&
+                    settings.formIntro !==
+                      'Isi kontak dan kebutuhan pembelian Anda.'
+                  ? settings.formIntro
+                  : topic === 'Grosir'
+                    ? 'Tim kami akan menghubungi Anda untuk katalog dan penawaran sesuai kebutuhan.'
+                    : 'Isi kontak dan ceritakan kebutuhan proyek Anda. Tim kami akan menindaklanjuti penawaran OEM.'}
           </DialogDescription>
         </DialogHeader>
         {receipt ? (
@@ -292,24 +298,26 @@ export function InquiryDialog({
               <legend className="sr-only">
                 Kontak dan kebutuhan pengadaan
               </legend>
-              <fieldset className="inquiry-topic">
-                <legend className="sr-only">Jenis konsultasi</legend>
-                {(['Grosir', 'OEM & Custom'] as const).map((value) => (
-                  <label
-                    key={value}
-                    className={topic === value ? 'is-active' : ''}
-                  >
-                    <input
-                      type="radio"
-                      name="inquiry-topic"
-                      value={value}
-                      checked={topic === value}
-                      onChange={() => onTopicChange(value)}
-                    />
-                    <span>{value}</span>
-                  </label>
-                ))}
-              </fieldset>
+              {!promotionsOnly && (
+                <fieldset className="inquiry-topic">
+                  <legend className="sr-only">Jenis konsultasi</legend>
+                  {(['Grosir', 'OEM & Custom'] as const).map((value) => (
+                    <label
+                      key={value}
+                      className={topic === value ? 'is-active' : ''}
+                    >
+                      <input
+                        type="radio"
+                        name="inquiry-topic"
+                        value={value}
+                        checked={topic === value}
+                        onChange={() => onTopicChange(value)}
+                      />
+                      <span>{value}</span>
+                    </label>
+                  ))}
+                </fieldset>
+              )}
               {topic === 'OEM & Custom' && (
                 <p className="inquiry-context">
                   Logo, material, warna, dan kemasan dapat dibahas sesuai
@@ -657,7 +665,9 @@ export function InquiryDialog({
                     ? 'Pengembangan OEM'
                     : selectedItems.length
                       ? `${selectedItems.length} model · ${selectedItems.reduce((total, item) => total + (Number(item.quantity) || 0), 0).toLocaleString('id-ID')} pcs`
-                      : 'Rekomendasi & katalog'}
+                      : promotionsOnly
+                        ? 'Penawaran promo'
+                        : 'Rekomendasi & katalog'}
                 </h3>
                 <p>
                   {topic === 'Grosir'
@@ -698,9 +708,11 @@ export function InquiryDialog({
               >
                 {submitting
                   ? 'Menyimpan permintaan…'
-                  : topic === 'Grosir' && !selectedItems.length
-                    ? 'Minta Katalog & Harga'
-                    : 'Kirim Permintaan Penawaran'}{' '}
+                  : promotionsOnly
+                    ? 'Kirim permintaan promo'
+                    : topic === 'Grosir' && !selectedItems.length
+                      ? 'Minta Katalog & Harga'
+                      : 'Kirim Permintaan Penawaran'}{' '}
                 <ArrowUpRight size={18} />
               </button>
               {status && (
