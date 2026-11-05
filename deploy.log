@@ -1,0 +1,24 @@
+MARK0: function entered
+DIAG: key 格式 OK
+DIAG: SERVER 已配置（硬编码）
+** WARNING: connection is not using a post-quantum key exchange algorithm.
+** This session may be vulnerable to "store now, decrypt later" attacks.
+** The server may need to be upgraded. See https://openssh.com/pq.html
+Filesystem      Size  Used Avail Use% Mounted on
+/dev/nvme0n1p3   40G   34G  4.0G  90% /
+** WARNING: connection is not using a post-quantum key exchange algorithm.
+** This session may be vulnerable to "store now, decrypt later" attacks.
+** The server may need to be upgraded. See https://openssh.com/pq.html
+** WARNING: connection is not using a post-quantum key exchange algorithm.
+** This session may be vulnerable to "store now, decrypt later" attacks.
+** The server may need to be upgraded. See https://openssh.com/pq.html
+Loaded image: loongjump-website:ci-a1582e309750196135b2faf772f0ab91f266285e
+/backups/predeploy-20261105T103220Z/LOONGJUMP-2026-11-05.sqlite
+ Container loongjump-web Recreate 
+ Container loongjump-web Recreated 
+ Container loongjump-web Starting 
+ Container loongjump-web Started 
+Running revision: a1582e309750196135b2faf772f0ab91f266285e
+{"signedChannel":"verified","total":24,"delivered":24,"pending":0,"retrying":0}
+Deployment verified: 20261105T103220Z; previous source, image and database backup retained.
+Deploy OK
